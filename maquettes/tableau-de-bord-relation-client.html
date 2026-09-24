@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de bord Relation Client · maquette</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f4efe9; --surface:#fbf8f4; --surface-2:#f1ebe4; --line:#e3d9ce; --grid:#ece4da;
+  --ink:#231f1c; --ink-2:#5b534c; --ink-3:#877d74;
+  --accent:#b8492a; --sage:#6f8a73; --sage-bg:#e6ede5;
+  --s1:#c0522d; --s2:#3a6fb5; --s3:#3f8f5c; --s4:#8e4f96; --s5:#b87c0e;
+  --o1:#dc947a; --o2:#b8492a; --o3:#6e2a15; --on-o1:#231f1c; --on-o2:#ffffff; --on-o3:#ffffff;
+  --good:#1f7a1f; --bad:#b23232;
+  --warnbg:#fff3cf; --warnink:#6b4d00;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --bg:#141210; --surface:#1d1a18; --surface-2:#262220; --line:#3a3431; --grid:#2c2825;
+    --ink:#f5efe9; --ink-2:#c9bfb6; --ink-3:#998e85;
+    --accent:#e07a55; --sage:#9bb59f; --sage-bg:#26302a;
+    --s1:#d9683f; --s2:#5b8fd6; --s3:#4fa672; --s4:#a86db0; --s5:#bb8420;
+    --o1:#7f3820; --o2:#c0603a; --o3:#eea283; --on-o1:#ffffff; --on-o2:#1d1a18; --on-o3:#1d1a18;
+    --good:#5cc25c; --bad:#ef7373;
+    --warnbg:#3a3014; --warnink:#f3d27a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#141210; --surface:#1d1a18; --surface-2:#262220; --line:#3a3431; --grid:#2c2825;
+  --ink:#f5efe9; --ink-2:#c9bfb6; --ink-3:#998e85;
+  --accent:#e07a55; --sage:#9bb59f; --sage-bg:#26302a;
+  --s1:#d9683f; --s2:#5b8fd6; --s3:#4fa672; --s4:#a86db0; --s5:#bb8420;
+  --o1:#7f3820; --o2:#c0603a; --o3:#eea283; --on-o1:#ffffff; --on-o2:#1d1a18; --on-o3:#1d1a18;
+  --good:#5cc25c; --bad:#ef7373;
+  --warnbg:#3a3014; --warnink:#f3d27a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+.banner{display:flex;gap:10px;align-items:center;background:var(--warnbg);color:var(--warnink);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
+.banner svg{flex:none}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:14px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.sub{color:var(--ink-2);font-size:13px;margin-top:2px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--ink-2);font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);font-weight:600}
+.iconbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:18px;scrollbar-width:none}
+nav.tabs button{border:0;background:none;font:inherit;color:var(--ink-2);padding:10px 14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.tiles{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px 12px;min-width:0}
+.card.wide{grid-column:1/-1}
+.card h2{font-size:14px;margin:0;font-weight:600}
+.card .note{color:var(--ink-3);font-size:12px;margin:2px 0 8px}
+.cardhead{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.linkbtn{border:0;background:none;color:var(--ink-3);font:inherit;font-size:12px;cursor:pointer;text-decoration:underline;padding:2px 0;white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink-2);margin:2px 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.tick{fill:var(--ink-3);font-size:11px}
+.dlabel{font-size:11px;font-weight:600;fill:var(--ink-2)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);border-radius:8px;padding:8px 10px;font-size:12px;line-height:1.5;min-width:130px;opacity:0;transform:translateY(4px);transition:opacity .08s;z-index:5;white-space:nowrap}
+.tip b{display:block;margin-bottom:2px}
+.tip .row{display:flex;justify-content:space-between;gap:14px}
+.tip .row span:first-child{display:inline-flex;align-items:center;gap:6px}
+.tip i{width:8px;height:8px;border-radius:2px;display:inline-block}
+table.data{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+table.data th,table.data td{padding:4px 6px;border-bottom:1px solid var(--grid);text-align:right;font-variant-numeric:tabular-nums}
+table.data th:first-child,table.data td:first-child{text-align:left}
+table.data th{color:var(--ink-2);font-weight:600}
+.tablewrap{max-height:260px;overflow:auto}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tile .lab{font-size:12px;color:var(--ink-2)}
+.tile .val{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:2px 0;font-variant-numeric:tabular-nums}
+.tile .deltas{display:flex;gap:12px;font-size:12px;flex-wrap:wrap}
+.d{display:inline-flex;align-items:center;gap:3px;font-weight:600;font-variant-numeric:tabular-nums}
+.d.good{color:var(--good)} .d.bad{color:var(--bad)} .d.flat{color:var(--ink-3)}
+.d small{font-weight:400;color:var(--ink-3)}
+.tile svg{display:block;width:100%;height:34px;margin-top:6px}
+footer{margin-top:22px;color:var(--ink-3);font-size:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="banner" role="note">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    Maquette illustrative · toutes les données sont fictives.
+  </div>
+  <header class="top">
+    <div>
+      <h1>Tableau de bord Relation Client</h1>
+      <div class="sub">Enseigne fictive · réseau national de magasins · centres de contact externalisés (Prestataire A, Prestataire B)</div>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Période">
+        <button data-period="w" aria-pressed="true">12 semaines</button>
+        <button data-period="m" aria-pressed="false">12 mois</button>
+      </div>
+      <button class="iconbtn" id="theme" title="Changer de thème" aria-label="Changer de thème">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="view"></main>
+</div>
+
+<script>
+/* ---------- Données fictives, générées de façon déterministe ---------- */
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const R=rng(20260924), N=(a=1)=>(R()-.5)*2*a;
+const W=116; // semaines générées (dont 52 pour la comparaison N-1)
+const START_WEEK=26; // la semaine 0 affichée comme S26 de l'année N-2
+const wk=[];
+let google=3.96, nps=8;
+for(let i=0;i<W;i++){
+  const season=Math.sin((i%52)/52*2*Math.PI-3.26); // pic au printemps
+  const trend=i/W;
+  const entr=Math.round(2350+520*season+180*trend+N(110));
+  const qs=Math.min(.97,Math.max(.74,.9-.07*Math.max(0,season)+N(.025)));
+  const dmt=8.1+.6*season+N(.35);
+  const att=1.9+1.1*Math.max(0,season)+N(.3);
+  const mails=Math.round(1150+260*season+N(70));
+  const m48=Math.round(380+N(60));
+  const mOld=Math.round(Math.max(60,260+520*Math.max(0,season)+N(90)-140*trend));
+  const csat=Math.min(.86,Math.max(.66,.79-.05*Math.max(0,season)+.02*trend+N(.015)));
+  nps+=N(2.2)-.6*(nps-(12-10*Math.max(0,season)+5*trend));
+  const npsA=nps-9+N(3), npsB=nps+14+N(4);
+  const npsMag=60+2*trend+N(1.6), npsWeb=24+N(2.2)+2*trend, npsGlob=.65*npsMag+.35*npsWeb+N(.8);
+  const S=1+.35*season; // saisonnalité des commandes
+  const ord={mag:Math.round(3900*S+N(180)),four:Math.round(620*S+N(50)),ent:Math.round(1150*S+N(80)),ret:Math.round(15800*S+N(600)),mkp:Math.round(520*S*(1+trend)+N(40))};
+  const ratio={mag:.112+.02*Math.max(0,season)+N(.008),four:.205-.03*trend+N(.015),ent:.071+N(.006),ret:.016+N(.002),mkp:.094+N(.01)};
+  google=Math.min(4.4,google+.0012+N(.006));
+  const tot=entr+mails;
+  const esc=.048+.012*Math.max(0,season)+N(.004);
+  const n2=Math.round(tot*esc*2.1);
+  const a1=Math.round(n2*(.52+N(.04))), a2=Math.round(n2*(.29+N(.03))), a3=n2-a1-a2;
+  const cmd=.56+.05*Math.max(0,season)+N(.015), prod=.12+N(.01), mag=.09+N(.01), sav=.07+N(.008);
+  wk.push({entr,trait:Math.round(entr*qs),qs,dmt,att,mails,m48,mOld,csat,nps,npsA,npsB,npsMag,npsWeb,npsGlob,google,esc,n2,a1,a2,a3,cmd,prod,mag,sav,autres:1-cmd-prod-mag-sav,wshare:.7+N(.02),ord,ratio});
+}
+const MODES=[{k:'mag',name:'Livraison depuis le magasin'},{k:'four',name:'Livraison directe fournisseur'},{k:'ent',name:'Départ entrepôt'},{k:'mkp',name:'Marketplace'},{k:'ret',name:'Retrait en magasin'}];
+wk.forEach(w=>{w.tot=w.entr+w.mails; w.mAtt=w.m48+w.mOld; w.cmdVol=Math.round(w.entr*w.cmd); w.wismo=Math.round(w.cmdVol*w.wshare);
+  const wt=MODES.map(m=>w.ord[m.k]*w.ratio[m.k]); const sw=wt.reduce((a,b)=>a+b,0);
+  MODES.forEach((m,i)=>{w['o_'+m.k]=w.ord[m.k]; w['c_'+m.k]=Math.round(w.wismo*wt[i]/sw)});
+  w.orders=MODES.reduce((a,m)=>a+w.ord[m.k],0); delete w.ord; delete w.ratio;});
+const wLabel=i=>{const n=(START_WEEK+i)%52+1;return 'S'+String(n).padStart(2,'0')};
+// Mois : regroupement par blocs de semaines (4,4,5 par trimestre)
+const MOIS=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+const mo=[]; {let i=0,k=0; const startMonth=6; while(i+5<=W){const len=[4,4,5][k%3]; const ws=wk.slice(i,i+len); const avg=f=>ws.reduce((s,w)=>s+w[f],0)/ws.length; const sum=f=>ws.reduce((s,w)=>s+w[f],0);
+  const m={}; ['entr','trait','mails','tot','cmdVol','wismo','orders',...MODES.flatMap(x=>['o_'+x.k,'c_'+x.k])].forEach(f=>m[f]=Math.round(avg(f)*4.33)); ['qs','dmt','att','csat','nps','npsA','npsB','npsMag','npsWeb','npsGlob','google','esc','cmd','prod','mag','sav','autres','wshare'].forEach(f=>m[f]=avg(f));
+  m.m48=ws[ws.length-1].m48; m.mOld=ws[ws.length-1].mOld; m.mAtt=m.m48+m.mOld; m.n2=ws[ws.length-1].n2; m.a1=ws[ws.length-1].a1; m.a2=ws[ws.length-1].a2; m.a3=ws[ws.length-1].a3;
+  m.label=MOIS[(startMonth+k)%12]; mo.push(m); i+=len; k++;}}
+wk.forEach((w,i)=>w.label=wLabel(i));
+
+/* ---------- Définition des indicateurs ---------- */
+const fmt={
+  int:v=>Math.round(v).toLocaleString('fr-FR'),
+  pct:v=>(v*100).toLocaleString('fr-FR',{maximumFractionDigits:1,minimumFractionDigits:1})+' %',
+  pct0:v=>Math.round(v*100)+' %',
+  nps:v=>(v>0?'+':'')+v.toLocaleString('fr-FR',{maximumFractionDigits:1,minimumFractionDigits:1}),
+  min:v=>{const m=Math.floor(v),s=Math.round((v-m)*60);return m+' min '+String(s).padStart(2,'0')},
+  note:v=>v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' / 5'
+};
+let period='w', tab='synthese', theme=null;
+const series=()=>period==='w'?wk:mo;
+const last12=()=>series().slice(-12);
+
+/* ---------- Utilitaires SVG ---------- */
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function h(tag,attrs={},html=''){const e=document.createElement(tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(html)e.innerHTML=html;return e}
+function niceTicks(min,max,count=4){const span=max-min||1;const step0=span/count;const mag=Math.pow(10,Math.floor(Math.log10(step0)));const step=[1,2,2.5,5,10].map(m=>m*mag).find(s=>span/s<=count)||10*mag;const lo=Math.floor(min/step)*step,hi=Math.ceil(max/step)*step;const t=[];for(let v=lo;v<=hi+step/2;v+=step)t.push(+v.toFixed(10));return t}
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function card(title,note,opts={}){
+  const c=h('section',{class:'card'+(opts.wide?' wide':'')});
+  const head=h('div',{class:'cardhead'});
+  const t=h('div');t.appendChild(h('h2',{},title));if(note)t.appendChild(h('div',{class:'note'},note));
+  head.appendChild(t);
+  const b=h('button',{class:'linkbtn',type:'button'},'Voir les données');head.appendChild(b);
+  c.appendChild(head);
+  const body=h('div');c.appendChild(body);
+  const tw=h('div',{class:'tablewrap'});tw.hidden=true;c.appendChild(tw);
+  b.onclick=()=>{tw.hidden=!tw.hidden;b.textContent=tw.hidden?'Voir les données':'Masquer les données'};
+  return {c,body,tw};
+}
+function dataTable(tw,rows,cols){
+  const t=h('table',{class:'data'});
+  t.innerHTML='<thead><tr><th>Période</th>'+cols.map(c=>'<th>'+c.name+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr><td>'+r.label+'</td>'+cols.map(c=>'<td>'+c.fmt(c.get(r))+'</td>').join('')+'</tr>').join('')+'</tbody>';
+  tw.appendChild(t);
+}
+function legend(parent,items){const l=h('div',{class:'legend'});items.forEach(it=>{const s=h('span');s.appendChild(h('i',{style:'background:var('+it.color+')'}));s.appendChild(document.createTextNode(it.name));l.appendChild(s)});parent.appendChild(l)}
+
+/* ---------- Graphique en courbes (un seul axe) ---------- */
+function lineChart(parent,rows,defs,o={}){
+  const Wd=(o.wide&&innerWidth>860)?1120:560,Ht=o.h||220,m={t:12,r:o.directLabels?(o.labelW||72):14,b:24,l:44};
+  if(defs.length>1)legend(parent,defs);
+  const wrap=h('div',{class:'chart'});parent.appendChild(wrap);
+  const svg=el('svg',{viewBox:`0 0 ${Wd} ${Ht}`,role:'img','aria-label':o.aria||''},wrap);
+  const vals=rows.flatMap(r=>defs.map(d=>d.get(r)));
+  let lo=Math.min(...vals),hi=Math.max(...vals);
+  if(o.zero&&lo>0)lo=0; if(o.min!=null)lo=Math.min(lo,o.min); if(o.max!=null)hi=Math.max(hi,o.max);
+  const pad=(hi-lo)*.08; const ticks=niceTicks(lo-(o.zero?0:pad),hi+pad);
+  const y0=ticks[0],y1=ticks[ticks.length-1];
+  const X=i=>m.l+(Wd-m.l-m.r)*(rows.length===1?.5:i/(rows.length-1));
+  const Y=v=>m.t+(Ht-m.t-m.b)*(1-(v-y0)/(y1-y0));
+  ticks.forEach(t=>{el('line',{x1:m.l,x2:Wd-m.r,y1:Y(t),y2:Y(t),stroke:'var(--grid)','stroke-width':1},svg);const tx=el('text',{x:m.l-8,y:Y(t)+4,'text-anchor':'end',class:'tick'},svg);tx.textContent=(o.tickFmt||fmt.int)(t)});
+  if(o.ref!=null&&o.ref>=y0&&o.ref<=y1){el('line',{x1:m.l,x2:Wd-m.r,y1:Y(o.ref),y2:Y(o.ref),stroke:'var(--ink-3)','stroke-width':1,'stroke-dasharray':'3 3'},svg)}
+  rows.forEach((r,i)=>{if(rows.length<=12||i%2===0){const tx=el('text',{x:X(i),y:Ht-6,'text-anchor':'middle',class:'tick'},svg);tx.textContent=r.label}});
+  defs.forEach(d=>{const pts=rows.map((r,i)=>[X(i),Y(d.get(r))]);
+    el('path',{d:'M'+pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join('L'),fill:'none',stroke:`var(${d.color})`,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+    const lp=pts[pts.length-1]; el('circle',{cx:lp[0],cy:lp[1],r:4,fill:`var(${d.color})`,stroke:'var(--surface)','stroke-width':2},svg);
+  });
+  if(o.directLabels){ // étiquettes en bout de courbe, décollées pour éviter les chevauchements
+    const ends=defs.map(d=>({d,y:Y(d.get(rows[rows.length-1]))})).sort((a,b)=>a.y-b.y);
+    for(let i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<13)ends[i].y=ends[i-1].y+13;
+    ends.forEach(e=>{const t=el('text',{x:Wd-m.r+8,y:e.y+4,class:'dlabel'},svg);t.textContent=e.d.short||e.d.name});
+  }
+  // survol : réticule + infobulle
+  const cross=el('line',{y1:m.t,y2:Ht-m.b,stroke:'var(--ink-3)','stroke-width':1,opacity:0},svg);
+  const dots=defs.map(d=>el('circle',{r:4.5,fill:`var(${d.color})`,stroke:'var(--surface)','stroke-width':2,opacity:0},svg));
+  const hit=el('rect',{x:m.l,y:0,width:Wd-m.l-m.r,height:Ht,fill:'transparent'},svg);
+  const tip=h('div',{class:'tip'});wrap.appendChild(tip);
+  const move=ev=>{const b=svg.getBoundingClientRect();const px=(ev.clientX-b.left)/b.width*Wd;
+    const i=Math.max(0,Math.min(rows.length-1,Math.round((px-m.l)/((Wd-m.l-m.r)/(rows.length-1||1)))));
+    const r=rows[i];cross.setAttribute('x1',X(i));cross.setAttribute('x2',X(i));cross.setAttribute('opacity',1);
+    defs.forEach((d,k)=>{dots[k].setAttribute('cx',X(i));dots[k].setAttribute('cy',Y(d.get(r)));dots[k].setAttribute('opacity',1)});
+    tip.innerHTML='<b>'+r.label+'</b>'+defs.map(d=>`<div class="row"><span><i style="background:var(${d.color})"></i>${d.name}</span><span>${d.fmt(d.get(r))}</span></div>`).join('');
+    const x=X(i)/Wd*b.width; tip.style.left=Math.min(Math.max(0,x-tip.offsetWidth/2),b.width-tip.offsetWidth)+'px'; tip.style.top='-8px'; tip.style.transform='translateY(-100%)'; tip.style.opacity=1};
+  hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);
+  hit.addEventListener('pointerleave',()=>{tip.style.opacity=0;cross.setAttribute('opacity',0);dots.forEach(d=>d.setAttribute('opacity',0))});
+}
+
+/* ---------- Barres empilées ---------- */
+function stackChart(parent,rows,defs,o={}){
+  const Wd=(o.wide&&innerWidth>860)?1120:560,Ht=o.h||220,m={t:12,r:14,b:24,l:44};
+  legend(parent,defs);
+  const wrap=h('div',{class:'chart'});parent.appendChild(wrap);
+  const svg=el('svg',{viewBox:`0 0 ${Wd} ${Ht}`,role:'img','aria-label':o.aria||''},wrap);
+  const tot=r=>defs.reduce((s,d)=>s+d.get(r),0);
+  const hi=o.percent?1:Math.max(...rows.map(tot)); const ticks=o.percent?[0,.25,.5,.75,1]:niceTicks(0,hi);
+  const y1=ticks[ticks.length-1];
+  const bw=(Wd-m.l-m.r)/rows.length, gap=Math.max(4,bw*.28);
+  const Y=v=>m.t+(Ht-m.t-m.b)*(1-v/y1);
+  ticks.forEach(t=>{el('line',{x1:m.l,x2:Wd-m.r,y1:Y(t),y2:Y(t),stroke:'var(--grid)'},svg);const tx=el('text',{x:m.l-8,y:Y(t)+4,'text-anchor':'end',class:'tick'},svg);tx.textContent=o.percent?fmt.pct0(t):fmt.int(t)});
+  const tip=h('div',{class:'tip'});wrap.appendChild(tip);
+  rows.forEach((r,i)=>{const x=m.l+i*bw+gap/2,w=bw-gap;let acc=0;const T=o.percent?tot(r):1;
+    const g=el('g',{},svg);
+    defs.forEach((d,k)=>{const v=d.get(r)/T;const yTop=Y(acc+v),yBot=Y(acc);const hgt=Math.max(0,yBot-yTop-(k<defs.length-1?0:0));
+      const top=k===defs.length-1;
+      const rect=el('rect',{x:x,y:yTop,width:w,height:Math.max(0,hgt-(k>0?2:0)),fill:`var(${d.color})`,rx:top?3:0},g);
+      if(k>0)rect.setAttribute('y',yTop); acc+=v;});
+    const tx=el('text',{x:x+w/2,y:Ht-6,'text-anchor':'middle',class:'tick'},svg);tx.textContent=r.label;
+    const hit=el('rect',{x:m.l+i*bw,y:0,width:bw,height:Ht,fill:'transparent'},svg);
+    const show=()=>{g.setAttribute('opacity',1);svg.querySelectorAll('g').forEach(o2=>{if(o2!==g)o2.setAttribute('opacity',.45)});
+      tip.innerHTML='<b>'+r.label+'</b>'+defs.slice().reverse().map(d=>`<div class="row"><span><i style="background:var(${d.color})"></i>${d.name}</span><span>${o.percent?fmt.pct(d.get(r)/tot(r)):fmt.int(d.get(r))}</span></div>`).join('')+(o.percent?'':`<div class="row" style="border-top:1px solid rgba(127,127,127,.4);margin-top:3px;padding-top:3px"><span>Total</span><span>${fmt.int(tot(r))}</span></div>`);
+      const b=svg.getBoundingClientRect();const cx=(x+w/2)/Wd*b.width;tip.style.left=Math.min(Math.max(0,cx-tip.offsetWidth/2),b.width-tip.offsetWidth)+'px';tip.style.top='-8px';tip.style.transform='translateY(-100%)';tip.style.opacity=1};
+    hit.addEventListener('pointerenter',show);hit.addEventListener('pointerdown',show);
+    hit.addEventListener('pointerleave',()=>{tip.style.opacity=0;svg.querySelectorAll('g').forEach(o2=>o2.setAttribute('opacity',1))});
+  });
+}
+
+/* ---------- Barres horizontales (une série) ---------- */
+function hbarChart(parent,items,o={}){
+  const big=innerWidth>860,Wd=big?1120:560,rowH=o.rowH||34,Ht=items.length*rowH+8,m={l:big?230:190,r:big?(o.r||70):(o.r||56)};
+  const wrap=h('div',{class:'chart'});parent.appendChild(wrap);
+  const svg=el('svg',{viewBox:`0 0 ${Wd} ${Ht}`,role:'img','aria-label':o.aria||''},wrap);
+  const hi=Math.max(...items.map(i=>i.v));
+  items.forEach((it,k)=>{const y=k*rowH+6;const w=(Wd-m.l-m.r)*it.v/hi;
+    const t=el('text',{x:m.l-10,y:y+15,'text-anchor':'end',class:'tick',style:'font-size:12px;fill:var(--ink-2)'},svg);t.textContent=it.name;
+    el('rect',{x:m.l,y:y+2,width:Math.max(2,w),height:rowH-14,rx:4,fill:`var(${it.color||'--s1'})`},svg);
+    const v=el('text',{x:m.l+w+8,y:y+15,class:'dlabel'},svg);v.textContent=o.fmt(it.v);
+    if(it.sub&&big){const ts=el('tspan',{dx:8,style:'font-weight:400;fill:var(--ink-3)'},v);ts.textContent=it.sub;}
+  });
+}
+
+
+/* ---------- Entonnoir centré ---------- */
+function funnelChart(parent,st){
+  const big=innerWidth>860,Wd=big?1120:560,rowH=big?64:58,gapY=14,Ht=st.length*rowH+(st.length-1)*gapY+4;
+  const wrap=h('div',{class:'chart'});parent.appendChild(wrap);
+  const svg=el('svg',{viewBox:`0 0 ${Wd} ${Ht}`,role:'img','aria-label':'Entonnoir des appels de suivi de commande'},wrap);
+  const maxW=Wd-8,hi=st[0].v,minW=big?300:250;
+  const wOf=v=>Math.max(minW,maxW*v/hi);
+  st.forEach((x,k)=>{const w=wOf(x.v),y=k*(rowH+gapY)+2,cx=Wd/2;
+    if(k>0){const pw=wOf(st[k-1].v),py=y-gapY;
+      el('path',{d:`M${cx-pw/2},${py} L${cx+pw/2},${py} L${cx+w/2},${y} L${cx-w/2},${y} Z`,fill:`var(${x.color})`,opacity:.22},svg);}
+    el('rect',{x:cx-w/2,y,width:w,height:rowH,rx:8,fill:`var(${x.color})`},svg);
+    const t1=el('text',{x:cx,y:y+rowH/2-4,'text-anchor':'middle',style:`font-size:${big?14:13}px;font-weight:700;fill:var(--on-${x.color.slice(2)})`},svg);
+    t1.textContent=x.name+' · '+fmt.int(x.v);
+    const t2=el('text',{x:cx,y:y+rowH/2+14,'text-anchor':'middle',style:`font-size:12px;fill:var(--on-${x.color.slice(2)});opacity:.9`},svg);
+    t2.textContent=x.sub;
+  });
+}
+
+/* ---------- Tuiles KPI ---------- */
+function delta(cur,prev,kind,better){ // kind: 'pct' (variation relative), 'pts' (écart en points)
+  const raw=kind==='rel'?(cur-prev)/prev:(cur-prev);
+  const txt=kind==='rel'?((raw>0?'+':'')+(raw*100).toLocaleString('fr-FR',{maximumFractionDigits:1})+' %'):kind==='pp'?((raw>0?'+':'')+(raw*100).toLocaleString('fr-FR',{maximumFractionDigits:1})+' pt'):((raw>0?'+':'')+raw.toLocaleString('fr-FR',{maximumFractionDigits:kind==='note'?2:1})+(kind==='note'?'':' pt'));
+  const eps=kind==='note'?.005:kind==='rel'?.005:kind==='pp'?.002:.2;
+  const cls=Math.abs(raw)<eps?'flat':((raw>0)===(better==='up')?'good':'bad');
+  const arrow=cls==='flat'?'→':raw>0?'↑':'↓';
+  const word=cls==='good'?'favorable':cls==='bad'?'défavorable':'stable';
+  return `<span class="d ${cls}" title="${word}">${arrow} ${txt}</span>`;
+}
+function tile(parent,lab,get,f,kind,better,color){
+  const s=series(),cur=s[s.length-1],prev=s[s.length-2],ly=s[s.length-1-(period==='w'?52:12)];
+  const t=h('div',{class:'tile'});
+  t.innerHTML=`<div class="lab">${lab}</div><div class="val">${f(get(cur))}</div><div class="deltas"><span>${delta(get(cur),get(prev),kind,better)} <small>vs ${period==='w'?'S-1':'M-1'}</small></span><span>${delta(get(cur),get(ly),kind,better)} <small>vs N-1</small></span></div>`;
+  const rows=last12();const vals=rows.map(get);const lo=Math.min(...vals),hi=Math.max(...vals);
+  const svg=el('svg',{viewBox:'0 0 200 34',preserveAspectRatio:'none','aria-hidden':'true'});
+  const pts=vals.map((v,i)=>[i/(vals.length-1)*196+2,30-(v-lo)/((hi-lo)||1)*26]);
+  el('path',{d:'M'+pts.map(p=>p.join(',')).join('L'),fill:'none',stroke:`var(${color||'--s1'})`,'stroke-width':2,'vector-effect':'non-scaling-stroke','stroke-linejoin':'round'},svg);
+  t.appendChild(svg);parent.appendChild(t);
+}
+
+/* ---------- Onglets ---------- */
+const TABS=[
+ {id:'synthese',name:'Synthèse'},
+ {id:'contacts',name:'Contacts'},
+ {id:'satisfaction',name:'Satisfaction'},
+ {id:'n2',name:'Dossiers de niveau 2'},
+ {id:'motifs',name:"Motifs d'appel"},
+ {id:'wismo',name:'Suivi de commande'}
+];
+const P=()=>period==='w'?'12 dernières semaines':'12 derniers mois';
+function render(){
+  const v=document.getElementById('view');v.innerHTML='';
+  const rows=last12();
+  if(tab==='synthese'){
+    const tiles=h('div',{class:'tiles'});v.appendChild(tiles);
+    tile(tiles,'Total contacts (appels + e-mails)',r=>r.tot,fmt.int,'rel','down');
+    tile(tiles,'Qualité de service (appels traités)',r=>r.qs,fmt.pct,'pp','up');
+    tile(tiles,'Satisfaction CRC (CSAT)',r=>r.csat,fmt.pct,'pp','up');
+    tile(tiles,'NPS centres de contact',r=>r.nps,fmt.nps,'pts','up');
+    tile(tiles,'Stock de dossiers de niveau 2',r=>r.n2,fmt.int,'rel','down');
+    tile(tiles,'Note Google moyenne',r=>r.google,fmt.note,'note','up');
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    let c=card('Contacts entrants','Appels et e-mails · '+P());g.appendChild(c.c);
+    const d1=[{name:'Appels',color:'--s1',get:r=>r.entr,fmt:fmt.int},{name:'E-mails',color:'--s2',get:r=>r.mails,fmt:fmt.int}];
+    lineChart(c.body,rows,d1,{zero:true,directLabels:true});dataTable(c.tw,rows,d1);
+    c=card('Satisfaction des centres de contact','CSAT · '+P());g.appendChild(c.c);
+    const d2=[{name:'CSAT',color:'--s3',get:r=>r.csat,fmt:fmt.pct}];
+    lineChart(c.body,rows,d2,{tickFmt:fmt.pct0});dataTable(c.tw,rows,d2);
+  }
+  if(tab==='contacts'){
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    let c=card('Appels entrants et traités',P());g.appendChild(c.c);
+    let d=[{name:'Entrants',color:'--s1',get:r=>r.entr,fmt:fmt.int},{name:'Traités',color:'--s2',get:r=>r.trait,fmt:fmt.int}];
+    lineChart(c.body,rows,d,{directLabels:true});dataTable(c.tw,rows,d);
+    c=card('Qualité de service','Part des appels entrants traités · objectif 90 % en pointillé');g.appendChild(c.c);
+    d=[{name:'Qualité de service',color:'--s1',get:r=>r.qs,fmt:fmt.pct}];
+    lineChart(c.body,rows,d,{tickFmt:fmt.pct0,ref:.9,min:.9});dataTable(c.tw,rows,d);
+    c=card('Durée moyenne de traitement','Par appel, en minutes · '+P());g.appendChild(c.c);
+    d=[{name:'DMT',color:'--s4',get:r=>r.dmt,fmt:fmt.min}];
+    lineChart(c.body,rows,d,{tickFmt:v=>v.toLocaleString('fr-FR')});dataTable(c.tw,rows,d);
+    c=card('E-mails en attente',"Stock en fin de période, selon l'ancienneté");g.appendChild(c.c);
+    d=[{name:'48 h ou moins',color:'--o1',get:r=>r.m48},{name:'Plus de 48 h',color:'--o3',get:r=>r.mOld}];
+    stackChart(c.body,rows,d);dataTable(c.tw,rows,d.map(x=>({...x,fmt:fmt.int})));
+  }
+  if(tab==='satisfaction'){
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    let c=card('NPS enseigne',P());c.c.classList.add('wide');g.appendChild(c.c);
+    let d=[{name:'Magasins physiques',color:'--s1',short:'Magasins',get:r=>r.npsMag,fmt:fmt.nps},{name:'Site e-commerce',color:'--s2',short:'E-commerce',get:r=>r.npsWeb,fmt:fmt.nps},{name:'Global enseigne',color:'--s3',short:'Global',get:r=>r.npsGlob,fmt:fmt.nps}];
+    lineChart(c.body,rows,d,{h:260,wide:true,directLabels:true,labelW:92,tickFmt:fmt.nps,ref:0});dataTable(c.tw,rows,d);
+    c=card('NPS par prestataire',"Centres de contact externalisés");g.appendChild(c.c);
+    d=[{name:'Prestataire A',color:'--s1',short:'A',get:r=>r.npsA,fmt:fmt.nps},{name:'Prestataire B',color:'--s2',short:'B',get:r=>r.npsB,fmt:fmt.nps}];
+    lineChart(c.body,rows,d,{directLabels:true,tickFmt:fmt.nps,ref:0});dataTable(c.tw,rows,d);
+    c=card('Note Google moyenne','Ensemble des magasins, sur 5');g.appendChild(c.c);
+    d=[{name:'Note Google',color:'--s5',get:r=>r.google,fmt:fmt.note}];
+    lineChart(c.body,rows,d,{min:4.02,max:4.12,tickFmt:v=>v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})});dataTable(c.tw,rows,d);
+  }
+  if(tab==='n2'){
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    let c=card('Stock de dossiers de niveau 2',"Selon l'ancienneté, en fin de période");g.appendChild(c.c);
+    let d=[{name:'7 jours ou moins',color:'--o1',get:r=>r.a1},{name:'8 à 14 jours',color:'--o2',get:r=>r.a2},{name:'15 jours et plus',color:'--o3',get:r=>r.a3}];
+    stackChart(c.body,rows,d);dataTable(c.tw,rows,d.map(x=>({...x,fmt:fmt.int})));
+    c=card("Taux d'escalade",'Part des contacts transmis au niveau 2');g.appendChild(c.c);
+    d=[{name:"Taux d'escalade",color:'--s1',get:r=>r.esc,fmt:fmt.pct}];
+    lineChart(c.body,rows,d,{tickFmt:v=>(v*100).toLocaleString('fr-FR')+' %'});dataTable(c.tw,rows,d);
+  }
+  if(tab==='motifs'){
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    let c=card("Motifs d'appel",'Répartition des appels entrants · '+P());c.c.classList.add('wide');g.appendChild(c.c);
+    let d=[{name:'Commande',color:'--s1',get:r=>r.cmd},{name:'Produit',color:'--s2',get:r=>r.prod},{name:'Magasin',color:'--s3',get:r=>r.mag},{name:'SAV',color:'--s4',get:r=>r.sav},{name:'Autres',color:'--s5',get:r=>r.autres}];
+    stackChart(c.body,rows,d,{percent:true,h:250,wide:true});dataTable(c.tw,rows,d.map(x=>({...x,fmt:fmt.pct})));
+  }
+  if(tab==='wismo'){
+    const g=h('div',{class:'grid'});v.appendChild(g);
+    const cur=rows[rows.length-1];
+    let c=card('Entonnoir « Où est ma commande ? »','Des appels entrants aux demandes de suivi de commande · '+cur.label);c.c.classList.add('wide');g.appendChild(c.c);
+    const st=[{name:'Appels entrants',v:cur.entr,color:'--o3',sub:'100 % des appels'},{name:'Motif « commande »',v:cur.cmdVol,color:'--o2',sub:fmt.pct0(cur.cmdVol/cur.entr)+' des appels'},{name:'Suivi de commande (WISMO)',v:cur.wismo,color:'--o1',sub:fmt.pct0(cur.wismo/cur.cmdVol)+' du motif commande'}];
+    funnelChart(c.body,st);
+    dataTable(c.tw,st.map(x=>({label:x.name,v:x.v,s:x.sub})),[{name:'Volume',get:r=>r.v,fmt:fmt.int},{name:'Part',get:r=>r.s,fmt:x=>x}]);
+    const mr=MODES.map(m=>({name:m.name,k:m.k,orders:cur['o_'+m.k],contacts:cur['c_'+m.k],v:cur['c_'+m.k]/cur['o_'+m.k]})).sort((a,b)=>b.v-a.v);
+    c=card('Contact ratio par mode de livraison','Appels de suivi pour 100 commandes · '+cur.label);c.c.classList.add('wide');g.appendChild(c.c);
+    hbarChart(c.body,mr.map(x=>({name:x.name,v:x.v,sub:fmt.int(x.contacts)+' appels / '+fmt.int(x.orders)+' commandes'})),{fmt:v=>(v*100).toLocaleString('fr-FR',{maximumFractionDigits:1,minimumFractionDigits:1})+' %',r:300});
+    const hiR=mr[0],loR=mr[mr.length-1];
+    const insight=h('p',{class:'note',style:'margin:8px 0 0;font-size:13px;color:var(--ink-2)'},`<b style="color:var(--ink)">Lecture :</b> une commande en ${hiR.name.toLowerCase()} génère ${Math.round(hiR.v/loR.v)} fois plus d'appels de suivi qu'une commande en ${loR.name.toLowerCase()}. En volume, c'est la livraison depuis le magasin qui pèse le plus (${fmt.int(cur.c_mag)} appels) : c'est là qu'un meilleur suivi réduirait le plus la charge des centres de contact.`);
+    c.body.appendChild(insight);
+    dataTable(c.tw,mr.map(x=>({label:x.name,...x})),[{name:'Commandes',get:r=>r.orders,fmt:fmt.int},{name:'Appels WISMO',get:r=>r.contacts,fmt:fmt.int},{name:'Contact ratio',get:r=>r.v,fmt:fmt.pct}]);
+    c=card('Évolution du contact ratio',"Trois principaux modes de livraison · "+P());c.c.classList.add('wide');g.appendChild(c.c);
+    const d=[{name:'Livraison directe fournisseur',short:'Fournisseur',color:'--s1',get:r=>r.c_four/r.o_four,fmt:fmt.pct},{name:'Livraison depuis le magasin',short:'Magasin',color:'--s2',get:r=>r.c_mag/r.o_mag,fmt:fmt.pct},{name:'Départ entrepôt',short:'Entrepôt',color:'--s3',get:r=>r.c_ent/r.o_ent,fmt:fmt.pct}];
+    lineChart(c.body,rows,d,{wide:true,directLabels:true,labelW:92,zero:true,tickFmt:fmt.pct0,h:230});dataTable(c.tw,rows,d);
+  }
+}
+function renderTabs(){const n=document.getElementById('tabs');n.innerHTML='';TABS.forEach(t=>{const b=h('button',{role:'tab','aria-selected':String(t.id===tab)},t.name);b.onclick=()=>{tab=t.id;renderTabs();render()};n.appendChild(b)})}
+document.querySelectorAll('[data-period]').forEach(b=>b.onclick=()=>{period=b.dataset.period;document.querySelectorAll('[data-period]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
+document.getElementById('theme').onclick=()=>{const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=dark?'light':'dark'};
+{const t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}
+renderTabs();render();
+let rz,lastWide=innerWidth>860;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{const w=innerWidth>860;if(w!==lastWide){lastWide=w;render()}},150)});
+</script>
+</body>
+</html>
