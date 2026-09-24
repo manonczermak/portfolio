@@ -157,3 +157,12 @@ a.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 
 .contact-links a{color:var(--ink);text-decoration:none;font-weight:600}
 .contact-links a:hover{color:var(--accent)}
 .small{font-size:13px;color:var(--ink-3)}
+.cards.two .card .visual{aspect-ratio:16/7}
+
+/* Avis clients */
+.quotes{columns:3 300px;column-gap:20px}
+.quote{break-inside:avoid;margin:0 0 20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 18px;font-size:15px;line-height:1.6;color:var(--ink-2);position:relative}
+.quote::before{content:"\201C";display:block;font-family:Manrope;font-weight:800;font-size:44px;line-height:.8;color:var(--accent);margin-bottom:6px}
+.quote p{margin:0 0 8px}
+.quote p:last-child{margin:0}
+.quote footer{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;font-weight:600;color:var(--ink)}
