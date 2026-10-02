@@ -181,3 +181,19 @@ a.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 
 .card .visual img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:760px){.br-wide{display:none}}
 .quote .hl{color:var(--accent);font-weight:700}
+
+/* Pages légales */
+.legal-links{display:flex!important;justify-content:flex-start!important;align-items:center!important;gap:6px 18px;flex-wrap:wrap;margin-top:22px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.legal-links a{color:var(--ink-3);text-decoration:none}
+.legal-links a:hover{color:var(--accent);text-decoration:underline}
+.legal{padding-bottom:40px}
+.legal h1{font-size:clamp(30px,4.4vw,44px)}
+.legal h2{font-size:21px;margin:30px 0 8px}
+.legal h3{font-size:17px;margin:20px 0 6px}
+.legal p,.legal li{font-size:16px;color:var(--ink-2)}
+.legal p{margin:0 0 10px}
+.legal ul{margin:0 0 10px;padding-left:20px}
+.tl-sub{font-size:14px!important;color:var(--ink-3)!important;margin:0 0 8px!important}
+.tl-list{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink-2)}
+.tl-list b{color:var(--ink);font-weight:600}
+.tl-list li::marker{color:var(--accent)}
