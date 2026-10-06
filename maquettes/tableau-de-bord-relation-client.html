@@ -356,6 +356,14 @@ function render(){
     c=card('Satisfaction des centres de contact','CSAT · '+P());g.appendChild(c.c);
     const d2=[{name:'CSAT',color:'--s3',get:r=>r.csat,fmt:fmt.pct}];
     lineChart(c.body,rows,d2,{tickFmt:fmt.pct0});dataTable(c.tw,rows,d2);
+    const curS=rows[rows.length-1];
+    c=card('Entonnoir « Où est ma commande ? »','Des appels entrants aux demandes de suivi de commande · '+curS.label);c.c.classList.add('wide');g.appendChild(c.c);
+    const stS=[{name:'Appels entrants',v:curS.entr,color:'--o3',sub:'100 % des appels'},{name:'Motif « commande »',v:curS.cmdVol,color:'--o2',sub:fmt.pct0(curS.cmdVol/curS.entr)+' des appels'},{name:'Suivi de commande (WISMO)',v:curS.wismo,color:'--o1',sub:fmt.pct0(curS.wismo/curS.cmdVol)+' du motif commande'}];
+    funnelChart(c.body,stS);
+    dataTable(c.tw,stS.map(x=>({label:x.name,v:x.v,s:x.sub})),[{name:'Volume',get:r=>r.v,fmt:fmt.int},{name:'Part',get:r=>r.s,fmt:x=>x}]);
+    c=card('Évolution du contact ratio','Appels de suivi pour 100 commandes, trois principaux modes de livraison · '+P());c.c.classList.add('wide');g.appendChild(c.c);
+    const d3=[{name:'Livraison directe fournisseur',short:'Fournisseur',color:'--s1',get:r=>r.c_four/r.o_four,fmt:fmt.pct},{name:'Livraison depuis le magasin',short:'Magasin',color:'--s2',get:r=>r.c_mag/r.o_mag,fmt:fmt.pct},{name:'Départ entrepôt',short:'Entrepôt',color:'--s3',get:r=>r.c_ent/r.o_ent,fmt:fmt.pct}];
+    lineChart(c.body,rows,d3,{wide:true,directLabels:true,labelW:92,zero:true,tickFmt:fmt.pct0,h:230});dataTable(c.tw,rows,d3);
   }
   if(tab==='contacts'){
     const g=h('div',{class:'grid'});v.appendChild(g);
