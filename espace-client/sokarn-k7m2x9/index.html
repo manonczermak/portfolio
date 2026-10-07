@@ -171,9 +171,7 @@
       <ul>
         <li>Le séchage : lamelles sur la grille, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.</li>
         <li>L'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir.</li>
-        <li>Le sac de sport : paquet glissé dans le sac, ouverture du paquet, quelqu'un qui en mange.</li>
         <li>La recette Crêp'Karn : poudre versée, mélange, cuisson, retournement, assiette finie.</li>
-        <li>Le Sable Noir : sachet ouvert, saupoudrage sur une salade ou des œufs, assiette finie.</li>
         <li>L'expédition : colis alignés, emballage d'une commande, étiquette d'adresse.</li>
         <li>L'origine : si possible chez un éleveur partenaire, sinon viande fraîche à la découpe.</li>
         <li>Deux face caméra : la question « un seul produit pour tout l'automne » et votre réponse chacune.</li>
@@ -183,8 +181,9 @@
       <h3>Photos à fournir</h3>
       <ul>
         <li>Un portrait de vous deux à l'atelier, en situation de travail.</li>
-        <li>Les produits suivants sur fond neutre, format identique : jerky de sanglier, Crêp'Karn, Sable Noir, Tête en chips, Sang froid, Panse bête.</li>
-        <li>Trois produits en ambiance sombre, éclairage bougie, pour la sélection d'Halloween.</li>
+        <li>Le Crêp'Karn sur fond neutre.</li>
+        <li>Le Sable Noir : le sachet ouvert, et une assiette saupoudrée.</li>
+        <li>Un paquet de jerky posé dans un sac de sport ou sur un banc de vestiaire.</li>
       </ul>
     </div>
     <div class="box">
@@ -192,10 +191,11 @@
       <ul>
         <li>Durée et température exactes de séchage, par famille de produits.</li>
         <li>Valeurs nutritionnelles du produit montré dans le reel sport.</li>
-        <li>Présence de vinaigre de cidre dans la recette des jerkys concernés.</li>
         <li>Dates de retour en stock, en commençant par le pemmican et l'écorce de porc noir.</li>
         <li>Option retenue pour le bouillon de Porc Noir de Bigorre.</li>
         <li>Liste des viandes qui ne proviennent pas d'éleveurs locaux.</li>
+        <li>Accord, ou non, pour citer un éleveur partenaire par son nom, et ses coordonnées si oui.</li>
+        <li>Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus.</li>
       </ul>
     </div>
     <a class="haut" href="#">Revenir en haut</a>
@@ -219,8 +219,13 @@
    Une vidéo : ["reel.mp4"]   (formats .mp4 ou .mov)
    =========================================================== */
 const MEDIAS = {
-  s1: [], s2: [], s3: [], s4: [], s5: [], s6: [], s7: [], s8: [], s9: [],
-  s10: [], s11: [], s12: [], s13: [], s14: [], s15: [], s16: [], s17: []
+  s1: [], s2: [],
+  s3: ["jerky-sanglier.jpg"],
+  s4: [], s5: [], s6: [], s7: [], s8: [],
+  s9: ["paquets-feu.jpg"],
+  s10: [], s11: [], s12: [], s13: [],
+  s14: ["halloween-1-panse-bete.jpg","halloween-2-sang-froid.jpg","halloween-3-tete-en-chips.jpg"],
+  s15: [], s16: [], s17: []
 };
 
 const SB_URL = "https://dxjvylgnvxkjxeqasgej.supabase.co";
@@ -232,25 +237,29 @@ const PERIODE_WEB = "site";
 const POSTS = [
   {id:"s1", date:"Lundi 12 octobre, 12h30", titre:"On relance la conversation", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages et la communauté",
    visuel:"Écran 1 : vidéo selfie de 10 secondes à l'atelier.\nÉcran 2 : plan large de l'atelier, avec un sondage.\nÉcran 3 : fond ocre uni, sticker questions.",
+   demande:"Les plans vidéo des écrans 1 et 2 : une vidéo selfie de dix secondes à l'atelier, et un plan large de l'atelier.",
    texte:"Écran 1 : « On revient vers vous avec plein de nouveautés ce mois-ci. Mais d'abord, on a une question. »\nÉcran 2, sondage : « Vous nous suivez plutôt pour… » → Les jerkys et snacks / Les graisses et bouillons\nÉcran 3 : « Quel produit aimeriez-vous revoir en stock ? »", tags:""},
 
   {id:"s2", date:"Mardi 13 octobre, 18h30", titre:"24 heures de séchage", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
    visuel:"Quatre plans : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.\nPas de parole, son d'ambiance, musique calme.\nTexte à l'écran : « 24 heures. C'est le temps qu'il faut. »",
-   texte:"Vingt-quatre heures à cinquante-cinq degrés. Pas une minute de moins.\n\nC'est long. C'est lent. C'est ce qui fait la différence entre un jerky qui se mâche et un jerky qu'on oublie dans un tiroir.\n\nChez nous, pas de sucre ajouté, pas de conservateur, pas de raccourci. De la viande, du sel, du temps.\n\nC'est tout. Et c'est déjà beaucoup.",
+   demande:"Les quatre plans du séchage : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.",
+   texte:"Vingt-quatre heures à cinquante-cinq degrés ⏳. Pas une minute de moins.\n\nC'est long. C'est lent. C'est ce qui fait la différence entre un jerky qui se mâche et un jerky qu'on oublie dans un tiroir.\n\nChez nous, pas de sucre ajouté, pas de conservateur, pas de raccourci. De la viande, du sel, un peu de vinaigre de cidre, du temps 🔥.\n\nC'est tout. Et c'est déjà beaucoup 💪",
    tags:"#jerky #viandesechee #snackproteine #proteines #artisanfrancais #faitmaison #hautespyrenees #keto #carnivore #sansadditif #snacksain #producteurlocal"},
 
-  {id:"s3", date:"Mercredi 14 octobre, 18h30", titre:"Le jerky de sanglier", resa:"Instagram, Facebook", format:"Carrousel de 5 images", pilier:"Le produit et ses usages",
-   visuel:"1. Gros plan du jerky sur pierre brute : « Le sanglier, vous avez déjà goûté ? »\n2. Plan large : « Une viande maigre, au goût franc, qui ne ressemble à aucune autre. »\n3. Main qui plie une lamelle : « Séché lentement, sans sucre ni conservateur. »\n4. Le paquet complet : « 10,90 € les 40 grammes. »\n5. Fond ocre, logo : « Lien dans la bio. »",
-   texte:"Il y a ceux qui s'arrêtent au bœuf. Et il y a les autres.\n\nLe sanglier, c'est une viande de caractère. Maigre, dense, avec un goût qui ne s'excuse pas. On la sèche lentement, comme tout le reste : du sel, du temps, rien d'autre.\n\nSi vous cherchez un snack qui a du caractère, c'est par là.\n\nEt vous, vous êtes plutôt classique ou aventurier ?",
+  {id:"s3", date:"Mercredi 14 octobre, 18h30", titre:"Le jerky de sanglier", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et ses usages",
+   visuel:"Carrousel de 3 images au modèle Gravure, construit à partir de la photo que vous avez fournie.\n1. La photo en pleine largeur, avec l'accroche : « Le sanglier, vous avez déjà goûté ? »\n2. Fond brun : « Une viande maigre, au goût franc, qui ne ressemble à aucune autre. »\n3. Fond brun : « Séché vingt-quatre heures, sans sucre ni conservateur. » et l'appel « Lien dans la bio ».",
+   texte:"Il y a ceux qui s'arrêtent au bœuf. Et il y a les autres 🐗.\n\nLe sanglier, c'est une viande de caractère. Maigre, dense, avec un goût qui ne s'excuse pas 💪. On la sèche lentement, comme tout le reste : du sel, un peu de vinaigre de cidre, du temps, rien d'autre.\n\nSi vous cherchez un snack qui a du caractère, c'est par là. 10,90 € les 40 grammes, lien dans la bio.\n\nEt vous, vous êtes plutôt classique ou aventurier ? 👇",
    tags:"#jerky #viandesechee #sanglier #snackproteine #gibier #produitlocal #hautespyrenees #artisanfrancais #keto #carnivore #sansadditif #snacksain"},
 
   {id:"s4", date:"Jeudi 15 octobre, 12h30", titre:"Une journée à l'atelier", resa:"Instagram, stories", format:"3 écrans", pilier:"Le savoir-faire",
    visuel:"Écran 1 : travelling lent sur les grilles chargées.\nÉcran 2 : mains qui disposent les lamelles, avec un curseur emoji.\nÉcran 3 : paquets alignés, avec le sticker lien vers la boutique.",
+   demande:"Les rushes de l'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir.",
    texte:"Écran 1 : « Une journée à l'atelier. »\nÉcran 2 : « Chaque lamelle est posée à la main. » + curseur « Ça vous donne faim ? »\nÉcran 3 : « Et au bout, ça. »", tags:""},
 
   {id:"s5", date:"Vendredi 16 octobre, 18h30", titre:"Le snack d'après-séance", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 à 25 secondes", pilier:"Les nouvelles cibles, sport et protéines",
-   visuel:"Trois plans : paquet glissé dans un sac de sport vu de haut, main qui ouvre le paquet, quelqu'un qui en mange en extérieur ou en vestiaire.\nMontage rythmé, coupes nettes.\nTextes à l'écran : « 40 g de jerky », « 30 g de protéines », « Viande, sel, vinaigre de cidre ».",
-   texte:"Dans le sac de sport, il y a toujours la même chose : une bouteille, une serviette, et un truc à grignoter… avec plus d'ingrédients qu'on ne peut faire de push-ups !\n\nLe jerky, c'est de la viande séchée, un peu de sel et de vinaigre de cidre, et rien d'autre. Riche en protéines (75 g pour 100 g), sans sucre ajouté, et ça se transporte très facilement.",
+   visuel:"Vidéo produite par Manon : plans d'ambiance générés (vestiaire, lumière, sac posé) et animation d'une photo réelle du paquet. Rien à filmer de votre côté.\nMontage rythmé, coupes nettes.\nTextes à l'écran : « 40 g de jerky », « 30 g de protéines », « Viande, sel, vinaigre de cidre ».",
+   demande:"Une photo d'un paquet de jerky posé dans un sac de sport ou sur un banc de vestiaire. Je l'anime ensuite, le reste des plans est généré.",
+   texte:"Dans le sac de sport, il y a toujours la même chose : une bouteille 🥤, une serviette, et un truc à grignoter… avec plus d'ingrédients qu'on ne peut faire de push-ups !\n\nLe jerky, c'est de la viande séchée, un peu de sel et de vinaigre de cidre, et rien d'autre. Riche en protéines (75 g pour 100 g) 💪, sans sucre ajouté, et ça se transporte très facilement 🎒",
    tags:"#proteines #snackproteine #jerky #musculation #crossfit #nutritionsportive #collationsaine #sansucre #viandesechee #sportfrance #prisedemasse #snacksain"},
 
   {id:"s6", date:"Lundi 19 octobre, 12h30", titre:"Vous avez voté", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
@@ -264,7 +273,8 @@ const POSTS = [
 
   {id:"s8", date:"Mercredi 21 octobre, 18h30", titre:"Qui est derrière Sokarn", resa:"Instagram, Facebook", format:"Publication ou carrousel de 3", pilier:"Les visages et la communauté",
    visuel:"Portrait de Céline et Salomé à l'atelier, en situation de travail plutôt qu'en pose.\nEn carrousel : portrait, puis plan de l'atelier, puis gros plan des mains au travail.",
-   texte:"Derrière Sokarn, il y a deux femmes, un atelier dans les Hautes-Pyrénées, et une conviction un peu têtue : on peut faire des snacks à base de viande sans sucre, sans additif et sans compromis.\n\nOn a commencé parce qu'on ne trouvait pas ce qu'on cherchait. Aujourd'hui, on sèche, on fume, on emballe, et on expédie dans toute la France.\n\nChaque commande qui part d'ici a été préparée par l'une de nous deux.\n\nMerci d'être là.",
+   demande:"Un portrait de vous deux à l'atelier en situation de travail, un plan de l'atelier, et un gros plan des mains au travail.",
+   texte:"Derrière Sokarn, il y a deux femmes, un atelier dans les Hautes-Pyrénées 🏔️, et une conviction un peu têtue : on peut faire des snacks à base de viande sans sucre, sans additif et sans compromis.\n\nOn a commencé parce qu'on ne trouvait pas ce qu'on cherchait. Aujourd'hui, on sèche, on fume, on emballe, et on expédie dans toute la France 📦.\n\nChaque commande qui part d'ici a été préparée par l'une de nous deux.\n\nMerci d'être là ❤️",
    tags:"#artisanfrancais #femmesentrepreneurs #madeinfrance #hautespyrenees #produitlocal #savoirfaire #atelierartisanal #viandesechee #jerky #entrepreneuriat #occitanie #petiteentreprise"},
 
   {id:"s9", date:"Jeudi 22 octobre, 12h30", titre:"Ça se conserve combien de temps ?", resa:"Instagram, stories", format:"4 écrans", pilier:"Le produit et ses usages",
@@ -273,39 +283,45 @@ const POSTS = [
 
   {id:"s10", date:"Vendredi 23 octobre, 18h30", titre:"Le Crêp'Karn", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le produit et ses usages",
    visuel:"Recette filmée en plan fixe au-dessus du plan de travail : poudre versée, œufs ajoutés, mélange, pâte dans la poêle, retournement, assiette finie.\nRythme rapide, musique entraînante.\nTextes à l'écran : « De la farine de viande », « En crêpes », « 71,5 g de protéines pour 100 g ».",
-   texte:"Une farine qui ne vient pas d'un champ.\n\nLe Crêp'Karn, c'est de la viande déshydratée et réduite en poudre. On l'utilise comme une farine : crêpes, galettes, pancakes, liant pour une sauce.\n\nZéro glucide, 71,5 grammes de protéines pour 100 grammes. Et c'est tout.\n\nLa recette complète est sur le site, dans la rubrique recettes. Et si vous l'avez déjà testée, racontez-nous en commentaire ce que vous en avez fait.",
+   demande:"Soit une vidéo de recette de crêpes que vous auriez déjà filmée, soit un envoi de Crêp'Karn pour que je filme la recette moi-même. Dites-moi laquelle des deux.",
+   texte:"Une farine qui ne vient pas d'un champ 🌾\n\nLe Crêp'Karn, c'est de la viande déshydratée et réduite en poudre. On l'utilise comme une farine : crêpes, galettes, pancakes, liant pour une sauce.\n\nZéro glucide, 71,5 grammes de protéines pour 100 grammes 💪. Et c'est tout.\n\nLa recette complète est sur le site, dans la rubrique recettes. Et si vous l'avez déjà testée, racontez-nous en commentaire ce que vous en avez fait 👇",
    tags:"#crepes #recettecetogene #keto #carnivore #sansgluten #sanscereales #proteines #recettefacile #viandesechee #cuisinemaison #lowcarb #snacksain"},
 
   {id:"s11", date:"Samedi 24 octobre, 11h", titre:"Un seul produit pour tout l'automne", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages",
    visuel:"Écran 1 : l'une de vous deux face caméra, 10 secondes.\nÉcran 2 : l'autre répond, 10 secondes. Un désaccord entre vous est idéal.\nÉcran 3 : fond ocre, sticker questions.",
+   demande:"Vos deux réponses face caméra, dix secondes chacune. Un désaccord entre vous est idéal.",
    texte:"Écran 1 : « Question qu'on se pose souvent entre nous : si tu ne devais garder qu'un seul produit Sokarn pour tout l'automne, ce serait lequel ? »\nÉcran 2 : votre réponse et pourquoi.\nÉcran 3 : « Et vous ? »", tags:""},
 
   {id:"s12", date:"Lundi 26 octobre, 12h30", titre:"Vos réponses", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
-   visuel:"Écran 1 : trois ou quatre réponses reçues, en captures.\nÉcran 2 : le produit le plus cité, avec le lien vers sa fiche.\nÉcran 3 : sticker compte à rebours vers Halloween.",
-   texte:"Écran 1 : « Vous avez été nombreux à répondre. »\nÉcran 2 : « Le grand gagnant, c'est… »\nÉcran 3 : « Et samedi, c'est la nuit des noms qui font peur. »", tags:""},
+   visuel:"Écran 1 : trois ou quatre réponses reçues, en captures.\nÉcran 2 : le produit le plus cité, avec le lien vers sa fiche.\nÉcran 3 : le produit à découvrir ensuite, avec le lien vers sa fiche.",
+   texte:"Écran 1 : « Vous avez été nombreux à répondre. »\nÉcran 2 : « Le grand gagnant, c'est… »\nÉcran 3 : « Vous avez aimé celui-là ? Alors vous aimerez sûrement… » suivi du produit complémentaire et du lien vers sa fiche.", tags:""},
 
   {id:"s13", date:"Mardi 27 octobre, 18h30", titre:"Le Sable Noir", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 secondes", pilier:"Le produit et ses usages",
-   visuel:"Trois plans : sachet qu'on ouvre, saupoudrage sur une salade ou des œufs, gros plan de l'assiette finie.\nTextes à l'écran : « Besoin d'ajouter des protéines à vos soupes et salades ? », puis « Découvrez le Sable Noir ».",
-   texte:"On appelle ça le Sable Noir. C'est du graton de porc noir émietté, et c'est devenu notre condiment préféré.\n\nSur une salade, sur des œufs brouillés, dans une soupe, sur une purée. Ça apporte du croustillant, un goût de cochon grillé, et 40 grammes de protéines pour 100 grammes.\n\nSi vous ne deviez tester qu'un produit pour commencer, ce serait peut-être celui-là.",
+   visuel:"Vidéo produite par Manon, à partir de vos photos animées et de plans d'ambiance générés. Rien à filmer de votre côté.\nTextes à l'écran : « Besoin d'ajouter des protéines à vos soupes et salades ? », puis « Découvrez le Sable Noir ».",
+   demande:"Une photo du sachet de Sable Noir ouvert, et une photo d'une assiette saupoudrée. Je les anime ensuite.",
+   texte:"On appelle ça le Sable Noir. C'est du graton de porc noir émietté, et c'est devenu notre condiment préféré 🖤\n\nSur une salade, sur des œufs brouillés, dans une soupe, sur une purée. Ça apporte du croustillant, un goût de cochon grillé, et 40 grammes de protéines pour 100 grammes 💪.\n\nSi vous ne deviez tester qu'un produit pour commencer, ce serait peut-être celui-là 👀",
    tags:"#proteines #condiment #grattons #porcnoirdebigorre #astucecuisine #keto #carnivore #recettefacile #croustillant #produitlocal #hautespyrenees #snacksain"},
 
   {id:"s14", date:"Mercredi 28 octobre, 18h30", titre:"La sélection d'Halloween", resa:"Instagram, Facebook", format:"Carrousel de 4 images", pilier:"Le produit, angle saisonnier",
    visuel:"Fond très sombre, lumière de bougie, produits sur pierre.\n1. Image d'accroche avec les trois produits.\n2, 3 et 4 : un produit par image, nom en gros.\nProduits : Tête en chips, Sang froid, Panse bête.",
-   texte:"Tête en chips. Sang froid. Panse bête.\n\nNon, ce ne sont pas des noms inventés pour Halloween. Ce sont nos produits, toute l'année.\n\nChez nous, on utilise l'animal entier. Ce qui part ailleurs à la poubelle devient ici un snack. C'est moins glamour que le filet, c'est tout aussi bon, et c'est surtout beaucoup plus respectueux de la bête.\n\nAlors pour une fois, nos noms sont de saison.",
+   texte:"Tête en chips. Sang froid. Panse bête 🎃\n\nNon, ce ne sont pas des noms inventés pour Halloween. Ce sont nos produits, toute l'année.\n\nChez nous, on utilise l'animal entier. Ce qui part ailleurs à la poubelle devient ici un snack ♻️. C'est moins glamour que le filet, c'est tout aussi bon, et c'est surtout beaucoup plus respectueux de la bête.\n\nAlors pour une fois, nos noms sont de saison 🦇",
    tags:"#halloween #fromnosetotail #antigaspi #abats #viandesechee #snackoriginal #artisanfrancais #keto #carnivore #produitlocal #hautespyrenees #gastronomie"},
 
   {id:"s15", date:"Jeudi 29 octobre, 12h30", titre:"Les commandes de la semaine", resa:"Instagram, stories", format:"3 écrans", pilier:"Les coulisses",
    visuel:"Écran 1 : colis alignés prêts à partir, vidéo courte.\nÉcran 2 : emballage d'une commande, mains au travail.\nÉcran 3 : colis fermé avec le logo, sticker lieu.",
+   demande:"Les rushes d'expédition : colis alignés prêts à partir, emballage d'une commande, étiquette d'adresse.",
    texte:"Écran 1 : « Les commandes de la semaine. »\nÉcran 2 : « Chaque colis est préparé à la main, ici, dans les Hautes-Pyrénées. »\nÉcran 3 : « Direction toute la France. Et parfois plus loin. »", tags:""},
 
   {id:"s16", date:"Vendredi 30 octobre, 18h30", titre:"D'où vient la viande", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
    visuel:"Si un éleveur partenaire accepte : animaux en extérieur, échange avec l'éleveur, retour à l'atelier.\nSinon : viande fraîche à la découpe, main qui tranche, grille qui se remplit.\nTextes à l'écran : « On sait d'où vient notre viande », « Élevée ici, dans les Pyrénées », « Sauf celles qui ne vivent pas ici. On vous dit lesquelles. »",
-   texte:"La question qu'on nous pose le plus souvent : d'où vient la viande ?\n\nRéponse : d'éleveurs qu'on connaît, à quelques kilomètres de l'atelier. Pas d'une centrale d'achat, pas d'un pays qu'on préfère ne pas nommer sur l'emballage.\n\nLes seules exceptions, ce sont les viandes qu'on ne trouve pas ici. Le kangourou ne court pas encore dans les Pyrénées 🦘.\n\nC'est plus cher à produire. C'est aussi la seule façon de faire qui nous intéresse.",
+   demande:"Les informations sur la provenance des viandes, et votre accord ou non pour mettre en avant un éleveur local en le citant par son nom.",
+   texte:"La question qu'on nous pose le plus souvent : d'où vient la viande ? 🐂\n\nRéponse : d'éleveurs qu'on connaît, à quelques kilomètres de l'atelier. Pas d'une centrale d'achat, pas d'un pays qu'on préfère ne pas nommer sur l'emballage.\n\nLes seules exceptions, ce sont les viandes qu'on ne trouve pas ici. Le kangourou ne court pas encore dans les Pyrénées 🦘.\n\nC'est plus cher à produire. C'est aussi la seule façon de faire qui nous intéresse 🏔️",
    tags:"#circuitcourt #producteurlocal #elevage #hautespyrenees #madeinfrance #artisanfrancais #tracabilite #viandesechee #occitanie #savoirfaire #keto #carnivore"},
 
-  {id:"s17", date:"Samedi 31 octobre, 11h", titre:"Halloween et lancement de la newsletter", resa:"Instagram, stories", format:"4 écrans", pilier:"La communauté et la conversion",
-   visuel:"Écran 1 : les produits en ambiance Halloween.\nÉcran 2 : sondage entre deux produits.\nÉcran 3 : annonce de la newsletter avec le code de bienvenue et le lien d'inscription.\nÉcran 4 : promotion du mois ou lien boutique.",
-   texte:"Écran 1 : « Joyeux Halloween de la part de la tribu. »\nÉcran 2, sondage : « Vous êtes plutôt Tête en chips ou Panse bête ? »\nÉcran 3 : « Notre newsletter arrive. Code de bienvenue pour les premiers inscrits. »\nÉcran 4 : « Tout est dans la boutique. »", tags:""}
+  {id:"s17", date:"Samedi 31 octobre, 11h", titre:"Halloween et lancement de la newsletter", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté et la conversion",
+   visuel:"Écran 1 : les produits en ambiance Halloween.\nÉcran 2 : sondage entre deux produits.\nÉcran 3 : annonce de la newsletter, avec le code de bienvenue et le sticker lien vers le formulaire d'inscription.",
+   demande:"La mécanique du code de bienvenue : pourcentage ou montant fixe, montant minimum de commande, durée de validité, produits éventuellement exclus.",
+   texte:"Écran 1 : « Joyeux Halloween de la part de la tribu 🎃 »\nÉcran 2, sondage : « Vous êtes plutôt Tête en chips ou Panse bête ? »\nÉcran 3 : « Notre newsletter arrive. Un code de bienvenue est offert à l'inscription, valable une fois, que vous soyez déjà client ou pas encore. »", tags:""}
 ];
 
 const TACHES = [
@@ -332,6 +348,7 @@ const TACHES = [
     {id:"w16", t:"Affichage et balisage des avis vérifiés", d:"Pour l'apparition des étoiles dans Google"},
     {id:"w17", t:"Blocs « Trésors de la caverne » rendus cliquables", d:"Quatre blocs vers leurs catégories"},
     {id:"w18", t:"Étiquette « Chasse en cours » remplacée", d:"Libellé des produits en rupture"},
+    {id:"w46", t:"Produits en rupture repoussés en fin de catégorie", d:"Sur chaque page catégorie, pour que les produits disponibles s'affichent en premier"},
     {id:"w19", t:"Photos produits harmonisées au même format", d:"Sur l'ensemble du catalogue"},
     {id:"w20", t:"Fiches produit complétées", d:"Conservation, durée de vie, délai de livraison, packaging"},
     {id:"w21", t:"Barre de progression vers la livraison offerte", d:"Seuil à 50 €, panier et tiroir latéral"},
@@ -443,6 +460,7 @@ function render(){
     </div>
   </div>
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
+  ${p.demande ? `<div class="soon"><b>De votre côté :</b> ${esc(p.demande)}</div>` : ``}
   <div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>
   <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
   <div class="block"><div class="lab">Texte de publication</div><div class="caption">${esc(p.texte)}</div></div>
