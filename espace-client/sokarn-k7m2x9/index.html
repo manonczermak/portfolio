@@ -77,6 +77,12 @@
   .etat input{accent-color:var(--accent);margin:0}
   .etat:hover{border-color:var(--accent)}
 
+  .pub{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;white-space:nowrap}
+  .pub.planifie{border-color:var(--accent);background:var(--accent-bg);color:var(--ink)}
+  .pub.publie{border-color:var(--sage);background:var(--sage-bg);color:var(--ink)}
+  select.pubsel{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:15px/1.4 Inter,sans-serif;color:var(--ink);background:var(--surface)}
+  select.pubsel:focus{outline:2px solid var(--accent);border-color:transparent}
+
   .box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:20px 0}
   .box h3{margin-bottom:10px}
   .box ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:15px}
@@ -220,11 +226,13 @@
    =========================================================== */
 const MEDIAS = {
   s1: [], s2: [],
-  s3: ["jerky-sanglier.jpg"],
-  s4: [], s5: [], s6: [], s7: [], s8: [],
-  s9: ["paquets-feu.jpg"],
+  s3: ["s3-01-couverture.jpg","s3-02-caractere.jpg","s3-03-sechage.jpg"],
+  s4: [],
+  s5: ["s5-encas-post-seance.mp4"],
+  s6: [], s7: [], s8: [],
+  s9: ["s9-01-question.jpg","s9-02-reponse.jpg","s9-03-frigo.jpg","s9-04-questions.jpg"],
   s10: [], s11: [], s12: [], s13: [],
-  s14: ["halloween-1-panse-bete.jpg","halloween-2-sang-froid.jpg","halloween-3-tete-en-chips.jpg"],
+  s14: ["s14-01-couverture.jpg","s14-02-tete-en-chips.jpg","s14-03-sang-froid.jpg","s14-04-panse-bete.jpg"],
   s15: [], s16: [], s17: []
 };
 
@@ -243,7 +251,7 @@ const POSTS = [
   {id:"s2", date:"Mardi 13 octobre, 18h30", titre:"24 heures de séchage", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
    visuel:"Quatre plans : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.\nPas de parole, son d'ambiance, musique calme.\nTexte à l'écran : « 24 heures. C'est le temps qu'il faut. »",
    demande:"Les quatre plans du séchage : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.",
-   texte:"Vingt-quatre heures à cinquante-cinq degrés ⏳. Pas une minute de moins.\n\nC'est long. C'est lent. C'est ce qui fait la différence entre un jerky qui se mâche et un jerky qu'on oublie dans un tiroir.\n\nChez nous, pas de sucre ajouté, pas de conservateur, pas de raccourci. De la viande, du sel, un peu de vinaigre de cidre, du temps 🔥.\n\nC'est tout. Et c'est déjà beaucoup 💪",
+   texte:"Vingt-quatre heures à cinquante-cinq degrés ⏳. Pas une minute de moins.\n\nC'est long. C'est lent. C'est ce qui fait la différence entre un jerky qui se mâche et un jerky qu'on oublie dans un tiroir.\n\nChez nous, pas de sucre ajouté, pas de conservateur, pas de raccourci. De la viande, du sel de Salies-de-Béarn, un peu de vinaigre de cidre, du temps 🔥.\n\nC'est tout. Et c'est déjà beaucoup 💪",
    tags:"#jerky #viandesechee #snackproteine #proteines #artisanfrancais #faitmaison #hautespyrenees #keto #carnivore #sansadditif #snacksain #producteurlocal"},
 
   {id:"s3", date:"Mercredi 14 octobre, 18h30", titre:"Le jerky de sanglier", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et ses usages",
@@ -257,9 +265,9 @@ const POSTS = [
    texte:"Écran 1 : « Une journée à l'atelier. »\nÉcran 2 : « Chaque lamelle est posée à la main. » + curseur « Ça vous donne faim ? »\nÉcran 3 : « Et au bout, ça. »", tags:""},
 
   {id:"s5", date:"Vendredi 16 octobre, 18h30", titre:"Le snack d'après-séance", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 à 25 secondes", pilier:"Les nouvelles cibles, sport et protéines",
-   visuel:"Vidéo produite par Manon : plans d'ambiance générés (vestiaire, lumière, sac posé) et animation d'une photo réelle du paquet. Rien à filmer de votre côté.\nMontage rythmé, coupes nettes.\nTextes à l'écran : « 40 g de jerky », « 30 g de protéines », « Viande, sel, vinaigre de cidre ».",
-   demande:"Une photo d'un paquet de jerky posé dans un sac de sport ou sur un banc de vestiaire. Je l'anime ensuite, le reste des plans est généré.",
-   texte:"Dans le sac de sport, il y a toujours la même chose : une bouteille 🥤, une serviette, et un truc à grignoter… avec plus d'ingrédients qu'on ne peut faire de push-ups !\n\nLe jerky, c'est de la viande séchée, un peu de sel et de vinaigre de cidre, et rien d'autre. Riche en protéines (75 g pour 100 g) 💪, sans sucre ajouté, et ça se transporte très facilement 🎒",
+   audio:"« Fashion week ». Le son doit être réappliqué depuis l'application au moment de la publication : une vidéo déposée avec sa bande-son d'origine n'est pas rattachée au son natif d'Instagram, et perd la portée que donne un son tendance.",
+   visuel:"Vidéo reçue et montée, seize secondes, format vertical.\nTextes déjà incrustés : « Besoin d'une recharge en protéines ? », « 30 g de protéines par portion », « 0 sucre, 0 conservateur, bœuf nourri à l'herbe dans les Pyrénées », puis le logo.\nRien à produire de plus, sauf si vous demandez une correction.",
+   texte:"Dans le sac de sport, il y a toujours la même chose : une bouteille 🥤, une serviette, et un truc à grignoter… avec plus d'ingrédients qu'on ne peut faire de push-ups !\n\nLe jerky, c'est de la viande séchée, un peu de sel et de vinaigre de cidre, et rien d'autre. Riche en protéines (75 g pour 100 g) 💪, sans sucre, et ça se transporte très facilement 🎒",
    tags:"#proteines #snackproteine #jerky #musculation #crossfit #nutritionsportive #collationsaine #sansucre #viandesechee #sportfrance #prisedemasse #snacksain"},
 
   {id:"s6", date:"Lundi 19 octobre, 12h30", titre:"Vous avez voté", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
@@ -448,6 +456,8 @@ function render(){
     const r = retours[p.id] || {};
     const st = r.statut || "";
     const cls = st === "valide" ? " done" : (st === "revoir" ? " todo" : "");
+    const pub = r.publication || "";
+    const pubTxt = pub === "publie" ? "Publié" : (pub === "planifie" ? "Planifié" : "À planifier");
     const sign = (st || r.commentaire) && r.auteur ? `<div class="signature">${esc(r.auteur)}, le ${esc(dateFr(r.maj))}</div>` : "";
     return `
 <article class="post${cls}" id="bloc-${p.id}">
@@ -457,11 +467,14 @@ function render(){
       <span class="chip">${esc(p.resa)}</span>
       <span class="chip">${esc(p.format)}</span>
       <span class="chip">${esc(p.pilier)}</span>
+      <span class="pub ${pub}">${pubTxt}</span>
     </div>
   </div>
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
   ${p.demande ? `<div class="soon"><b>De votre côté :</b> ${esc(p.demande)}</div>` : ``}
+  ${auteur === "Manon" ? `<div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>` : ``}
   <div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>
+  ${p.audio ? `<div class="block"><div class="lab">Son à appliquer sur Instagram</div><div class="val">${esc(p.audio)}</div></div>` : ``}
   <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
   <div class="block"><div class="lab">Texte de publication</div><div class="caption">${esc(p.texte)}</div></div>
   ${p.tags ? `<div class="block"><div class="lab">Hashtags</div><div class="tags">${esc(p.tags)}</div></div>` : ``}
@@ -483,6 +496,13 @@ function render(){
     el.addEventListener("change", async e => {
       const id = e.target.name.slice(3);
       await enregistrer(id, { statut: e.target.value }, document.getElementById("ok-" + id));
+      render();
+    });
+  });
+  c.querySelectorAll('select[data-pub]').forEach(sel => {
+    sel.addEventListener("change", async e => {
+      const id = e.target.getAttribute("data-pub");
+      await enregistrer(id, { publication: e.target.value }, document.getElementById("ok-" + id));
       render();
     });
   });
