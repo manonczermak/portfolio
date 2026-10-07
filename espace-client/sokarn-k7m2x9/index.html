@@ -7,12 +7,31 @@
 <title>Sokarn — Espace de validation</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 <style>
-  .intro{padding:48px 0 8px}
-  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0 8px}
+  .site-head .wrap{min-height:72px}
+  .logos{display:flex;align-items:center;gap:16px}
+  .logos img{height:42px;width:auto}
+  .logos .sep{width:1px;height:28px;background:var(--line)}
+  .contacts{display:flex;gap:10px;align-items:center}
+  .ico{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink-2);text-decoration:none;background:var(--surface)}
+  .ico:hover{border-color:var(--accent);color:var(--accent)}
+  .ico svg{width:19px;height:19px;fill:currentColor}
+
+  .intro{padding:44px 0 8px}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0 0}
   @media (max-width:900px){.steps{grid-template-columns:1fr}}
   .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
   .step b{display:block;font-family:Manrope;font-size:15px;margin-bottom:4px}
   .step p{margin:0;font-size:14px;color:var(--ink-2)}
+
+  .sommaire{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 0}
+  .lien{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none}
+  .lien:hover{border-color:var(--accent);color:var(--accent)}
+
+  .idbar{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin:22px 0 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .idbar b{font-family:Manrope;font-size:15px}
+  .who{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer}
+  .who input{accent-color:var(--accent);margin:0}
+  .who:hover{border-color:var(--accent)}
 
   .post{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin-bottom:18px}
   .post.done{border-color:var(--sage);background:var(--sage-bg)}
@@ -21,65 +40,118 @@
   .post-head h3{font-size:21px}
   .date{font-family:Manrope;font-weight:800;font-size:15px;color:var(--accent)}
   .block{margin:14px 0}
-  .block .lab{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+  .lab{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
   .block .val{font-size:15px;color:var(--ink-2);white-space:pre-line}
   .caption{background:var(--surface-2);border-radius:10px;padding:14px 16px;font-size:15px;white-space:pre-line}
   .tags{font-size:14px;color:var(--ink-3);word-break:break-word}
 
+  .medias{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .medias a{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
+  .medias img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .media-video{border-radius:10px;overflow:hidden;border:1px solid var(--line);max-width:340px}
+  .media-video video{width:100%;display:block;background:#000}
+  .media-vide{border:2px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(135deg,var(--surface-2) 0 12px,var(--surface) 12px 24px);color:var(--ink-3);padding:22px;text-align:center;font-size:14px}
+
   .review{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
-  .choices{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .choices{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
   .choice{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer}
   .choice input{accent-color:var(--accent);margin:0}
   .choice:hover{border-color:var(--accent)}
-  textarea{width:100%;min-height:72px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:15px/1.5 Inter,sans-serif;color:var(--ink);background:var(--surface);resize:vertical}
+  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:15px/1.5 Inter,sans-serif;color:var(--ink);background:var(--surface);resize:vertical}
   textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+  .saved{font-size:13px;color:var(--sage);font-weight:600;opacity:0;transition:opacity .2s}
+  .saved.on{opacity:1}
+  .signature{font-size:13px;color:var(--ink-3);margin-top:6px}
+  .reply{background:var(--surface-2);border-left:3px solid var(--ink-3);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:12px;font-size:15px;white-space:pre-line}
+  .reply b{font-family:Manrope;font-size:13px;display:block;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+
+  .web-groupe{margin-bottom:26px}
+  .web-groupe h3{margin-bottom:10px}
+  .tache{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .tache.encours{border-color:var(--accent);background:var(--accent-bg)}
+  .tache.termine{border-color:var(--sage);background:var(--sage-bg)}
+  .tache .txt{font-size:15px;flex:1;min-width:240px}
+  .tache .txt small{display:block;color:var(--ink-3);font-size:13px;margin-top:2px}
+  .etats{display:flex;gap:6px;flex-wrap:wrap}
+  .etat{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+  .etat input{accent-color:var(--accent);margin:0}
+  .etat:hover{border-color:var(--accent)}
 
   .box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:20px 0}
   .box h3{margin-bottom:10px}
   .box ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:15px}
   .box li{margin-bottom:6px}
   .soon{background:var(--todo-bg);color:var(--todo-ink);border-radius:10px;padding:14px 16px;font-size:15px}
-
-  .actions{position:sticky;bottom:0;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:14px 0;margin-top:30px;z-index:5}
-  .actions .wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
-  .count{font-size:14px;color:var(--ink-2)}
-  button.btn{cursor:pointer;font-family:inherit}
-  .ok{display:none;font-size:14px;color:var(--sage);font-weight:600}
+  .erreur{background:var(--accent-bg);color:var(--accent-2);border-radius:10px;padding:12px 16px;font-size:14px;margin:14px 0;display:none}
+  .haut{display:inline-block;margin-top:10px;font-size:14px;color:var(--ink-3);text-decoration:none}
+  .haut:hover{color:var(--accent)}
 </style>
 </head>
 <body>
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="#">MCH<span>.</span> × Sokarn</a>
-    <nav class="nav"><a href="#contenus">Contenus</a><a href="#ads">Publicité</a><a href="#newsletter">Newsletter</a><a href="#tournage">À me transmettre</a></nav>
+    <div class="logos">
+      <a class="brand" href="#">MCH<span>.</span></a>
+      <span class="sep"></span>
+      <img src="sokarn-logo.png" alt="Sokarn">
+    </div>
+    <div class="contacts">
+      <a class="ico" href="mailto:manon.czermak@gmail.com" title="Écrire à Manon" aria-label="Écrire à Manon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 4.8-8-4.8V6l8 4.8L20 6v2.2z"/></svg>
+      </a>
+      <a class="ico" href="https://wa.me/33604520916" target="_blank" rel="noopener" title="WhatsApp à Manon" aria-label="WhatsApp à Manon">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+      </a>
+    </div>
   </div>
 </header>
 
 <section class="intro">
   <div class="wrap">
-    <p class="eyebrow">Espace de validation</p>
-    <h1>Les contenus d'octobre</h1>
-    <p class="lead">Dix-sept contenus proposés, du 12 au 31 octobre. Vous validez ou vous commentez chaque proposition, et je corrige avant programmation.</p>
-    <div class="steps">
-      <div class="step"><b>1. Vous lisez</b><p>Chaque bloc contient la date, le réseau, le format, le visuel attendu et le texte de publication.</p></div>
-      <div class="step"><b>2. Vous tranchez</b><p>Validé, ou à revoir avec votre commentaire. Vos réponses sont enregistrées dans votre navigateur au fur et à mesure.</p></div>
-      <div class="step"><b>3. Vous m'envoyez</b><p>Le bouton en bas de page copie tous vos retours. Il ne reste qu'à les coller dans WhatsApp ou un mail.</p></div>
+    <p class="eyebrow">Espace de travail</p>
+    <h1>Octobre 2026</h1>
+    <p class="lead">Les contenus du mois, les campagnes, la newsletter et l'avancée du site, au même endroit. Vous validez, vous commentez, je corrige.</p>
+
+    <div class="idbar">
+      <b>Vous êtes :</b>
+      <label class="who"><input type="radio" name="auteur" value="Céline"> Céline</label>
+      <label class="who"><input type="radio" name="auteur" value="Salomé"> Salomé</label>
+      <label class="who"><input type="radio" name="auteur" value="Manon"> Manon</label>
+      <span class="muted" style="font-size:14px">À choisir en arrivant, pour signer vos retours.</span>
     </div>
+
+    <div class="steps">
+      <div class="step"><b>Chaque contenu est détaillé</b><p>Date et heure de publication, réseau, format, pilier éditorial, visuel prévu et texte complet avec ses hashtags.</p></div>
+      <div class="step"><b>Vous validez ou vous commentez</b><p>Un contenu validé passe en vert, un contenu à revoir passe en orange. Le commentaire est libre, et vous pouvez revenir dessus plus tard.</p></div>
+      <div class="step"><b>Rien à envoyer</b><p>Tout s'enregistre automatiquement et je le vois de mon côté. Je réponds sous vos commentaires, directement dans la page.</p></div>
+    </div>
+
+    <div class="sommaire">
+      <a class="lien" href="#contenus">Contenus réseaux sociaux</a>
+      <a class="lien" href="#ads">Meta Ads</a>
+      <a class="lien" href="#newsletter">Newsletter</a>
+      <a class="lien" href="#tournage">À transmettre à Manon</a>
+      <a class="lien" href="#web">Avancée du site</a>
+    </div>
+
+    <div class="erreur" id="erreur"></div>
   </div>
 </section>
 
 <section class="section" id="contenus">
   <div class="wrap">
-    <div class="section-head"><h2>Réseaux sociaux</h2><p class="muted" id="progress">0 contenu traité sur 17</p></div>
+    <div class="section-head"><h2>Contenus réseaux sociaux</h2><p class="muted" id="progress">Chargement…</p></div>
     <div id="posts"></div>
+    <a class="haut" href="#">Revenir en haut</a>
   </div>
 </section>
 
 <section class="section" id="ads">
   <div class="wrap">
-    <h2>Publicité</h2>
-    <div class="soon" style="margin-top:14px">Les campagnes seront proposées ici dès que le pixel Meta sera actif sur le site : visuel, cible, durée, budget et objectif. Budget mensuel prévu : 200 € répartis entre acquisition et reciblage.</div>
+    <h2>Meta Ads</h2>
+    <div class="soon" style="margin-top:14px">Les campagnes seront proposées ici dès que le pixel sera actif sur le site : visuel, cible, durée, budget et objectif. Budget mensuel prévu : 200 €, répartis entre acquisition et reciblage.</div>
+    <a class="haut" href="#">Revenir en haut</a>
   </div>
 </section>
 
@@ -87,12 +159,13 @@
   <div class="wrap">
     <h2>Newsletter</h2>
     <div class="soon" style="margin-top:14px">Les textes des deux newsletters du mois et des quatre scénarios automatiques seront déposés ici dès l'ouverture du compte Brevo. Première newsletter prévue avant la fin du mois d'octobre.</div>
+    <a class="haut" href="#">Revenir en haut</a>
   </div>
 </section>
 
 <section class="section" id="tournage">
   <div class="wrap">
-    <h2>À me transmettre</h2>
+    <h2>À transmettre à Manon</h2>
     <div class="box">
       <h3>Vidéos à tourner</h3>
       <ul>
@@ -125,21 +198,37 @@
         <li>Liste des viandes qui ne proviennent pas d'éleveurs locaux.</li>
       </ul>
     </div>
+    <a class="haut" href="#">Revenir en haut</a>
   </div>
 </section>
 
-<div class="actions">
+<section class="section" id="web">
   <div class="wrap">
-    <span class="count" id="count">0 contenu traité sur 17</span>
-    <div class="btns">
-      <button class="btn ghost" id="reset" type="button">Tout effacer</button>
-      <button class="btn primary" id="copy" type="button">Copier mes retours</button>
-    </div>
-    <span class="ok" id="ok">Retours copiés, il ne reste qu'à les coller.</span>
+    <div class="section-head"><h2>Avancée du site</h2><p class="muted" id="progress-web">Chargement…</p></div>
+    <div id="taches"></div>
+    <a class="haut" href="#">Revenir en haut</a>
   </div>
-</div>
+</section>
 
 <script>
+/* ===========================================================
+   MÉDIAS
+   Déposez vos fichiers dans le dossier "medias" à côté de cette
+   page, puis ajoutez leur nom ci-dessous, entre guillemets.
+   Plusieurs images : ["photo1.jpg","photo2.jpg"]
+   Une vidéo : ["reel.mp4"]   (formats .mp4 ou .mov)
+   =========================================================== */
+const MEDIAS = {
+  s1: [], s2: [], s3: [], s4: [], s5: [], s6: [], s7: [], s8: [], s9: [],
+  s10: [], s11: [], s12: [], s13: [], s14: [], s15: [], s16: [], s17: []
+};
+
+const SB_URL = "https://dxjvylgnvxkjxeqasgej.supabase.co";
+const SB_KEY = "sb_publishable_v59RacO6PIpphKQrY1Wu4A_BIxN2u6N";
+const PROJET = "sokarn";
+const PERIODE = "2026-10";
+const PERIODE_WEB = "site";
+
 const POSTS = [
   {id:"s1", date:"Lundi 12 octobre, 12h30", titre:"On relance la conversation", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages et la communauté",
    visuel:"Écran 1 : vidéo selfie de 10 secondes à l'atelier.\nÉcran 2 : plan large de l'atelier, avec un sondage.\nÉcran 3 : fond ocre uni, sticker questions.",
@@ -219,25 +308,134 @@ const POSTS = [
    texte:"Écran 1 : « Joyeux Halloween de la part de la tribu. »\nÉcran 2, sondage : « Vous êtes plutôt Tête en chips ou Panse bête ? »\nÉcran 3 : « Notre newsletter arrive. Code de bienvenue pour les premiers inscrits. »\nÉcran 4 : « Tout est dans la boutique. »", tags:""}
 ];
 
-const KEY = "sokarn-octobre-2026";
-let data = {};
-try { data = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) { data = {}; }
+const TACHES = [
+  {g:"Accès et préalables", items:[
+    {id:"w1", t:"Compte éditeur WordPress créé", d:"Pages, articles, blocs Elementor"},
+    {id:"w2", t:"Rôle responsable de boutique ajouté", d:"Fiches produit, catégories, avis, codes promo"},
+    {id:"w3", t:"Permission d'import CSV accordée", d:"Mise à jour groupée des 49 fiches produit"},
+    {id:"w4", t:"Session avec droits administrateur planifiée", d:"Installation des extensions et réglages"},
+    {id:"w5", t:"Accès Google Analytics et Tag Manager", d:"En lecture, pour le suivi mensuel"},
+    {id:"w6", t:"Sauvegarde complète du site", d:"Avec point de restauration identifié"}
+  ]},
+  {g:"Mesure et outils", items:[
+    {id:"w7", t:"Pixel Meta et API de conversions installés", d:"Vue produit, ajout au panier, paiement, achat"},
+    {id:"w8", t:"Extension Brevo pour WooCommerce installée", d:"Synchronisation contacts, commandes et paniers"},
+    {id:"w9", t:"Extension Facebook for WooCommerce installée", d:"Catalogue produits et identification dans les publications"},
+    {id:"w10", t:"Extension WP Recipe Maker installée", d:"Balisage des recettes et intégration Yoast"},
+    {id:"w11", t:"Extension de redirections installée", d:"Redirections 301 au fil des renommages"},
+    {id:"w12", t:"Enregistrements DNS Brevo chez Infomaniak", d:"Conditionne la délivrabilité de la newsletter"},
+    {id:"w13", t:"Adresse e-mail d'expédition créée", d:"Sur le domaine sokarn.com"}
+  ]},
+  {g:"Conversion", items:[
+    {id:"w14", t:"Bloc d'inscription à la newsletter en ligne", d:"Page d'accueil et pied de page, avec consentement"},
+    {id:"w15", t:"Avis produits réactivés", d:"Réservés aux achats vérifiés"},
+    {id:"w16", t:"Affichage et balisage des avis vérifiés", d:"Pour l'apparition des étoiles dans Google"},
+    {id:"w17", t:"Blocs « Trésors de la caverne » rendus cliquables", d:"Quatre blocs vers leurs catégories"},
+    {id:"w18", t:"Étiquette « Chasse en cours » remplacée", d:"Libellé des produits en rupture"},
+    {id:"w19", t:"Photos produits harmonisées au même format", d:"Sur l'ensemble du catalogue"},
+    {id:"w20", t:"Fiches produit complétées", d:"Conservation, durée de vie, délai de livraison, packaging"},
+    {id:"w21", t:"Barre de progression vers la livraison offerte", d:"Seuil à 50 €, panier et tiroir latéral"},
+    {id:"w22", t:"Suggestions de produits dans le panier", d:"Produits complémentaires"}
+  ]},
+  {g:"Contenus et référencement", items:[
+    {id:"w23", t:"Étude de mots-clés réalisée", d:"Halal et protéines compris"},
+    {id:"w24", t:"Nouvelle arborescence validée", d:"De 14 catégories à cinq ou six"},
+    {id:"w25", t:"Meta descriptions des catégories rédigées", d:"78 pages sur 86 en sont dépourvues"},
+    {id:"w26", t:"Meta descriptions des 20 produits phares", d:"Les plus vendus en priorité"},
+    {id:"w27", t:"Page Halal créée", d:"Environ 320 recherches mensuelles"},
+    {id:"w28", t:"Page Protéines et sport créée", d:"Porte d'entrée pour la cible sportive"},
+    {id:"w29", t:"Catégorie Halal et attribut type de viande", d:"Avec filtrage dans la boutique"},
+    {id:"w30", t:"Recettes saisies et balisées", d:"Huit recettes existantes"},
+    {id:"w31", t:"Balises H1 corrigées", d:"53 pages avec un doublon"},
+    {id:"w32", t:"Catégories renommées avec redirections", d:"Termes réellement recherchés"},
+    {id:"w33", t:"Rubriques de navigation renommées", d:"Avec redirections et menu harmonisé"},
+    {id:"w34", t:"Page Micro nutrition supprimée et redirigée", d:"Contenu insuffisant"},
+    {id:"w35", t:"Fichier llms.txt vérifié", d:"Pour les moteurs conversationnels"},
+    {id:"w36", t:"Performances du site traitées", d:"Fichiers cassés, minification, vitesse des fiches"}
+  ]},
+  {g:"Conformité", items:[
+    {id:"w37", t:"Allégations corrigées sur le site", d:"Santé, minéraux, halal généralisé, pemmican"},
+    {id:"w38", t:"Valeurs nutritionnelles complétées", d:"Les sept éléments réglementaires"},
+    {id:"w39", t:"Mentions légales complétées", d:"Hébergeur, SIRET, TVA"},
+    {id:"w40", t:"Page Politique de cookies réparée", d:"Actuellement vide pour les visiteurs"},
+    {id:"w41", t:"Politique de confidentialité réécrite", d:"Texte par défaut de WordPress aujourd'hui"},
+    {id:"w42", t:"CGV révisées et mises en ligne", d:"Rétractation, garanties, médiateur"},
+    {id:"w43", t:"Médiateur de la consommation désigné", d:"Obligatoire pour la vente aux particuliers"},
+    {id:"w44", t:"Registre RGPD renseigné", d:"Modèle CNIL, une fiche par traitement"},
+    {id:"w45", t:"Bandeau de consentement mis à jour", d:"Traceurs Meta et Brevo rattachés"}
+  ]}
+];
+
+let retours = {};
+let auteur = localStorage.getItem("mch-auteur") || "";
 
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
+function erreur(msg){
+  const e = document.getElementById("erreur");
+  if (!msg) { e.style.display = "none"; return; }
+  e.textContent = msg; e.style.display = "block";
+}
+
+async function charger(){
+  try {
+    const url = SB_URL + "/rest/v1/retours?projet=eq." + PROJET + "&periode=in.(" + PERIODE + "," + PERIODE_WEB + ")&select=*";
+    const r = await fetch(url, { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } });
+    if (!r.ok) throw new Error(r.status);
+    const rows = await r.json();
+    retours = {};
+    rows.forEach(row => { retours[row.contenu_id] = row; });
+    erreur("");
+  } catch(e) {
+    erreur("Impossible de charger les données enregistrées. Vérifiez votre connexion, puis rechargez la page.");
+  }
+  render(); renderTaches();
+}
+
+async function enregistrer(id, champs, el, periode){
+  retours[id] = Object.assign({}, retours[id] || {}, champs);
+  const corps = Object.assign({ projet: PROJET, periode: periode || PERIODE, contenu_id: id, auteur: auteur || null, maj: new Date().toISOString() }, champs);
+  try {
+    const r = await fetch(SB_URL + "/rest/v1/retours?on_conflict=projet,periode,contenu_id", {
+      method: "POST",
+      headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY, "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=representation" },
+      body: JSON.stringify(corps)
+    });
+    if (!r.ok) throw new Error(r.status);
+    const rows = await r.json();
+    if (rows && rows[0]) retours[id] = rows[0];
+    erreur("");
+    if (el) { el.classList.add("on"); setTimeout(() => el.classList.remove("on"), 1800); }
+  } catch(e) {
+    erreur("Votre dernière modification n'a pas pu être enregistrée. Vérifiez votre connexion et recommencez.");
+  }
+}
+
+function dateFr(iso){
+  if (!iso) return "";
+  const d = new Date(iso);
+  return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) + " à " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+}
+
+function blocMedias(id){
+  const f = MEDIAS[id] || [];
+  if (!f.length) return `<div class="media-vide">Visuels à venir</div>`;
+  const video = f.find(n => /\.(mp4|mov|webm)$/i.test(n));
+  if (video) return `<div class="media-video"><video controls preload="metadata" src="medias/${esc(video)}"></video></div>`;
+  return `<div class="medias">` + f.map(n => `<a href="medias/${esc(n)}" target="_blank" rel="noopener"><img src="medias/${esc(n)}" alt="" loading="lazy"></a>`).join("") + `</div>`;
+}
+
 function render(){
   const c = document.getElementById("posts");
-  c.innerHTML = POSTS.map((p,i) => {
-    const st = (data[p.id] && data[p.id].statut) || "";
-    const cm = (data[p.id] && data[p.id].commentaire) || "";
+  c.innerHTML = POSTS.map(p => {
+    const r = retours[p.id] || {};
+    const st = r.statut || "";
     const cls = st === "valide" ? " done" : (st === "revoir" ? " todo" : "");
+    const sign = (st || r.commentaire) && r.auteur ? `<div class="signature">${esc(r.auteur)}, le ${esc(dateFr(r.maj))}</div>` : "";
     return `
 <article class="post${cls}" id="bloc-${p.id}">
   <div class="post-head">
-    <div>
-      <div class="date">${esc(p.date)}</div>
-      <h3>${esc(p.titre)}</h3>
-    </div>
+    <div><div class="date">${esc(p.date)}</div><h3>${esc(p.titre)}</h3></div>
     <div class="meta">
       <span class="chip">${esc(p.resa)}</span>
       <span class="chip">${esc(p.format)}</span>
@@ -246,71 +444,108 @@ function render(){
   </div>
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
   <div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>
+  <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
   <div class="block"><div class="lab">Texte de publication</div><div class="caption">${esc(p.texte)}</div></div>
   ${p.tags ? `<div class="block"><div class="lab">Hashtags</div><div class="tags">${esc(p.tags)}</div></div>` : ``}
   <div class="review">
     <div class="choices">
       <label class="choice"><input type="radio" name="st-${p.id}" value="valide" ${st==="valide"?"checked":""}> Validé pour publication</label>
       <label class="choice"><input type="radio" name="st-${p.id}" value="revoir" ${st==="revoir"?"checked":""}> À revoir</label>
+      <span class="saved" id="ok-${p.id}">Enregistré</span>
     </div>
-    <textarea data-cm="${p.id}" placeholder="Vos remarques sur ce contenu">${esc(cm)}</textarea>
+    <textarea data-cm="${p.id}" placeholder="Vos remarques sur ce contenu">${esc(r.commentaire || "")}</textarea>
+    ${sign}
+    ${r.reponse ? `<div class="reply"><b>Réponse de Manon</b>${esc(r.reponse)}</div>` : ``}
+    <div id="zone-rep-${p.id}"></div>
   </div>
 </article>`;
   }).join("");
 
-  c.querySelectorAll('input[type=radio]').forEach(r => {
-    r.addEventListener("change", e => {
+  c.querySelectorAll('input[type=radio]').forEach(el => {
+    el.addEventListener("change", async e => {
       const id = e.target.name.slice(3);
-      data[id] = data[id] || {};
-      data[id].statut = e.target.value;
-      save(); render();
+      await enregistrer(id, { statut: e.target.value }, document.getElementById("ok-" + id));
+      render();
     });
   });
   c.querySelectorAll('textarea[data-cm]').forEach(t => {
+    let timer;
     t.addEventListener("input", e => {
       const id = e.target.getAttribute("data-cm");
-      data[id] = data[id] || {};
-      data[id].commentaire = e.target.value;
-      save(); majCompteur();
+      clearTimeout(timer);
+      timer = setTimeout(() => enregistrer(id, { commentaire: e.target.value }, document.getElementById("ok-" + id)), 900);
     });
   });
+
+  if (auteur === "Manon") zonesReponse();
   majCompteur();
 }
 
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {} }
-
-function majCompteur(){
-  const n = POSTS.filter(p => data[p.id] && data[p.id].statut).length;
-  const txt = n + (n > 1 ? " contenus traités sur " : " contenu traité sur ") + POSTS.length;
-  document.getElementById("count").textContent = txt;
-  document.getElementById("progress").textContent = txt;
+function zonesReponse(){
+  POSTS.forEach(p => {
+    const z = document.getElementById("zone-rep-" + p.id);
+    if (!z) return;
+    const r = retours[p.id] || {};
+    z.innerHTML = `<div style="margin-top:12px"><div class="lab">Votre réponse</div><textarea data-rep="${p.id}" placeholder="Répondre à ce retour">${esc(r.reponse || "")}</textarea></div>`;
+    let timer;
+    z.querySelector("textarea").addEventListener("input", e => {
+      clearTimeout(timer);
+      timer = setTimeout(() => enregistrer(p.id, { reponse: e.target.value }, document.getElementById("ok-" + p.id)), 900);
+    });
+  });
 }
 
-document.getElementById("copy").addEventListener("click", () => {
-  let out = "Retours Sokarn — contenus d'octobre 2026\n\n";
-  POSTS.forEach(p => {
-    const d = data[p.id] || {};
-    if (!d.statut && !d.commentaire) return;
-    out += p.date + " — " + p.titre + "\n";
-    out += "Statut : " + (d.statut === "valide" ? "validé" : d.statut === "revoir" ? "à revoir" : "non précisé") + "\n";
-    if (d.commentaire) out += "Remarque : " + d.commentaire + "\n";
-    out += "\n";
+function renderTaches(){
+  const c = document.getElementById("taches");
+  c.innerHTML = TACHES.map(g => `
+<div class="web-groupe">
+  <h3>${esc(g.g)}</h3>
+  ${g.items.map(it => {
+    const r = retours[it.id] || {};
+    const st = r.statut || "";
+    const cls = st === "encours" ? " encours" : (st === "termine" ? " termine" : "");
+    const sign = st && r.auteur ? ` · ${esc(r.auteur)}, le ${esc(dateFr(r.maj))}` : "";
+    return `
+  <div class="tache${cls}">
+    <div class="txt">${esc(it.t)}<small>${esc(it.d)}${sign}</small></div>
+    <div class="etats">
+      <label class="etat"><input type="radio" name="w-${it.id}" value="ademarrer" ${st==="ademarrer"?"checked":""}> À démarrer</label>
+      <label class="etat"><input type="radio" name="w-${it.id}" value="encours" ${st==="encours"?"checked":""}> En cours</label>
+      <label class="etat"><input type="radio" name="w-${it.id}" value="termine" ${st==="termine"?"checked":""}> Terminé</label>
+    </div>
+  </div>`;
+  }).join("")}
+</div>`).join("");
+
+  c.querySelectorAll('input[type=radio]').forEach(el => {
+    el.addEventListener("change", async e => {
+      const id = e.target.name.slice(2);
+      await enregistrer(id, { statut: e.target.value }, null, PERIODE_WEB);
+      renderTaches();
+    });
   });
-  const reste = POSTS.filter(p => !data[p.id] || (!data[p.id].statut && !data[p.id].commentaire));
-  if (reste.length) out += "Non traités : " + reste.map(p => p.titre).join(", ") + "\n";
-  navigator.clipboard.writeText(out).then(() => {
-    const ok = document.getElementById("ok");
-    ok.style.display = "inline";
-    setTimeout(() => { ok.style.display = "none"; }, 4000);
-  }).catch(() => { window.prompt("Copiez vos retours :", out); });
+
+  const tous = TACHES.flatMap(g => g.items);
+  const faits = tous.filter(it => retours[it.id] && retours[it.id].statut === "termine").length;
+  document.getElementById("progress-web").textContent = faits + (faits > 1 ? " actions terminées sur " : " action terminée sur ") + tous.length;
+}
+
+function majCompteur(){
+  const n = POSTS.filter(p => retours[p.id] && retours[p.id].statut).length;
+  document.getElementById("progress").textContent = n + (n > 1 ? " contenus traités sur " : " contenu traité sur ") + POSTS.length;
+}
+
+document.querySelectorAll('input[name=auteur]').forEach(el => {
+  if (el.value === auteur) el.checked = true;
+  el.addEventListener("change", e => {
+    auteur = e.target.value;
+    localStorage.setItem("mch-auteur", auteur);
+    render();
+  });
 });
 
-document.getElementById("reset").addEventListener("click", () => {
-  if (!confirm("Effacer toutes vos réponses sur cette page ?")) return;
-  data = {}; save(); render();
-});
-
-render();
+charger();
+setInterval(charger, 60000);
 </script>
 
 </body>

@@ -1,0 +1,8 @@
+Déposez ici les visuels des publications (images .jpg ou .png, vidéos .mp4 ou .mov).
+Puis ouvrez index.html et complétez la liste MEDIAS, tout en haut du script :
+
+  s3: ["sanglier-1.jpg", "sanglier-2.jpg", "sanglier-3.jpg"],
+  s5: ["reel-sport.mp4"],
+
+Plusieurs images s'affichent en galerie. Une vidéo s'affiche avec un lecteur.
+Si la liste est vide, le bloc affiche "Visuels à venir".
