@@ -83,6 +83,12 @@
   select.pubsel{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:15px/1.4 Inter,sans-serif;color:var(--ink);background:var(--surface)}
   select.pubsel:focus{outline:2px solid var(--accent);border-color:transparent}
 
+  .bouton{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--surface);border-radius:999px;padding:15px 28px;font-size:15px;font-weight:600;text-decoration:none}
+  .bouton:hover{opacity:.88}
+  .bouton svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .depot{margin:22px 0 4px}
+  .depot p{margin:0 0 12px;font-size:15px;color:var(--ink-2)}
+
   .box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:20px 0}
   .box h3{margin-bottom:10px}
   .box ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:15px}
@@ -203,6 +209,13 @@
         <li>Accord, ou non, pour citer un éleveur partenaire par son nom, et ses coordonnées si oui.</li>
         <li>Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus.</li>
       </ul>
+    </div>
+    <div class="depot">
+      <p>Déposez vos photos et vos vidéos ici. Pas de compte à créer, pas de limite de taille, et je reçois une notification à chaque envoi.</p>
+      <a class="bouton" href="https://u.pcloud.com/#/puplink?code=MkKXZWFysDRI5mxXmI7nSeGQOQpHtgx2V" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M17 8l-5-5-5 5"></path><path d="M12 3v12"></path></svg>
+        Transmettre les fichiers
+      </a>
     </div>
     <a class="haut" href="#">Revenir en haut</a>
   </div>
