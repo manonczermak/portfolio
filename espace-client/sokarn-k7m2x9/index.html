@@ -110,6 +110,12 @@
   .depot{margin:22px 0 4px}
   .depot p{margin:0 0 12px;font-size:15px;color:var(--ink-2)}
 
+  ul.cases{list-style:none;margin:8px 0 0;padding:0}
+  ul.cases li{margin-bottom:9px;font-size:15px;color:var(--ink-2)}
+  ul.cases label{display:flex;gap:11px;align-items:flex-start;cursor:pointer}
+  ul.cases input{margin:3px 0 0;width:17px;height:17px;accent-color:var(--accent);flex:none;cursor:pointer}
+  ul.cases li.fait span{text-decoration:line-through;color:var(--ink-3)}
+
   .box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:20px 0}
   .box h3{margin-bottom:10px}
   .box ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:15px}
@@ -198,40 +204,8 @@
 
 <section class="section" id="tournage">
   <div class="wrap">
-    <h2>À transmettre à Manon</h2>
-    <div class="box">
-      <h3>Vidéos à tourner</h3>
-      <ul>
-        <li>Le séchage : lamelles sur la grille, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.</li>
-        <li>L'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir.</li>
-        <li>La recette Crêp'Karn : poudre versée, mélange, cuisson, retournement, assiette finie.</li>
-        <li>L'expédition : colis alignés, emballage d'une commande, étiquette d'adresse.</li>
-        <li>L'origine : si possible chez un éleveur partenaire, sinon viande fraîche à la découpe.</li>
-        <li>Deux face caméra : la question « un seul produit pour tout l'automne » et votre réponse chacune.</li>
-      </ul>
-    </div>
-    <div class="box">
-      <h3>Photos à fournir</h3>
-      <ul>
-        <li>Un portrait de vous deux à l'atelier, en situation de travail.</li>
-        <li>Le Crêp'Karn sur fond neutre.</li>
-        <li>Le Sable Noir : le sachet ouvert, et une assiette saupoudrée.</li>
-        <li>Un paquet de jerky posé dans un sac de sport ou sur un banc de vestiaire.</li>
-      </ul>
-    </div>
-    <div class="box">
-      <h3>Informations à confirmer</h3>
-      <ul>
-        <li>Durée et température exactes de séchage, par famille de produits.</li>
-        <li>Valeurs nutritionnelles du produit montré dans le reel sport.</li>
-        <li>Dates de retour en stock, en commençant par le pemmican et l'écorce de porc noir.</li>
-        <li>Option retenue pour le bouillon de Porc Noir de Bigorre.</li>
-        <li>Liste des viandes qui ne proviennent pas d'éleveurs locaux.</li>
-        <li>Accord, ou non, pour citer un éleveur partenaire par son nom, et ses coordonnées si oui.</li>
-        <li>Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus.</li>
-        <li>Accès au compte publicitaire Meta, en tant qu'annonceur ou administrateur selon ce que permet votre Business Manager, ainsi qu'à la page Facebook et au compte Instagram associés.</li>
-      </ul>
-    </div>
+    <div class="section-head"><h2>À transmettre à Manon</h2><p class="muted" id="progress-elements">Chargement…</p></div>
+    <div id="elements"></div>
     <div class="depot">
       <p>Déposez vos photos et vos vidéos ici. Pas de compte à créer, pas de limite de taille, et je reçois une notification à chaque envoi.</p>
       <a class="bouton" href="https://u.pcloud.com/#/puplink?code=MkKXZWFysDRI5mxXmI7nSeGQOQpHtgx2V" target="_blank" rel="noopener">
@@ -291,77 +265,73 @@ const SB_KEY = "sb_publishable_v59RacO6PIpphKQrY1Wu4A_BIxN2u6N";
 const PROJET = "sokarn";
 const PERIODE = "2026-10";
 const PERIODE_WEB = "site";
+const PERIODE_ELEM = "elements";
 
 const POSTS = [
-  {id:"s1", date:"Lundi 12 octobre, 12h30", titre:"On relance la conversation", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages et la communauté",
+  {id:"s1", date:"Lundi 12 octobre, 12h30", titre:"On relance la conversation - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages et la communauté",
    visuel:"Écran 1 : vidéo selfie de 10 secondes à l'atelier.\nÉcran 2 : plan large de l'atelier, avec un sondage.\nÉcran 3 : fond ocre uni, sticker questions.",
    demande:"Les plans vidéo des écrans 1 et 2 : une vidéo selfie de dix secondes à l'atelier, et un plan large de l'atelier.",
    texte:"Écran 1 : « On revient vers vous avec plein de nouveautés ce mois-ci. Mais d'abord, on a une question. »\nÉcran 2, sondage : « Vous nous suivez plutôt pour… » → Les jerkys et snacks / Les graisses et bouillons\nÉcran 3 : « Quel produit aimeriez-vous revoir en stock ? »", tags:""},
-  {id:"s7", date:"Lundi 12 octobre, 18h30", titre:"Le bouillon de Porc Noir offert", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et la conversion",
-   demande:"Une photo du bocal de Bouillon de Porc Noir de Bigorre sur fond neutre, et une seconde en situation. Confirmez aussi ce que nous avons le droit d'écrire sur la race et sur son élevage, au regard de ce que votre éleveur vous garantit. Et pensez à renseigner le stock à 34 dans WooCommerce : c'est lui qui arrêtera l'offre tout seul.",
-   visuel:"Visuel unique, fourni et validé. Le décor est généré, le bocal est une photo réelle du produit. Le nom du produit est corrigé.\nUne coquille reste à reprendre avant publication : la deuxième ligne affiche « OFFERTDÈS 80€ » sans espace entre les deux mots.",
+  {id:"s7", date:"Lundi 12 octobre, 18h30", titre:"Le bouillon de Porc Noir offert - Image fixe", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et la conversion",
    texte:"Le Porc Noir de Bigorre ne ressemble à aucun autre cochon 🐖\n\nIl vit dehors, il grandit deux fois plus lentement qu'un porc ordinaire, et il finit sa vie dans les châtaigniers. C'est long, c'est exigeant, et c'est ce qui donne à sa viande un goût que l'on ne retrouve nulle part ailleurs.\n\nOn en fait un bouillon, mijoté doucement. Et jusqu'à épuisement du stock, on vous l'offre 🔥\n\nÀ partir de 80 € d'achat, le bocal à 15,90 € se glisse tout seul dans votre panier. Pas de code à saisir, rien à faire de plus.\n\nIl nous en reste 34. Quand il n'y en a plus, il n'y en a plus 🐗",
    tags:"#porcnoirdebigorre #bouillon #bouillonmaison #aop #hautespyrenees #produitlocal #artisanfrancais #racerustique #cuisinemaison #fondsdesauce #terroir #occitanie"},
-  {id:"s2", date:"Mardi 13 octobre, 18h30", titre:"24 heures de séchage", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
+  {id:"s2", date:"Mardi 13 octobre, 18h30", titre:"24 heures de séchage - Reel", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
    visuel:"Quatre plans : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.\nPas de parole, son d'ambiance, musique calme.\nTexte à l'écran : « 24 heures. C'est le temps qu'il faut. »",
    demande:"Les quatre plans du séchage : lamelles sur la grille vues de dessus, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie.",
    texte:"Vingt-quatre heures à cinquante-cinq degrés ⏳. Pas une minute de moins.\n\nC'est long. C'est lent. C'est ce qui fait la différence entre un jerky qui se mâche et un jerky qu'on oublie dans un tiroir.\n\nChez nous, pas de sucre ajouté, pas de conservateur, pas de raccourci. De la viande, du sel de Salies-de-Béarn, un peu de vinaigre de cidre, du temps 🔥.\n\nC'est tout. Et c'est déjà beaucoup 💪",
    tags:"#jerky #viandesechee #snackproteine #proteines #artisanfrancais #faitmaison #hautespyrenees #keto #carnivore #sansadditif #snacksain #producteurlocal"},
-  {id:"s4", date:"Jeudi 15 octobre, 12h30", titre:"Une journée à l'atelier", resa:"Instagram, stories", format:"3 écrans", pilier:"Le savoir-faire",
+  {id:"s4", date:"Jeudi 15 octobre, 12h30", titre:"Une journée à l'atelier - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"Le savoir-faire",
    visuel:"Écran 1 : travelling lent sur les grilles chargées.\nÉcran 2 : mains qui disposent les lamelles, avec un curseur emoji.\nÉcran 3 : paquets alignés, avec le sticker lien vers la boutique.",
    demande:"Les rushes de l'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir.",
    texte:"Écran 1 : « Une journée à l'atelier. »\nÉcran 2 : « Chaque lamelle est posée à la main. » + curseur « Ça vous donne faim ? »\nÉcran 3 : « Et au bout, ça. »", tags:""},
-  {id:"s5", date:"Vendredi 16 octobre, 18h30", titre:"Le snack d'après-séance", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 à 25 secondes", pilier:"Les nouvelles cibles, sport et protéines",
-   audio:"« Fashion week ». Le son doit être réappliqué depuis l'application au moment de la publication : une vidéo déposée avec sa bande-son d'origine n'est pas rattachée au son natif d'Instagram, et perd la portée que donne un son tendance.",
-   visuel:"Vidéo reçue et montée, seize secondes, format vertical.\nTextes déjà incrustés : « Besoin d'une recharge en protéines ? », « 30 g de protéines par portion », « 0 sucre, 0 conservateur, bœuf nourri à l'herbe dans les Pyrénées », puis le logo.\nRien à produire de plus, sauf si vous demandez une correction.",
+  {id:"s5", date:"Vendredi 16 octobre, 18h30", titre:"Le snack d'après-séance - Reel", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 à 25 secondes", pilier:"Les nouvelles cibles, sport et protéines",
+   audio:"« Fashion week »",
    texte:"Dans le sac de sport, il y a toujours la même chose : une bouteille 🥤, une serviette, et un truc à grignoter… avec plus d'ingrédients qu'on ne peut faire de push-ups !\n\nLe jerky, c'est de la viande séchée, un peu de sel et de vinaigre de cidre, et rien d'autre. Riche en protéines (75 g pour 100 g) 💪, sans sucre, et ça se transporte très facilement 🎒",
    tags:"#proteines #snackproteine #jerky #musculation #crossfit #nutritionsportive #collationsaine #sansucre #viandesechee #sportfrance #prisedemasse #snacksain"},
-  {id:"s6", date:"Lundi 19 octobre, 12h30", titre:"Vous avez voté", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
+  {id:"s6", date:"Lundi 19 octobre, 12h30", titre:"Vous avez voté - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
    visuel:"Écran 1 : capture du sondage avec ses résultats.\nÉcran 2 : fond ocre avec le pourcentage obtenu.\nÉcran 3 : deux ou trois réponses reçues, en captures anonymisées.",
    texte:"Écran 1 : « Vous avez voté. »\nÉcran 2 : « Vous êtes X % à nous suivre pour les jerkys. Du coup, on vous en montre plus ce mois-ci. »\nÉcran 3 : « Message reçu. On y travaille. »", tags:""},
-  {id:"s3", date:"Mardi 20 octobre, 18h30", titre:"Le jerky de sanglier", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et ses usages",
-   visuel:"Carrousel de 3 images au modèle Gravure, construit à partir de la photo que vous avez fournie.\n1. La photo en pleine largeur, avec l'accroche : « Le sanglier, vous avez déjà goûté ? »\n2. Fond brun : « Une viande maigre, au goût franc, qui ne ressemble à aucune autre. »\n3. Fond brun : « Séché vingt-quatre heures, sans sucre ni conservateur. » et l'appel « Lien dans la bio ».",
-   texte:"Il y a ceux qui s'arrêtent au bœuf. Et il y a les autres 🐗.\n\nLe sanglier, c'est une viande de caractère. Maigre, dense, avec un goût qui ne s'excuse pas 💪. On la sèche lentement, comme tout le reste : du sel, un peu de vinaigre de cidre, du temps, rien d'autre.\n\nSi vous cherchez un snack qui a du caractère, c'est par là. 10,90 € les 40 grammes, lien dans la bio.\n\nEt vous, vous êtes plutôt classique ou aventurier ? 👇",
+  {id:"s3", date:"Mardi 20 octobre, 18h30", titre:"Le jerky de sanglier - Carrousel", resa:"Instagram, Facebook", format:"Carrousel de 3 images", pilier:"Le produit et ses usages",
+   texte:"Il y a ceux qui s'arrêtent au bœuf. Et il y a les autres 🐗.\n\nLe sanglier, c'est une viande de caractère. Maigre, dense, avec un goût qui ne s'excuse pas 💪. On la sèche lentement, comme tout le reste : du sel, un peu de vinaigre de cidre, du temps, rien d'autre.\n\nSi vous cherchez un snack qui a du caractère, c'est par là. 10,90 € les 40 grammes, lien dans la bio.\n\nEt vous, vous êtes plutôt classique ou aventurier ?",
    tags:"#jerky #viandesechee #sanglier #snackproteine #gibier #produitlocal #hautespyrenees #artisanfrancais #keto #carnivore #sansadditif #snacksain"},
-  {id:"s8", date:"Mercredi 21 octobre, 18h30", titre:"Qui est derrière Sokarn", resa:"Instagram, Facebook", format:"Publication ou carrousel de 3", pilier:"Les visages et la communauté",
+  {id:"s8", date:"Mercredi 21 octobre, 18h30", titre:"Qui est derrière Sokarn - Carrousel", resa:"Instagram, Facebook", format:"Publication ou carrousel de 3", pilier:"Les visages et la communauté",
    visuel:"Portrait de Céline et Salomé à l'atelier, en situation de travail plutôt qu'en pose.\nEn carrousel : portrait, puis plan de l'atelier, puis gros plan des mains au travail.",
    demande:"Un portrait de vous deux à l'atelier en situation de travail, un plan de l'atelier, et un gros plan des mains au travail.",
    texte:"Derrière Sokarn, il y a deux femmes, un atelier dans les Hautes-Pyrénées 🏔️, et une conviction un peu têtue : on peut faire des snacks à base de viande sans sucre, sans additif et sans compromis.\n\nOn a commencé parce qu'on ne trouvait pas ce qu'on cherchait. Aujourd'hui, on sèche, on fume, on emballe, et on expédie dans toute la France 📦.\n\nChaque commande qui part d'ici a été préparée par l'une de nous deux.\n\nMerci d'être là ❤️",
    tags:"#artisanfrancais #femmesentrepreneurs #madeinfrance #hautespyrenees #produitlocal #savoirfaire #atelierartisanal #viandesechee #jerky #entrepreneuriat #occitanie #petiteentreprise"},
-  {id:"s9", date:"Jeudi 22 octobre, 12h30", titre:"Ça se conserve combien de temps ?", resa:"Instagram, stories", format:"4 écrans", pilier:"Le produit et ses usages",
+  {id:"s9", date:"Jeudi 22 octobre, 12h30", titre:"Ça se conserve combien de temps ? - Story", resa:"Instagram, stories", format:"4 écrans", pilier:"Le produit et ses usages",
    visuel:"Écran 1 : fond ocre, la question en gros.\nÉcran 2 : photo d'un paquet avec la réponse.\nÉcran 3 : plan du placard ou du sac.\nÉcran 4 : sticker questions.",
    texte:"Écran 1 : « Ça se conserve combien de temps ? »\nÉcran 2 : « Six mois après ouverture pour tous nos produits secs. »\nÉcran 3 : « Pas besoin de frigo. C'est tout l'intérêt du séchage. »\nÉcran 4 : « Une autre question sur nos produits ? »", tags:""},
-  {id:"s10", date:"Vendredi 23 octobre, 18h30", titre:"Le Crêp'Karn", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le produit et ses usages",
+  {id:"s10", date:"Vendredi 23 octobre, 18h30", titre:"Le Crêp'Karn - Reel", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le produit et ses usages",
    visuel:"Recette filmée en plan fixe au-dessus du plan de travail : poudre versée, œufs ajoutés, mélange, pâte dans la poêle, retournement, assiette finie.\nRythme rapide, musique entraînante.\nTextes à l'écran : « De la farine de viande », « En crêpes », « 71,5 g de protéines pour 100 g ».",
-   demande:"Soit une vidéo de recette de crêpes que vous auriez déjà filmée, soit un envoi de Crêp'Karn pour que je filme la recette moi-même. Dites-moi laquelle des deux.",
+   demande:"Soit une vidéo de recette de crêpes que vous auriez déjà filmée, soit un envoi de Crêp'Karn pour que je filme la recette moi-même.",
    texte:"Une farine qui ne vient pas d'un champ 🌾\n\nLe Crêp'Karn, c'est de la viande déshydratée et réduite en poudre. On l'utilise comme une farine : crêpes, galettes, pancakes, liant pour une sauce.\n\nZéro glucide, 71,5 grammes de protéines pour 100 grammes 💪. Et c'est tout.\n\nLa recette complète est sur le site, dans la rubrique recettes. Et si vous l'avez déjà testée, racontez-nous en commentaire ce que vous en avez fait 👇",
    tags:"#crepes #recettecetogene #keto #carnivore #sansgluten #sanscereales #proteines #recettefacile #viandesechee #cuisinemaison #lowcarb #snacksain"},
-  {id:"s11", date:"Samedi 24 octobre, 11h", titre:"Un seul produit pour tout l'automne", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages",
+  {id:"s11", date:"Samedi 24 octobre, 11h", titre:"Un seul produit pour tout l'automne - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"Les visages",
    visuel:"Écran 1 : l'une de vous deux face caméra, 10 secondes.\nÉcran 2 : l'autre répond, 10 secondes. Un désaccord entre vous est idéal.\nÉcran 3 : fond ocre, sticker questions.",
    demande:"Vos deux réponses face caméra, dix secondes chacune. Un désaccord entre vous est idéal.",
    texte:"Écran 1 : « Question qu'on se pose souvent entre nous : si tu ne devais garder qu'un seul produit Sokarn pour tout l'automne, ce serait lequel ? »\nÉcran 2 : votre réponse et pourquoi.\nÉcran 3 : « Et vous ? »", tags:""},
-  {id:"s12", date:"Lundi 26 octobre, 12h30", titre:"Vos réponses", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
+  {id:"s12", date:"Lundi 26 octobre, 12h30", titre:"Vos réponses - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté",
    visuel:"Écran 1 : trois ou quatre réponses reçues, en captures.\nÉcran 2 : le produit le plus cité, avec le lien vers sa fiche.\nÉcran 3 : le produit à découvrir ensuite, avec le lien vers sa fiche.",
    texte:"Écran 1 : « Vous avez été nombreux à répondre. »\nÉcran 2 : « Le grand gagnant, c'est… »\nÉcran 3 : « Vous avez aimé celui-là ? Alors vous aimerez sûrement… » suivi du produit complémentaire et du lien vers sa fiche.", tags:""},
-  {id:"s13", date:"Mardi 27 octobre, 18h30", titre:"Le Sable Noir", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 secondes", pilier:"Le produit et ses usages",
+  {id:"s13", date:"Mardi 27 octobre, 18h30", titre:"Le Sable Noir - Reel", resa:"Instagram, TikTok, Facebook", format:"Reel, 15 secondes", pilier:"Le produit et ses usages",
    visuel:"Vidéo produite par Manon, à partir de vos photos animées et de plans d'ambiance générés. Rien à filmer de votre côté.\nTextes à l'écran : « Besoin d'ajouter des protéines à vos soupes et salades ? », puis « Découvrez le Sable Noir ».",
    demande:"Une photo du sachet de Sable Noir ouvert, et une photo d'une assiette saupoudrée. Je les anime ensuite.",
    texte:"On appelle ça le Sable Noir. C'est du graton de porc noir émietté, et c'est devenu notre condiment préféré 🖤\n\nSur une salade, sur des œufs brouillés, dans une soupe, sur une purée. Ça apporte du croustillant, un goût de cochon grillé, et 40 grammes de protéines pour 100 grammes 💪.\n\nSi vous ne deviez tester qu'un produit pour commencer, ce serait peut-être celui-là 👀",
    tags:"#proteines #condiment #grattons #porcnoirdebigorre #astucecuisine #keto #carnivore #recettefacile #croustillant #produitlocal #hautespyrenees #snacksain"},
-  {id:"s14", date:"Mercredi 28 octobre, 18h30", titre:"La sélection d'Halloween", resa:"Instagram, Facebook", format:"Carrousel de 4 images", pilier:"Le produit, angle saisonnier",
-   visuel:"Fond très sombre, lumière de bougie, produits sur pierre.\n1. Image d'accroche avec les trois produits.\n2, 3 et 4 : un produit par image, nom en gros.\nProduits : Tête en chips, Sang froid, Panse bête.",
+  {id:"s14", date:"Mercredi 28 octobre, 18h30", titre:"La sélection d'Halloween - Carrousel", resa:"Instagram, Facebook", format:"Carrousel de 4 images", pilier:"Le produit, angle saisonnier",
    texte:"Tête en chips. Sang froid. Panse bête 🎃\n\nNon, ce ne sont pas des noms inventés pour Halloween. Ce sont nos produits, toute l'année.\n\nChez nous, on utilise l'animal entier. Ce qui part ailleurs à la poubelle devient ici un snack ♻️. C'est moins glamour que le filet, c'est tout aussi bon, et c'est surtout beaucoup plus respectueux de la bête.\n\nAlors pour une fois, nos noms sont de saison 🦇",
    tags:"#halloween #fromnosetotail #antigaspi #abats #viandesechee #snackoriginal #artisanfrancais #keto #carnivore #produitlocal #hautespyrenees #gastronomie"},
-  {id:"s15", date:"Jeudi 29 octobre, 12h30", titre:"Les commandes de la semaine", resa:"Instagram, stories", format:"3 écrans", pilier:"Les coulisses",
+  {id:"s15", date:"Jeudi 29 octobre, 12h30", titre:"Les commandes de la semaine - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"Les coulisses",
    visuel:"Écran 1 : colis alignés prêts à partir, vidéo courte.\nÉcran 2 : emballage d'une commande, mains au travail.\nÉcran 3 : colis fermé avec le logo, sticker lieu.",
    demande:"Les rushes d'expédition : colis alignés prêts à partir, emballage d'une commande, étiquette d'adresse.",
    texte:"Écran 1 : « Les commandes de la semaine. »\nÉcran 2 : « Chaque colis est préparé à la main, ici, dans les Hautes-Pyrénées. »\nÉcran 3 : « Direction toute la France. Et parfois plus loin. »", tags:""},
-  {id:"s16", date:"Vendredi 30 octobre, 18h30", titre:"D'où vient la viande", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
+  {id:"s16", date:"Vendredi 30 octobre, 18h30", titre:"D'où vient la viande - Reel", resa:"Instagram, TikTok, Facebook", format:"Reel, 20 à 30 secondes", pilier:"Le savoir-faire",
    visuel:"Si un éleveur partenaire accepte : animaux en extérieur, échange avec l'éleveur, retour à l'atelier.\nSinon : viande fraîche à la découpe, main qui tranche, grille qui se remplit.\nTextes à l'écran : « On sait d'où vient notre viande », « Élevée ici, dans les Pyrénées », « Sauf celles qui ne vivent pas ici. On vous dit lesquelles. »",
    demande:"Les informations sur la provenance des viandes, et votre accord ou non pour mettre en avant un éleveur local en le citant par son nom.",
    texte:"La question qu'on nous pose le plus souvent : d'où vient la viande ? 🐂\n\nRéponse : d'éleveurs qu'on connaît, à quelques kilomètres de l'atelier. Pas d'une centrale d'achat, pas d'un pays qu'on préfère ne pas nommer sur l'emballage.\n\nLes seules exceptions, ce sont les viandes qu'on ne trouve pas ici. Le kangourou ne court pas encore dans les Pyrénées 🦘.\n\nC'est plus cher à produire. C'est aussi la seule façon de faire qui nous intéresse 🏔️",
    tags:"#circuitcourt #producteurlocal #elevage #hautespyrenees #madeinfrance #artisanfrancais #tracabilite #viandesechee #occitanie #savoirfaire #keto #carnivore"},
-  {id:"s17", date:"Samedi 31 octobre, 11h", titre:"Halloween et lancement de la newsletter", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté et la conversion",
+  {id:"s17", date:"Samedi 31 octobre, 11h", titre:"Halloween et lancement de la newsletter - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté et la conversion",
    visuel:"Écran 1 : les produits en ambiance Halloween.\nÉcran 2 : sondage entre deux produits.\nÉcran 3 : annonce de la newsletter, avec le code de bienvenue et le sticker lien vers le formulaire d'inscription.",
    demande:"La mécanique du code de bienvenue : pourcentage ou montant fixe, montant minimum de commande, durée de validité, produits éventuellement exclus.",
    texte:"Écran 1 : « Joyeux Halloween de la part de la tribu 🎃 »\nÉcran 2, sondage : « Vous êtes plutôt Tête en chips ou Panse bête ? »\nÉcran 3 : « Notre newsletter arrive. Un code de bienvenue est offert à l'inscription, valable une fois, que vous soyez déjà client ou pas encore. »", tags:""}
@@ -426,6 +396,30 @@ const TACHES = [
   ]}
 ];
 
+const ELEMENTS = [
+  {g:"Vidéos à tourner", items:[
+    {id:"v1", t:"Le séchage : lamelles sur la grille, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie."},
+    {id:"v2", t:"L'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir."},
+    {id:"v3", t:"La recette Crêp'Karn : poudre versée, mélange, cuisson, retournement, assiette finie."},
+    {id:"v4", t:"L'expédition : colis alignés, emballage d'une commande, étiquette d'adresse."},
+    {id:"v5", t:"L'origine : si possible chez un éleveur partenaire, sinon viande fraîche à la découpe."},
+    {id:"v6", t:"Deux face caméra : la question « un seul produit pour tout l'automne » et votre réponse chacune."}
+  ]},
+  {g:"Photos à fournir", items:[
+    {id:"p1", t:"Un portrait de vous deux à l'atelier, en situation de travail."},
+    {id:"p2", t:"Le Crêp'Karn sur fond neutre."}
+  ]},
+  {g:"Informations à confirmer", items:[
+    {id:"i1", t:"Durée et température exactes de séchage, par famille de produits."},
+    {id:"i2", t:"Valeurs nutritionnelles du produit montré dans le reel sport."},
+    {id:"i3", t:"Dates de retour en stock, en commençant par le pemmican et l'écorce de porc noir."},
+    {id:"i4", t:"Liste des viandes qui ne proviennent pas d'éleveurs locaux."},
+    {id:"i5", t:"Accord, ou non, pour citer un éleveur partenaire par son nom, et ses coordonnées si oui."},
+    {id:"i6", t:"Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus."},
+    {id:"i7", t:"Accès au compte publicitaire Meta, en tant qu'annonceur ou administrateur selon ce que permet votre Business Manager, ainsi qu'à la page Facebook et au compte Instagram associés."}
+  ]}
+];
+
 let retours = {};
 let auteur = localStorage.getItem("mch-auteur") || "";
 
@@ -439,7 +433,7 @@ function erreur(msg){
 
 async function charger(){
   try {
-    const url = SB_URL + "/rest/v1/retours?projet=eq." + PROJET + "&periode=in.(" + PERIODE + "," + PERIODE_WEB + ")&select=*";
+    const url = SB_URL + "/rest/v1/retours?projet=eq." + PROJET + "&periode=in.(" + PERIODE + "," + PERIODE_WEB + "," + PERIODE_ELEM + ")&select=*";
     const r = await fetch(url, { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } });
     if (!r.ok) throw new Error(r.status);
     const rows = await r.json();
@@ -449,7 +443,7 @@ async function charger(){
   } catch(e) {
     erreur("Impossible de charger les données enregistrées. Vérifiez votre connexion, puis rechargez la page.");
   }
-  render(); renderTaches();
+  render(); renderElements(); renderTaches();
 }
 
 async function enregistrer(id, champs, el, periode){
@@ -508,7 +502,7 @@ function render(){
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
   ${p.demande ? `<div class="soon"><b>De votre côté :</b> ${esc(p.demande)}</div>` : ``}
   ${auteur === "Manon" ? `<div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>` : ``}
-  <div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>
+  ${p.visuel ? `<div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>` : ``}
   ${p.audio ? `<div class="block"><div class="lab">Son à appliquer sur Instagram</div><div class="val">${esc(p.audio)}</div></div>` : ``}
   <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
   <div class="block"><div class="lab">Texte de publication</div><div class="caption">${esc(p.texte)}</div></div>
@@ -566,6 +560,30 @@ function zonesReponse(){
       timer = setTimeout(() => enregistrer(p.id, { reponse: e.target.value }, document.getElementById("ok-" + p.id)), 900);
     });
   });
+}
+
+function renderElements(){
+  const c = document.getElementById("elements");
+  c.innerHTML = ELEMENTS.map(g => `
+<div class="box">
+  <h3>${esc(g.g)}</h3>
+  <ul class="cases">` + g.items.map(it => {
+      const fait = (retours[it.id] || {}).statut === "fait";
+      return `<li class="${fait ? "fait" : ""}"><label><input type="checkbox" data-el="${it.id}"${fait ? " checked" : ""}><span>${esc(it.t)}</span></label></li>`;
+    }).join("") + `</ul>
+</div>`).join("");
+
+  c.querySelectorAll("input[data-el]").forEach(el => {
+    el.addEventListener("change", async e => {
+      const id = e.target.getAttribute("data-el");
+      await enregistrer(id, { statut: e.target.checked ? "fait" : "" }, null, PERIODE_ELEM);
+      renderElements();
+    });
+  });
+
+  const tous = ELEMENTS.flatMap(g => g.items);
+  const faits = tous.filter(it => (retours[it.id] || {}).statut === "fait").length;
+  document.getElementById("progress-elements").textContent = faits + " sur " + tous.length + " transmis";
 }
 
 function renderTaches(){
