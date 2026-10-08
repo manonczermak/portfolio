@@ -48,6 +48,27 @@
   .medias{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .medias a{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
   .medias img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .medias button.vignette{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface-2);cursor:zoom-in}
+  .medias button.vignette:hover{border-color:var(--accent)}
+  .medias button.vignette:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  .visio{position:fixed;inset:0;z-index:9999;display:none;background:rgba(20,14,6,.95)}
+  .visio.on{display:flex;flex-direction:column}
+  .visio-haut{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;color:#F0E6C5;font-size:14px}
+  .visio-corps{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:0 14px 10px;min-height:0}
+  .visio-corps img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
+  .visio-bas{display:flex;justify-content:center;gap:8px;padding:14px}
+  .visio-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;border:none;background:rgba(250,245,229,.92);color:#241A0E;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .visio-nav:hover{background:#fff}
+  .visio-prec{left:14px}
+  .visio-suiv{right:14px}
+  .visio-fermer{border:none;background:rgba(250,245,229,.92);color:#241A0E;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+  .visio-fermer:hover{background:#fff}
+  .visio-points{display:flex;gap:7px}
+  .visio-points i{display:block;width:9px;height:9px;border-radius:999px;background:rgba(240,230,197,.35)}
+  .visio-points i.on{background:var(--accent)}
+  @media (max-width:640px){.visio-nav{width:44px;height:44px;font-size:22px}.visio-prec{left:6px}.visio-suiv{right:6px}}
+
   .media-video{border-radius:10px;overflow:hidden;border:1px solid var(--line);max-width:340px}
   .media-video video{width:100%;display:block;background:#000}
   .media-vide{border:2px dashed var(--line);border-radius:10px;background:repeating-linear-gradient(135deg,var(--surface-2) 0 12px,var(--surface) 12px 24px);color:var(--ink-3);padding:22px;text-align:center;font-size:14px}
@@ -228,6 +249,19 @@
     <a class="haut" href="#">Revenir en haut</a>
   </div>
 </section>
+
+<div class="visio" id="visio" role="dialog" aria-modal="true" aria-label="Visionneuse de visuels">
+  <div class="visio-haut">
+    <span id="visio-titre"></span>
+    <button type="button" class="visio-fermer" id="visio-fermer">Fermer</button>
+  </div>
+  <div class="visio-corps" id="visio-corps">
+    <button type="button" class="visio-nav visio-prec" id="visio-prec" aria-label="Visuel précédent">&#8249;</button>
+    <img id="visio-img" src="" alt="">
+    <button type="button" class="visio-nav visio-suiv" id="visio-suiv" aria-label="Visuel suivant">&#8250;</button>
+  </div>
+  <div class="visio-bas"><span class="visio-points" id="visio-points"></span></div>
+</div>
 
 <script>
 /* ===========================================================
@@ -460,7 +494,7 @@ function blocMedias(id){
   if (!f.length) return `<div class="media-vide">Visuels à venir</div>`;
   const video = f.find(n => /\.(mp4|mov|webm)$/i.test(n));
   if (video) return `<div class="media-video"><video controls preload="metadata" src="medias/${esc(video)}"></video></div>`;
-  return `<div class="medias">` + f.map(n => `<a href="medias/${esc(n)}" target="_blank" rel="noopener"><img src="medias/${esc(n)}" alt="" loading="lazy"></a>`).join("") + `</div>`;
+  return `<div class="medias">` + f.map((n, k) => `<button type="button" class="vignette" data-post="${esc(id)}" data-i="${k}" aria-label="Agrandir le visuel ${k + 1} sur ${f.length}"><img src="medias/${esc(n)}" alt="" loading="lazy"></button>`).join("") + `</div>`;
 }
 
 function render(){
@@ -585,6 +619,76 @@ function majCompteur(){
   const n = POSTS.filter(p => retours[p.id] && retours[p.id].statut).length;
   document.getElementById("progress").textContent = n + (n > 1 ? " contenus traités sur " : " contenu traité sur ") + POSTS.length;
 }
+
+/* ---------- visionneuse ---------- */
+const VISIO = { liste: [], i: 0, titre: "", retour: null };
+
+function ouvrirVisio(id, i){
+  const f = (MEDIAS[id] || []).filter(n => !/\.(mp4|mov|webm)$/i.test(n));
+  if (!f.length) return;
+  const p = POSTS.find(x => x.id === id);
+  VISIO.liste = f;
+  VISIO.i = Math.max(0, Math.min(i, f.length - 1));
+  VISIO.titre = p ? p.titre : "";
+  VISIO.retour = document.activeElement;
+  document.getElementById("visio").classList.add("on");
+  document.body.style.overflow = "hidden";
+  majVisio();
+  document.getElementById("visio-fermer").focus();
+}
+
+function majVisio(){
+  const n = VISIO.liste.length;
+  const img = document.getElementById("visio-img");
+  img.src = "medias/" + VISIO.liste[VISIO.i];
+  img.alt = "Visuel " + (VISIO.i + 1) + " sur " + n;
+  document.getElementById("visio-titre").textContent = VISIO.titre + " — visuel " + (VISIO.i + 1) + " sur " + n;
+  const aff = n > 1 ? "flex" : "none";
+  document.getElementById("visio-prec").style.display = aff;
+  document.getElementById("visio-suiv").style.display = aff;
+  document.getElementById("visio-points").innerHTML = VISIO.liste.map((_, k) => '<i class="' + (k === VISIO.i ? "on" : "") + '"></i>').join("");
+}
+
+function deplacerVisio(d){
+  const n = VISIO.liste.length;
+  if (n < 2) return;
+  VISIO.i = (VISIO.i + d + n) % n;
+  majVisio();
+}
+
+function fermerVisio(){
+  document.getElementById("visio").classList.remove("on");
+  document.body.style.overflow = "";
+  document.getElementById("visio-img").src = "";
+  if (VISIO.retour && VISIO.retour.focus) VISIO.retour.focus();
+}
+
+document.getElementById("posts").addEventListener("click", e => {
+  const b = e.target.closest("button.vignette");
+  if (!b) return;
+  ouvrirVisio(b.getAttribute("data-post"), parseInt(b.getAttribute("data-i"), 10));
+});
+document.getElementById("visio-fermer").addEventListener("click", fermerVisio);
+document.getElementById("visio-prec").addEventListener("click", () => deplacerVisio(-1));
+document.getElementById("visio-suiv").addEventListener("click", () => deplacerVisio(1));
+document.getElementById("visio-corps").addEventListener("click", e => {
+  if (e.target.id === "visio-corps") fermerVisio();
+});
+document.addEventListener("keydown", e => {
+  if (!document.getElementById("visio").classList.contains("on")) return;
+  if (e.key === "Escape") { e.preventDefault(); fermerVisio(); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); deplacerVisio(1); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); deplacerVisio(-1); }
+});
+let visioX = null;
+const visioCorps = document.getElementById("visio-corps");
+visioCorps.addEventListener("touchstart", e => { visioX = e.changedTouches[0].clientX; }, { passive: true });
+visioCorps.addEventListener("touchend", e => {
+  if (visioX === null) return;
+  const dx = e.changedTouches[0].clientX - visioX;
+  if (Math.abs(dx) > 45) deplacerVisio(dx < 0 ? 1 : -1);
+  visioX = null;
+}, { passive: true });
 
 document.querySelectorAll('input[name=auteur]').forEach(el => {
   if (el.value === auteur) el.checked = true;
