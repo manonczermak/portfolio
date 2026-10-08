@@ -397,7 +397,7 @@ const TACHES = [
     {id:"w2", t:"Rôle responsable de boutique ajouté", d:"Fiches produit, catégories, avis, codes promo"},
     {id:"w3", t:"Permission d'import CSV accordée", d:"Mise à jour groupée des 49 fiches produit"},
     {id:"w4", t:"Session avec droits administrateur planifiée", d:"Installation des extensions et réglages"},
-    {id:"w5", t:"Accès Google Analytics et Tag Manager", d:"En lecture, pour le suivi mensuel"},
+    {id:"w5", t:"Accès Google Analytics et Tag Manager", d:"Administration sur la propriété Analytics, et non simple lecture, pour marquer les événements clés. Côté Tag Manager, voir la création d'un conteneur propre à Sokarn"},
     {id:"w6", t:"Sauvegarde complète du site", d:"Avec point de restauration identifié"}
   ]},
   {g:"Mesure et outils", items:[
@@ -408,7 +408,9 @@ const TACHES = [
     {id:"w11", t:"Extension de redirections installée", d:"Redirections 301 au fil des renommages"},
     {id:"w12", t:"Enregistrements DNS Brevo chez Infomaniak", d:"Conditionne la délivrabilité de la newsletter"},
     {id:"w13", t:"Adresse e-mail d'expédition créée", d:"Sur le domaine sokarn.com"},
-    {id:"w47", t:"Suivi e-commerce Google Analytics réparé", d:"Zéro achat enregistré sur 90 jours contre 605 commandes dans WooCommerce"},
+    {id:"w47", t:"Suivi e-commerce Google Analytics réparé", d:"Couche de données activée le 8 octobre, les événements partent bien du site. Reste à créer les balises GA4 dans Tag Manager pour qu'ils soient reçus, sans quoi Analytics continue d'afficher zéro euro"},
+    {id:"w49", t:"Conteneur Tag Manager propre à Sokarn créé", d:"Compte ouvert sous une adresse Google appartenant à Sokarn, pas sous celle de Manon, pour que la mesure reste chez vous après la mission. Le conteneur actuel ne contient qu'une balise Google et n'est plus entretenu"},
+    {id:"w50", t:"Bascule vers le nouveau conteneur, dans l'ordre", d:"Construire le conteneur entier, balise Google et balises d'événements, tester en mode aperçu, publier, et seulement ensuite changer l'identifiant dans l'extension WordPress. L'inverse crée un trou dans les données"},
     {id:"w48", t:"Écart de comptage du trafic corrigé", d:"Les visites mesurées ne se recoupent pas avec les commandes : bandeau de consentement ou balise incomplète"}
   ]},
   {g:"Conversion", items:[
@@ -432,7 +434,7 @@ const TACHES = [
     {id:"w28", t:"Page Protéines et sport créée", d:"Porte d'entrée pour la cible sportive"},
     {id:"w29", t:"Catégorie Halal et attribut type de viande", d:"Avec filtrage dans la boutique"},
     {id:"w30", t:"Recettes saisies et balisées", d:"Huit recettes existantes"},
-    {id:"w31", t:"Balises H1 en doublon corrigées", d:"Les 49 fiches produits sont réglées. Restent 9 pages : 5 fiches avec un titre Recette en H1 dans la description courte, les 3 pages légales et la page Jerkies"},
+    {id:"w31", t:"Balises H1 en doublon corrigées", d:"101 pages sur 106 sont conformes. Restent 5 fiches produits dont la description courte contient un titre Recette en H1, qui seront réglées par la réécriture des fiches"},
     {id:"w32", t:"Catégories renommées avec redirections", d:"Termes réellement recherchés"},
     {id:"w33", t:"Rubriques de navigation renommées", d:"Avec redirections et menu harmonisé"},
     {id:"w34", t:"Page Micro nutrition supprimée et redirigée", d:"Contenu insuffisant"},
