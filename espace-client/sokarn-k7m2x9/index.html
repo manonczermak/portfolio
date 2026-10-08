@@ -115,6 +115,7 @@
   ul.cases label{display:flex;gap:11px;align-items:flex-start;cursor:pointer}
   ul.cases input{margin:3px 0 0;width:17px;height:17px;accent-color:var(--accent);flex:none;cursor:pointer}
   ul.cases li.fait span{text-decoration:line-through;color:var(--ink-3)}
+  ul.cases a.lien-el{display:inline-block;margin:5px 0 0 28px;font-size:14px;font-weight:600;color:var(--accent)}
 
   .box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:20px 0}
   .box h3{margin-bottom:10px}
@@ -202,60 +203,24 @@
 
       <div class="block"><div class="lab">En une ligne</div><div class="val">Treize jours de diffusion, 200 € au total, une seule audience sport et nutrition, la vidéo du snack d'après-séance en création principale, et une arrivée sur la nouvelle page Protéines et sport.</div></div>
 
-      <div class="block"><div class="lab">Dates et rythme</div><div class="val">Du lundi 19 au samedi 31 octobre, soit treize jours pleins.
-Le 19 tombe trois jours après la publication du reel du 16 octobre : la publicité diffuse pendant que le contenu organique tourne encore, sur la même cible et avec la même vidéo.
-L'arrêt au 31 est volontaire. Dès les premiers jours de novembre, les enchères montent à l'approche du Black Friday et le coût pour mille impressions augmente nettement. Nous reprendrons à ce moment-là, avec un budget et un dispositif pensés pour cette période.</div></div>
+      <div class="block"><div class="lab">Dates et rythme</div><div class="val">Du lundi 19 au samedi 31 octobre, soit treize jours pleins.</div></div>
 
       <div class="block"><div class="lab">Budget</div><div class="val">200 € au total, soit 15,40 € par jour.
 Budget géré au niveau de la campagne, en répartition automatique : Meta place l'argent là où il convertit, jour par jour, sans que nous ayons à arbitrer à l'avance.</div></div>
 
       <div class="block"><div class="lab">Audience</div><div class="val">France métropolitaine, 25 à 45 ans, tous genres.
-Centres d'intérêt : musculation, CrossFit, course à pied, nutrition sportive, alimentation riche en protéines, compléments protéinés.
-Une seule audience, sans découpage par âge, par genre ni par centre d'intérêt.</div></div>
+Centres d'intérêt : musculation, CrossFit, course à pied, nutrition sportive, alimentation riche en protéines, compléments protéinés.</div></div>
 
-      <div class="block"><div class="lab">Une publicité ou deux, Facebook et Instagram ?</div><div class="val">Une seule publicité, un seul ensemble, placements automatiques. Je reviens ici sur la recommandation du bilan de septembre, qui proposait de séparer Facebook et Instagram en deux ensembles distincts.
-Le déséquilibre constaté en septembre était réel : Facebook a capté 15 239 personnes et 56,23 € sur 59,69 €, Instagram seulement 585 personnes et 3,46 €. Mais la cause n'était pas l'absence de deux ensembles. Nous avions sponsorisé une publication Facebook existante, or une publication appartient à un seul réseau et ne peut pas être diffusée sur l'autre. Le déséquilibre était mécanique, pas stratégique.
-La bonne correction n'est donc pas de doubler les ensembles, c'est de créer la publicité directement dans le gestionnaire de publicités au lieu de booster une publication existante. À partir de là, Meta diffuse librement sur les deux réseaux et arbitre selon la performance.
-Et à 15,40 € par jour, séparer coûterait cher : deux ensembles à 7,70 € chacun, alors que Meta a besoin d'une cinquantaine de conversions par semaine et par ensemble pour sortir de sa phase d'apprentissage. Nous paierions deux apprentissages qui n'aboutiraient ni l'un ni l'autre.
-Ce que nous adaptons, c'est le format du visuel selon l'emplacement, à partir de la même vidéo : 9:16 plein écran pour les Reels et les stories, 4:5 pour les fils d'actualité, 1:1 pour les emplacements restants.
-Point de contrôle le 24 octobre : si la répartition montre à nouveau un réseau écrasé par l'autre sans que la performance le justifie, nous isolerons Instagram sur les derniers jours avec une part garantie du budget restant.</div></div>
+      <div class="block"><div class="lab">Formats</div><div class="val">9:16 plein écran pour les Reels et les stories.
+4:5 pour les fils d'actualité.
+1:1 pour les emplacements restants.
+Point de contrôle le 22 octobre, pour réajuster si besoin.</div></div>
 
-      <div class="block"><div class="lab">Créations</div><div class="val">Deux variantes de la même vidéo dans le même ensemble, qui ne diffèrent que par les deux premières secondes :
-A — « Dans le sac de sport, il y a toujours la même chose. »
-B — « 75 grammes de protéines pour 100 grammes. »
-Meta départagera les deux en deux ou trois jours. Elles renvoient vers la même page.</div></div>
+      <div class="block"><div class="lab">Vidéo</div><div class="media-video"><video controls preload="metadata" src="medias/s5-encas-post-seance.mp4"></video></div></div>
 
-      <div class="block"><div class="lab">Objectif et destination</div><div class="val">Objectif ventes, optimisé sur l'ajout au panier et non sur l'achat.
-À ce niveau de budget, les achats seront trop peu nombreux pour que l'algorithme apprenne quoi que ce soit. L'ajout au panier, lui, se produira assez souvent pour le nourrir.
-Destination : la nouvelle page Protéines et sport, ni la page d'accueil ni une fiche produit.</div></div>
+      <div class="block"><div class="lab">Page d'atterrissage</div><div class="val">La nouvelle page Protéines et sport, à créer la semaine du 12 octobre.</div></div>
 
-      <div class="block"><div class="lab">À tenir avant le 19 octobre</div><div class="val">Pixel Meta et API de conversions installés, avec les événements vue produit, ajout au panier et achat vérifiés dans le gestionnaire d'événements.
-Domaine sokarn.com vérifié dans le Business Manager, et mesure agrégée des événements configurée.
-Accès annonceur ou administrateur au compte publicitaire, à la page Facebook et au compte Instagram. Demande déjà en cours.
-Moyen de paiement actif sur le compte publicitaire.
-Page Protéines et sport en ligne au plus tard le 17 octobre.
-Bandeau de consentement à jour : le pixel ne doit se déclencher qu'après acceptation.
-Valeur de 75 grammes de protéines pour 100 grammes documentée par une source écrite. Elle figure dans la création, donc dans un message payant et largement diffusé. L'analyse en laboratoire recommandée en septembre n'est pas encore faite : il faut au minimum pouvoir justifier ce chiffre.</div></div>
-
-      <div class="block"><div class="lab">Ce que la campagne de septembre nous apprend</div><div class="val">59,69 € dépensés, 21 503 impressions, 430 clics, un taux de clic de 2 % et un coût par clic de 0,14 €. Ce sont d'excellents chiffres, mais ils ont été obtenus sur une audience chaude, la communauté Facebook de la marque. Sur une audience froide ciblée par centres d'intérêt, le coût par clic sera trois à cinq fois plus élevé. Avec 200 €, cela donne un ordre de 220 à 500 visites, et non les 1 400 que laisserait espérer un report direct du coût de septembre.
-Le profil de ceux qui ont cliqué confirme qu'une campagne dédiée est nécessaire : 66 % de femmes, et les 65 ans et plus largement en tête. Nous repartons de zéro sur la cible sport, sans audience préexistante à réutiliser.
-Enfin, sur les 39 commandes de l'opération, 3 seulement étaient rattachées aux réseaux sociaux dans WooCommerce. Sans pixel, le site n'enregistre que le dernier canal utilisé avant l'achat.</div></div>
-
-      <div class="block"><div class="lab">Ce que disent vos chiffres</div><div class="val">Sur les 90 derniers jours : 605 commandes, 51 119 € de ventes nettes, un panier moyen de 85,29 € et huit articles par commande.
-Les commandes contenant du jerky de bœuf, le meilleur indicateur dont nous disposions sur la cible sport, représentent 209 commandes, soit un tiers du total, avec un panier moyen de 96,84 € et dix articles. Cette clientèle dépense 13 % de plus que la moyenne du site.
-Second enseignement, moins confortable : sur un an, ces commandes reculent de 21 % en nombre alors que l'ensemble de la boutique progresse de 10 %. Le panier de ceux qui restent augmente fortement, mais la base se réduit. C'est exactement le segment qu'il faut réalimenter, et c'est le meilleur argument en faveur de cette campagne.</div></div>
-
-      <div class="block"><div class="lab">Seuil de rentabilité et règle de coupe</div><div class="val">Sur la base de la marge de 44,50 € par commande retenue dans la présentation de septembre, la campagne atteint l'équilibre à cinq commandes. Au panier moyen de la cible sport, cinq commandes représentent 484 € de chiffre d'affaires pour 200 € investis.
-Cible de pilotage : un coût par ajout au panier inférieur à 6 €, soit une trentaine d'ajouts au panier et une dizaine de commandes sur la période.
-Seuil d'alerte : au-delà de 13 € par ajout au panier, la campagne ne peut plus atteindre l'équilibre. Vérification le 24 octobre au soir, après cinq jours de diffusion, et arrêt si le seuil est franchi. Le budget restant est alors basculé sur novembre.
-Une précision qui compte : la boutique enregistre une dizaine de commandes par jour hors opération, soit environ 125 sur la durée de la campagne. Cinq commandes supplémentaires sont indiscernables dans cette variation quotidienne. Seul le pixel permettra de les attribuer, ce qui fait de son installation une condition et non un confort.
-Au-delà du chiffre d'affaires immédiat, le livrable du mois est une audience de reciblage exploitable avant les fêtes.</div></div>
-
-      <div class="block"><div class="lab">Un préalable de mesure à traiter</div><div class="val">Google Analytics n'enregistre aucun achat : zéro euro de revenu et zéro acheteur sur 90 jours, quand WooCommerce compte 605 commandes et 51 119 €. Le suivi e-commerce n'est pas configuré.
-Les volumes de visites ne se recoupent pas davantage : 3 300 utilisateurs sur trois mois pour 605 commandes supposerait un taux de conversion de 18 %, ce qui est impossible. Une part importante du trafic n'est pas comptée, probablement à cause du bandeau de consentement ou d'une balise incomplète.
-Conséquence directe : nous ne pourrons pas juger cette campagne depuis Analytics. La mesure reposera sur le pixel Meta, l'API de conversions et les commandes WooCommerce. La réparation du suivi Analytics est ajoutée aux tâches du site.</div></div>
-
-      <div class="block"><div class="lab">Suivi</div><div class="val">Point d'étape le 25 octobre, bilan chiffré le 2 novembre.</div></div>
+      <div class="block"><div class="lab">Suivi</div><div class="val">Bilan final le 2 novembre.</div></div>
 
       <div id="ads-validation"></div>
     </article>
@@ -488,6 +453,10 @@ const TACHES = [
 ];
 
 const ELEMENTS = [
+  {g:"Actions de votre côté", items:[
+    {id:"a1", t:"Souscrire à l'abonnement Standard de Brevo et me transmettre les identifiants de connexion. Tant que le compte n'est pas ouvert, ni le formulaire d'inscription, ni les automatisations, ni la newsletter de novembre ne peuvent démarrer.", lien:"https://onboarding.brevo.com/account/register?utm_term=standard", lienTexte:"Souscrire sur brevo.com"},
+    {id:"i7", t:"Donner à Manon l'accès à votre portefeuille Business Meta, avec la gestion du compte publicitaire, ainsi qu'à la page Facebook et au compte Instagram associés. Le rôle annonceur suffit pour diffuser, l'accès administrateur est nécessaire pour installer le pixel et l'API de conversions.", lien:"https://business.facebook.com/settings/people", lienTexte:"Ouvrir les paramètres du portefeuille"}
+  ]},
   {g:"Vidéos à tourner", items:[
     {id:"v1", t:"Le séchage : lamelles sur la grille, fermeture du déshydrateur, ouverture le lendemain, gros plan sur une lamelle qu'on plie."},
     {id:"v2", t:"L'atelier : travelling sur les grilles chargées, mains qui disposent les lamelles, paquets alignés prêts à partir."},
@@ -500,8 +469,14 @@ const ELEMENTS = [
     {id:"p1", t:"Un portrait de vous deux à l'atelier, en situation de travail."},
     {id:"p2", t:"Le Crêp'Karn sur fond neutre."}
   ]},
-  {g:"Produits à m'envoyer", items:[
-    {id:"pr1", t:"Un sachet de Sable Noir, pour le reel du 27 octobre. Je photographie et j'anime moi-même, vous n'avez rien à produire."}
+  {g:"Produits à m'envoyer", note:"Un exemplaire de chacun suffit. Je constitue une banque d'images et de vidéos réutilisable : plans produit pour les fiches, visuels pour la page Protéines et sport, et contenus de novembre. Les cinq premiers sont vos meilleures ventes sur mars à septembre, ce sont celles qui méritent les plus belles images.", items:[
+    {id:"pr1", t:"Suif de bœuf. Première vente du catalogue, 641 commandes et 1 661 articles sur six mois."},
+    {id:"pr2", t:"Jerky de bœuf. Deuxième vente, 590 commandes, et la référence de la gamme jerky pour la campagne sport."},
+    {id:"pr3", t:"Gratons de bœuf. Troisième vente, 242 commandes, 93 unités en stock."},
+    {id:"pr4", t:"Saindoux de Porc Noir de Bigorre. Quatrième vente, 374 commandes."},
+    {id:"pr5", t:"Écorce de Porc Noir de Bigorre. Cinquième vente, 226 commandes. Seulement 10 unités en stock au dernier relevé : si c'est trop juste, remplacez par la Tête en chips, qui suit immédiatement au classement."},
+    {id:"pr6", t:"Sable Noir, pour le reel du 27 octobre. Je photographie et j'anime moi-même, vous n'avez rien à produire."},
+    {id:"pr7", t:"Crêp'Karn, pour la recette de crêpes du 23 octobre, sauf si vous l'avez déjà filmée de votre côté."}
   ]},
   {g:"Informations à confirmer", items:[
     {id:"i1", t:"Durée et température exactes de séchage, par famille de produits."},
@@ -509,8 +484,7 @@ const ELEMENTS = [
     {id:"i3", t:"Dates de retour en stock, en commençant par le pemmican et l'écorce de porc noir."},
     {id:"i4", t:"Liste des viandes qui ne proviennent pas d'éleveurs locaux."},
     {id:"i5", t:"Accord, ou non, pour citer un éleveur partenaire par son nom, et ses coordonnées si oui."},
-    {id:"i6", t:"Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus."},
-    {id:"i7", t:"Accès au compte publicitaire Meta, en tant qu'annonceur ou administrateur selon ce que permet votre Business Manager, ainsi qu'à la page Facebook et au compte Instagram associés."}
+    {id:"i6", t:"Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus."}
   ]}
 ];
 
@@ -661,9 +635,11 @@ function renderElements(){
   c.innerHTML = ELEMENTS.map(g => `
 <div class="box">
   <h3>${esc(g.g)}</h3>
+  ${g.note ? `<p style="margin:0 0 10px;font-size:15px;color:var(--ink-2)">${esc(g.note)}</p>` : ``}
   <ul class="cases">` + g.items.map(it => {
       const fait = (retours[it.id] || {}).statut === "fait";
-      return `<li class="${fait ? "fait" : ""}"><label><input type="checkbox" data-el="${it.id}"${fait ? " checked" : ""}><span>${esc(it.t)}</span></label></li>`;
+      const lien = it.lien ? `<a class="lien-el" href="${esc(it.lien)}" target="_blank" rel="noopener">${esc(it.lienTexte || "Ouvrir le lien")}</a>` : ``;
+      return `<li class="${fait ? "fait" : ""}"><label><input type="checkbox" data-el="${it.id}"${fait ? " checked" : ""}><span>${esc(it.t)}</span></label>${lien}</li>`;
     }).join("") + `</ul>
 </div>`).join("");
 
@@ -677,7 +653,7 @@ function renderElements(){
 
   const tous = ELEMENTS.flatMap(g => g.items);
   const faits = tous.filter(it => (retours[it.id] || {}).statut === "fait").length;
-  document.getElementById("progress-elements").textContent = faits + " sur " + tous.length + " transmis";
+  document.getElementById("progress-elements").textContent = faits + " sur " + tous.length + " traités";
 }
 
 function renderAds(){
