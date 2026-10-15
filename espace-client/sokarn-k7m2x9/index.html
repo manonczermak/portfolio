@@ -103,6 +103,11 @@
   .pub.publie,.pub.prog{border-color:var(--sage);background:var(--sage-bg);color:var(--ink)}
   select.pubsel{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:15px/1.4 Inter,sans-serif;color:var(--ink);background:var(--surface)}
   select.pubsel:focus{outline:2px solid var(--accent);border-color:transparent}
+  .post.replie .corps{display:none}
+  .post.replie.ouvert .corps{display:block}
+  button.deplier{margin-top:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+   border-radius:999px;padding:7px 15px;font:600 14px/1 Inter,sans-serif;cursor:pointer}
+  button.deplier:hover{border-color:var(--accent);color:var(--ink)}
 
   .bouton{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--surface);border-radius:999px;padding:15px 28px;font-size:15px;font-weight:600;text-decoration:none}
   .bouton:hover{opacity:.88}
@@ -497,6 +502,7 @@ const ELEMENTS = [
 
 let retours = {};
 let auteur = localStorage.getItem("mch-auteur") || "";
+let deplies = new Set();
 
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
@@ -562,9 +568,10 @@ function render(){
     const cls = st === "valide" ? " done" : (st === "revoir" ? " todo" : "");
     const pub = r.publication || "";
     const pubTxt = pub === "publie" ? "Publié" : (pub === "planifie" ? "Planifié" : "À planifier");
+    const replie = (pub === "planifie" || pub === "publie") ? (deplies.has(p.id) ? " replie ouvert" : " replie") : "";
     const sign = (st || r.commentaire) && r.auteur ? `<div class="signature">${esc(r.auteur)}, le ${esc(dateFr(r.maj))}</div>` : "";
     return `
-<article class="post${cls}" id="bloc-${p.id}">
+<article class="post${cls}${replie}" id="bloc-${p.id}">
   <div class="post-head">
     <div><div class="date">${esc(p.date)}</div><h3>${esc(p.titre)}</h3></div>
     <div class="meta">
@@ -574,9 +581,11 @@ function render(){
       <span class="pub ${pub}">${pubTxt}</span>
     </div>
   </div>
+  ${auteur === "Manon" ? `<div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>` : ``}
+  ${replie ? `<button type="button" class="deplier" data-dep="${p.id}">${deplies.has(p.id) ? "Masquer le détail" : "Afficher le détail"}</button>` : ``}
+  <div class="corps">
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
   ${p.demande ? `<div class="soon"><b>De votre côté :</b> ${esc(p.demande)}</div>` : ``}
-  ${auteur === "Manon" ? `<div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>` : ``}
   ${p.visuel ? `<div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>` : ``}
   ${p.audio ? `<div class="block"><div class="lab">Son à appliquer sur Instagram</div><div class="val">${esc(p.audio)}</div></div>` : ``}
   <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
@@ -593,6 +602,7 @@ function render(){
     ${r.reponse ? `<div class="reply"><b>Réponse de Manon</b>${esc(r.reponse)}</div>` : ``}
     <div id="zone-rep-${p.id}"></div>
   </div>
+  </div>
 </article>`;
   }).join("");
 
@@ -603,6 +613,16 @@ function render(){
       render();
     });
   });
+  c.querySelectorAll("button[data-dep]").forEach(b => {
+    b.addEventListener("click", e => {
+      const id = e.currentTarget.getAttribute("data-dep");
+      if (deplies.has(id)) { deplies.delete(id); } else { deplies.add(id); }
+      render();
+      const bloc = document.getElementById("bloc-" + id);
+      if (bloc) bloc.scrollIntoView({ block: "nearest" });
+    });
+  });
+
   c.querySelectorAll('select[data-pub]').forEach(sel => {
     sel.addEventListener("change", async e => {
       const id = e.target.getAttribute("data-pub");
