@@ -158,14 +158,6 @@
     <h1>Octobre 2026</h1>
     <p class="lead">Les contenus du mois, les campagnes, la newsletter et l'avancée du site, au même endroit. Vous validez, vous commentez, je corrige.</p>
 
-    <div class="idbar">
-      <b>Vous êtes :</b>
-      <label class="who"><input type="radio" name="auteur" value="Céline"> Céline</label>
-      <label class="who"><input type="radio" name="auteur" value="Salomé"> Salomé</label>
-      <label class="who"><input type="radio" name="auteur" value="Manon"> Manon</label>
-      <span class="muted" style="font-size:14px">À choisir en arrivant, pour signer vos retours.</span>
-    </div>
-
     <div class="steps">
       <div class="step"><b>Chaque contenu est détaillé</b><p>Date et heure de publication, réseau, format, pilier éditorial, visuel prévu et texte complet avec ses hashtags.</p></div>
       <div class="step"><b>Vous validez ou vous commentez</b><p>Un contenu validé passe en vert, un contenu à revoir passe en orange. Le commentaire est libre, et vous pouvez revenir dessus plus tard.</p></div>
@@ -581,7 +573,7 @@ function render(){
       <span class="pub ${pub}">${pubTxt}</span>
     </div>
   </div>
-  ${auteur === "Manon" ? `<div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>` : ``}
+  <div class="block"><div class="lab">Suivi de publication</div><select class="pubsel" data-pub="${p.id}"><option value="" ${pub===""?"selected":""}>À planifier</option><option value="planifie" ${pub==="planifie"?"selected":""}>Planifié</option><option value="publie" ${pub==="publie"?"selected":""}>Publié</option></select></div>
   ${replie ? `<button type="button" class="deplier" data-dep="${p.id}">${deplies.has(p.id) ? "Masquer le détail" : "Afficher le détail"}</button>` : ``}
   <div class="corps">
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
@@ -639,7 +631,7 @@ function render(){
     });
   });
 
-  if (auteur === "Manon") zonesReponse();
+  zonesReponse();
   majCompteur();
 }
 
@@ -686,7 +678,6 @@ function renderElements(){
 /* Suivi d'avancement : à faire, en cours, programmé / publié.
    Stocké dans la colonne "publication", comme pour les contenus. */
 function selecteurEtat(id, troisieme){
-  if (auteur !== "Manon") return "";
   const e = (retours[id] || {}).publication || "";
   return `<div class="block"><div class="lab">Suivi d'avancement</div><select class="pubsel" data-etat="${id}"><option value="" ${e===""?"selected":""}>\u00c0 faire</option><option value="encours" ${e==="encours"?"selected":""}>En cours</option><option value="prog" ${e==="prog"?"selected":""}>${esc(troisieme)}</option></select> <span class="saved" id="ok-etat-${id}">Enregistr\u00e9</span></div>`;
 }
@@ -866,15 +857,6 @@ visioCorps.addEventListener("touchend", e => {
   if (Math.abs(dx) > 45) deplacerVisio(dx < 0 ? 1 : -1);
   visioX = null;
 }, { passive: true });
-
-document.querySelectorAll('input[name=auteur]').forEach(el => {
-  if (el.value === auteur) el.checked = true;
-  el.addEventListener("change", e => {
-    auteur = e.target.value;
-    localStorage.setItem("mch-auteur", auteur);
-    render(); renderAds(); renderNewsletter();
-  });
-});
 
 charger();
 setInterval(charger, 60000);
