@@ -199,6 +199,8 @@
         </div>
       </div>
 
+      <div class="corps">
+
       <div class="block"><div class="lab">En une ligne</div><div class="val">Treize jours de diffusion, 200 € au total, une seule audience sport et nutrition, la vidéo du snack d'après-séance en création principale, et une arrivée sur la nouvelle page Protéines et sport.</div></div>
 
       <div class="block"><div class="lab">Dates et rythme</div><div class="val">Du lundi 19 au samedi 31 octobre, soit treize jours pleins.</div></div>
@@ -219,6 +221,8 @@ Point de contrôle le 22 octobre, pour réajuster si besoin.</div></div>
       <div class="block"><div class="lab">Page d'atterrissage</div><div class="val">La nouvelle page Protéines et sport, à créer la semaine du 12 octobre.</div></div>
 
       <div class="block"><div class="lab">Bilan</div><div class="val">Bilan final le 2 novembre.</div></div>
+
+      </div>
 
       <div id="ads-validation"></div>
     </article>
@@ -717,10 +721,18 @@ function renderAds(){
   const r = retours[id] || {};
   const st = r.statut || "";
   const bloc = document.getElementById("bloc-ads-oct");
-  if (bloc) { bloc.classList.remove("done", "todo"); if (st === "valide") bloc.classList.add("done"); if (st === "revoir") bloc.classList.add("todo"); }
+  const etat = r.publication || "";
+  const estReplie = (etat === "planifie" || etat === "prog");
+  if (bloc) {
+    bloc.classList.remove("done", "todo", "replie", "ouvert");
+    if (st === "valide") bloc.classList.add("done");
+    if (st === "revoir") bloc.classList.add("todo");
+    if (estReplie) { bloc.classList.add("replie"); if (deplies.has(id)) bloc.classList.add("ouvert"); }
+  }
   const sign = (st || r.commentaire) && r.auteur ? `<div class="signature">${esc(r.auteur)}, le ${esc(dateFr(r.maj))}</div>` : "";
   const troisieme = "Programm\u00e9e / en ligne";
-  c.innerHTML = selecteurEtat(id, troisieme) + `
+  const bouton = estReplie ? `<button type="button" class="deplier" data-dep="${id}">${deplies.has(id) ? "Masquer le d\u00e9tail" : "Afficher le d\u00e9tail"}</button>` : ``;
+  c.innerHTML = selecteurEtat(id, troisieme) + bouton + `
 <div class="review">
   <div class="choices">
     <label class="choice"><input type="radio" name="st-ads" value="valide" ${st==="valide"?"checked":""}> Campagne valid\u00e9e</label>
@@ -733,6 +745,13 @@ function renderAds(){
 </div>`;
   majPastille(id, "etat-ads-oct", troisieme);
   brancherEtat(c, PERIODE_ADS, renderAds);
+  c.querySelectorAll("button[data-dep]").forEach(b => {
+    b.addEventListener("click", e => {
+      const k = e.currentTarget.getAttribute("data-dep");
+      if (deplies.has(k)) { deplies.delete(k); } else { deplies.add(k); }
+      renderAds();
+    });
+  });
   const ta = c.querySelector("textarea");
   ta.value = r.commentaire || "";
   c.querySelectorAll('input[type=radio]').forEach(el => {
