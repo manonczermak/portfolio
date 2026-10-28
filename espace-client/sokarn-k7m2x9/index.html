@@ -392,73 +392,67 @@ const POSTS = [
    tags:"#circuitcourt #producteurlocal #elevage #hautespyrenees #madeinfrance #artisanfrancais #tracabilite #viandesechee #occitanie #savoirfaire #keto #carnivore"},
   {id:"s17", date:"Samedi 31 octobre, 11h", titre:"Halloween et lancement de la newsletter - Story", resa:"Instagram, stories", format:"3 écrans", pilier:"La communauté et la conversion",
    visuel:"Écran 1 : l'autel d'Halloween.\nÉcran 2 : le sondage, Bigorr’eilles contre Panse bête. La Tête en chips, prévue au départ, est en rupture de stock : elle a été remplacée pour ne pas envoyer la tribu vers un produit introuvable.\nÉcran 3 : annonce de la newsletter, avec le code de bienvenue et le sticker lien vers le formulaire d'inscription.\nLes trois fonds sont prêts ci-dessous, il ne reste qu'à poser les stickers.",
-   demande:"La mécanique du code de bienvenue : pourcentage ou montant fixe, montant minimum de commande, durée de validité, produits éventuellement exclus.",
+   demande:"",
    texte:"Écran 1 : « Joyeux Halloween de la part de la tribu 🎃 »\nÉcran 2, sondage : « Vous êtes plutôt Bigorr’eilles ou Panse bête ? »\nÉcran 3 : « Notre newsletter arrive. Un code de bienvenue est offert à l'inscription, valable une fois, que vous soyez déjà client·e ou pas encore. »", tags:""}
 ];
 
 const TACHES = [
-  {g:"Accès et préalables", items:[
+  {g:"À traiter", items:[
+    {id:"w27", t:"Suppression du halal partout sur le site", d:"En cours. Les quatre fiches produits qui portaient la mention, les textes de catégorie et la navigation. L’atelier transforme du porc dans les mêmes appareils : la certification est impossible en l’état et la mention serait une allégation trompeuse. La page Halal et la catégorie Halal sont abandonnées"},
+    {id:"w20", t:"Fiches produit complétées", d:"En cours. Conservation, durée de vie, délai de livraison, packaging"},
+    {id:"w51", t:"Pixel Meta et Brevo soumis au consentement", d:"Complianz délègue la catégorie marketing à Tag Manager, mais le pixel est chargé directement par l’extension Facebook for WooCommerce, hors du conteneur : il dépose son cookie avant tout choix du visiteur. Même situation pour Brevo. À traiter le 30 octobre, une fois la campagne terminée, pour ne pas casser l’API de conversions en pleine diffusion"},
+    {id:"w52", t:"Page d’accueil : remplacer « Derniers séchages » par trois recettes", d:"Le bloc met aujourd’hui en avant les dernières fiches produit publiées, qui ne sont ni les plus vendues ni toujours disponibles. Trois recettes à la place donnent une raison de rester sur le site et renvoient vers les produits qu’elles utilisent"},
+    {id:"w38", t:"Valeurs nutritionnelles complétées", d:"Les sept éléments réglementaires, sur les fiches qui en sont dépourvues"},
+    {id:"w37", t:"Allégations corrigées sur le site", d:"Santé, minéraux, pemmican, et le titre « choisir selon ton besoin métabolique » sur la page Jerkies"},
+    {id:"w44", t:"Registre RGPD renseigné", d:"Modèle CNIL, une fiche par traitement"},
+    {id:"w26", t:"Meta descriptions des 20 produits phares", d:"Les plus vendus en priorité"},
+    {id:"w30", t:"Recettes saisies et balisées", d:"Les 27 articles recettes du blog à reprendre au format WP Recipe Maker, avec les bonnes balises"},
+    {id:"w36", t:"Performances du site traitées", d:"Fichiers cassés, minification, vitesse des fiches"},
+    {id:"w22", t:"Suggestions de produits dans le panier", d:"Produits complémentaires"}
+  ]},
+  {g:"Déjà traité", items:[
     {id:"w1", t:"Compte éditeur WordPress créé", d:"Pages, articles, blocs Elementor"},
     {id:"w2", t:"Rôle responsable de boutique ajouté", d:"Fiches produit, catégories, avis, codes promo"},
-    {id:"w3", t:"Permission d'import CSV accordée", d:"Mise à jour groupée des 49 fiches produit"},
+    {id:"w3", t:"Permission d’import CSV accordée", d:"Mise à jour groupée des 49 fiches produit"},
     {id:"w4", t:"Session avec droits administrateur planifiée", d:"Installation des extensions et réglages"},
-    {id:"w5", t:"Accès Google Analytics et Tag Manager", d:"Administration sur la propriété Analytics, et non simple lecture, pour marquer les événements clés. Côté Tag Manager, voir la création d'un conteneur propre à Sokarn"},
-    {id:"w6", t:"Sauvegarde complète du site", d:"Avec point de restauration identifié"}
-  ]},
-  {g:"Mesure et outils", items:[
+    {id:"w5", t:"Accès Google Analytics et Tag Manager", d:"Administration sur la propriété Analytics, et non simple lecture, pour marquer les événements clés"},
+    {id:"w6", t:"Sauvegarde complète du site", d:"Avec point de restauration identifié"},
     {id:"w7", t:"Pixel Meta et API de conversions installés", d:"Vue produit, ajout au panier, paiement, achat"},
     {id:"w8", t:"Extension Brevo pour WooCommerce installée", d:"Synchronisation contacts, commandes et paniers"},
     {id:"w9", t:"Extension Facebook for WooCommerce installée", d:"Catalogue produits et identification dans les publications"},
     {id:"w10", t:"Extension WP Recipe Maker installée", d:"Balisage des recettes et intégration Yoast"},
     {id:"w11", t:"Extension de redirections installée", d:"Redirections 301 au fil des renommages"},
     {id:"w12", t:"Enregistrements DNS Brevo chez Infomaniak", d:"Conditionne la délivrabilité de la newsletter"},
-    {id:"w13", t:"Adresse e-mail d'expédition créée", d:"Sur le domaine sokarn.com"},
-    {id:"w47", t:"Suivi e-commerce Google Analytics réparé", d:"Couche de données activée le 8 octobre, les événements partent bien du site. Reste à créer les balises GA4 dans Tag Manager pour qu'ils soient reçus, sans quoi Analytics continue d'afficher zéro euro"},
-    {id:"w49", t:"Conteneur Tag Manager propre à Sokarn créé", d:"Compte ouvert sous une adresse Google appartenant à Sokarn, pas sous celle de Manon, pour que la mesure reste chez vous après la mission. Le conteneur actuel ne contient qu'une balise Google et n'est plus entretenu"},
-    {id:"w50", t:"Bascule vers le nouveau conteneur, dans l'ordre", d:"Construire le conteneur entier, balise Google et balises d'événements, tester en mode aperçu, publier, et seulement ensuite changer l'identifiant dans l'extension WordPress. L'inverse crée un trou dans les données"},
-    {id:"w48", t:"Écart de comptage du trafic corrigé", d:"Les visites mesurées ne se recoupaient pas avec les commandes. Cause identifiée le 23 octobre : trois systèmes de mesure Google tournaient en parallèle, MonsterInsights, le module Analytics de Site Kit et le conteneur. Corrigé en ne gardant que Tag Manager"},
-    {id:"w51", t:"Pixel Meta et Brevo soumis au consentement", d:"Complianz délègue la catégorie marketing à Tag Manager, mais le pixel est chargé directement par l'extension Facebook for WooCommerce, hors du conteneur : il dépose son cookie avant tout choix du visiteur. Même situation pour Brevo. À traiter le 30 octobre, une fois la campagne terminée, pour ne pas casser l'API de conversions en pleine diffusion"}
-  ]},
-  {g:"Conversion", items:[
-    {id:"w14", t:"Bloc d'inscription à la newsletter en ligne", d:"Page d'accueil et pied de page, avec consentement"},
-    {id:"w15", t:"Avis produits réactivés", d:"Réservés aux achats vérifiés"},
-    {id:"w16", t:"Affichage et balisage des avis vérifiés", d:"Pour l'apparition des étoiles dans Google"},
+    {id:"w13", t:"Adresse e-mail d’expédition créée", d:"lacaverne@sokarn.com, sur le domaine sokarn.com"},
+    {id:"w47", t:"Suivi e-commerce Google Analytics réparé", d:"Couche de données activée le 8 octobre, balises GA4 créées dans Tag Manager et vérifiées en mode aperçu"},
+    {id:"w49", t:"Conteneur Tag Manager propre à Sokarn créé", d:"Compte ouvert sous une adresse Google appartenant à Sokarn, pour que la mesure reste chez vous après la mission"},
+    {id:"w50", t:"Bascule vers le nouveau conteneur", d:"Conteneur construit, testé en mode aperçu, publié, puis identifiant changé dans l’extension WordPress"},
+    {id:"w48", t:"Écart de comptage du trafic corrigé", d:"Trois systèmes de mesure Google tournaient en parallèle, MonsterInsights, le module Analytics de Site Kit et le conteneur. Corrigé le 23 octobre en ne gardant que Tag Manager"},
+    {id:"w14", t:"Bloc d’inscription à la newsletter en ligne", d:"Intégré au pied de page sur l’ensemble du site, avec consentement et captcha"},
+    {id:"w15", t:"Avis produits réactivés", d:"Zone d’avis rétablie sur les fiches produit le 28 octobre. Le dépôt est ouvert à tout le monde, sans compte ni connexion, avec approbation manuelle avant publication et le libellé « acheteur certifié » conservé pour distinguer les vrais acheteurs"},
+    {id:"w16", t:"Affichage et balisage des avis", d:"Pour l’apparition des étoiles dans Google, une fois les premiers avis déposés"},
     {id:"w17", t:"Blocs « Trésors de la caverne » rendus cliquables", d:"Quatre blocs vers leurs catégories"},
     {id:"w18", t:"Étiquette « Chasse en cours » remplacée", d:"Libellé des produits en rupture"},
-    {id:"w46", t:"Produits en rupture repoussés en fin de catégorie", d:"Sur chaque page catégorie, pour que les produits disponibles s'affichent en premier"},
-    {id:"w19", t:"Photos produits harmonisées au même format", d:"Sur l'ensemble du catalogue"},
-    {id:"w20", t:"Fiches produit complétées", d:"Conservation, durée de vie, délai de livraison, packaging"},
+    {id:"w46", t:"Produits en rupture repoussés en fin de catégorie", d:"Pour que les produits disponibles s’affichent en premier"},
+    {id:"w19", t:"Photos produits harmonisées au même format", d:"Sur l’ensemble du catalogue"},
     {id:"w21", t:"Barre de progression vers la livraison offerte", d:"Seuil à 50 €, panier et tiroir latéral"},
-    {id:"w22", t:"Suggestions de produits dans le panier", d:"Produits complémentaires"}
-  ]},
-  {g:"Contenus et référencement", items:[
-    {id:"w23", t:"Étude de mots-clés réalisée", d:"Pour verrouiller les intitulés des nouveaux rayons, à partir de l'export des requêtes de la Search Console"},
+    {id:"w23", t:"Étude de mots-clés réalisée", d:"À partir de l’export des requêtes de la Search Console"},
     {id:"w24", t:"Nouvelle arborescence validée", d:"De 14 catégories à cinq ou six"},
-    {id:"w25", t:"Meta descriptions des catégories rédigées", d:"78 pages sur 86 en sont dépourvues"},
-    {id:"w26", t:"Meta descriptions des 20 produits phares", d:"Les plus vendus en priorité"},
-    {id:"w27", t:"Suppression du halal partout sur le site", d:"Les quatre fiches produits qui portaient la mention, les textes de catégorie et la navigation. L'atelier transforme du porc dans les mêmes appareils : la certification est impossible en l'état et la mention serait une allégation trompeuse. La page Halal et la catégorie Halal sont abandonnées"},
-    {id:"w28", t:"Page Protéines et sport créée", d:"Porte d'entrée pour la cible sportive"},
-    {id:"w29", t:"Attribut type de viande avec filtrage", d:"Bœuf, porc, volaille, gibier, abats, poisson, pour naviguer dans le rayon Jerky"},
-    {id:"w30", t:"Recettes saisies et balisées", d:"Huit recettes existantes"},
-    {id:"w31", t:"Balises H1 en doublon corrigées", d:"101 pages sur 106 sont conformes. Restent 5 fiches produits dont la description courte contient un titre Recette en H1, qui seront réglées par la réécriture des fiches"},
+    {id:"w25", t:"Meta descriptions des catégories rédigées", d:"78 pages sur 86 en étaient dépourvues"},
+    {id:"w28", t:"Page Protéines et sport créée", d:"Porte d’entrée pour la cible sportive"},
+    {id:"w29", t:"Attribut type de viande avec filtrage", d:"Bœuf, porc, volaille, gibier, abats, poisson"},
+    {id:"w31", t:"Balises H1 en doublon corrigées", d:"101 pages sur 106 conformes"},
     {id:"w32", t:"Catégories renommées avec redirections", d:"Termes réellement recherchés"},
     {id:"w33", t:"Rubriques de navigation renommées", d:"Avec redirections et menu harmonisé"},
     {id:"w34", t:"Page Micro nutrition supprimée et redirigée", d:"Contenu insuffisant"},
     {id:"w35", t:"Fichier llms.txt vérifié", d:"Pour les moteurs conversationnels"},
-    {id:"w36", t:"Performances du site traitées", d:"Fichiers cassés, minification, vitesse des fiches"}
-  ]},
-  {g:"Conformité", items:[
-    {id:"w37", t:"Allégations corrigées sur le site", d:"Santé, minéraux, pemmican, et le titre « choisir selon ton besoin métabolique » sur la page Jerkies"},
-    {id:"w38", t:"Valeurs nutritionnelles complétées", d:"Les sept éléments réglementaires"},
     {id:"w39", t:"Mentions légales complétées", d:"Hébergeur, SIRET, TVA"},
-    {id:"w41", t:"Politique de confidentialité et de cookies réécrite", d:"Les deux pages sont fusionnées en une seule. Aujourd'hui, la confidentialité reprend le texte par défaut de WordPress et la page cookies s'affiche vide. L'ancienne adresse est conservée en redirection vers la partie cookies, et le lien du bandeau de consentement est repointé dessus"},
-    {id:"w42", t:"CGV révisées et mises en ligne", d:"Rétractation, garanties, médiateur"},
-    {id:"w43", t:"Médiateur de la consommation désigné", d:"Obligatoire pour la vente aux particuliers"},
-    {id:"w44", t:"Registre RGPD renseigné", d:"Modèle CNIL, une fiche par traitement"},
-    {id:"w45", t:"Bandeau de consentement mis à jour", d:"Traceurs Meta et Brevo rattachés"}
+    {id:"w41", t:"Politique de confidentialité et de cookies réécrite", d:"Les deux pages fusionnées en une seule, ancienne adresse conservée en redirection"},
+    {id:"w42", t:"CGV révisées et mises en ligne", d:"Rétractation, garanties, médiateur, carte cadeau utilisable en plusieurs fois"},
+    {id:"w43", t:"Médiateur de la consommation désigné", d:"Contrat souscrit auprès de CM2C"},
+    {id:"w45", t:"Bandeau de consentement mis à jour", d:"Traceurs Meta et Brevo rattachés, catégorie marketing déléguée à Tag Manager"}
   ]}
 ];
-
 const ELEMENTS = [
   {g:"Actions de votre côté", items:[
     {id:"a1", t:"Souscrire à l'abonnement Standard de Brevo et me transmettre les identifiants de connexion. Tant que le compte n'est pas ouvert, ni le formulaire d'inscription, ni les automatisations, ni la newsletter de novembre ne peuvent démarrer.", lien:"https://onboarding.brevo.com/account/register?utm_term=standard", lienTexte:"Souscrire sur brevo.com"},
@@ -483,14 +477,14 @@ const ELEMENTS = [
     {id:"pr2", t:"Jerky de bœuf. Deuxième vente, 590 commandes, et la référence de la gamme jerky pour la campagne sport."},
     {id:"pr3", t:"Gratons de bœuf. Troisième vente, 242 commandes, 93 unités en stock."},
     {id:"pr4", t:"Saindoux de Porc Noir de Bigorre. Quatrième vente, 374 commandes."},
-    {id:"pr5", t:"Écorce de Porc Noir de Bigorre. Cinquième vente, 226 commandes. Seulement 10 unités en stock au dernier relevé : si c'est trop juste, remplacez par la Tête en chips, qui suit immédiatement au classement."},
+    {id:"pr5", t:"Écorce de Porc Noir de Bigorre. Cinquième vente, 226 commandes. Revenue en stock début octobre."},
     {id:"pr6", t:"Sable Noir, pour le reel du 27 octobre. Je photographie et j'anime moi-même, vous n'avez rien à produire."},
     {id:"pr7", t:"Crêp'Karn, pour la recette de crêpes du 23 octobre, sauf si vous l'avez déjà filmée de votre côté."}
   ]},
   {g:"Informations à confirmer", items:[
     {id:"i1", t:"Durée et température exactes de séchage, par famille de produits."},
     {id:"i2", t:"Valeurs nutritionnelles du produit montré dans le reel sport."},
-    {id:"i3", t:"Dates de retour en stock, en commençant par le pemmican et l'écorce de porc noir."},
+    {id:"i3", t:"Dates de retour en stock. L'écorce et le jerky de bœuf halal sont revenus. Restent en attente le pemmican, annoncé pour fin octobre, et le ghee, quatrième vente du catalogue."},
     {id:"i4", t:"Liste des viandes qui ne proviennent pas d'éleveurs locaux."},
     {id:"i5", t:"Accord, ou non, pour citer un éleveur ou une éleveuse partenaire par son nom, et ses coordonnées si oui."},
     {id:"i6", t:"Mécanique du code de bienvenue : pourcentage ou montant fixe, minimum de commande, durée de validité, produits exclus."}
