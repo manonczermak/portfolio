@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manon Czermak Hus · Portfolio</title>
+<meta name="description" content="Portfolio de Manon Czermak Hus : marketing, communication, expérience client et gestion de projet.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Manon Czermak Hus · Portfolio">
+<meta property="og:description" content="Portfolio de Manon Czermak Hus : marketing, communication, expérience client et gestion de projet.">
+<link rel="icon" type="image/png" href="assets/img/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Manon Czermak Hus<span>.</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="realisations.html">Réalisations</a><a href="approche-ia.html">Approche de l'IA</a><a href="parcours.html">Parcours</a><a href="index.html#contact">Travaillons ensemble</a></nav>
+</div></header>
+<main>
+<div class="wrap">
+<section class="hero hero-split">
+  <div class="portrait"><img src="assets/img/manon.jpg" alt="Portrait de Manon Czermak Hus" width="220" height="220"></div>
+  <div>
+    <p class="eyebrow">Marketing · communication · expérience client · gestion de projet</p>
+    <h1>Manon Czermak Hus</h1>
+    <p class="lead">13&nbsp;ans d'expérience pour des marques B to C et B to B,<br class="br-wide"> aussi bien sur le plan stratégique qu'opérationnel.</p>
+    <div class="btns"><a class="btn primary" href="realisations.html">Voir mes réalisations</a><a class="btn ghost" href="#contact">Travaillons ensemble</a></div>
+  </div>
+</section>
+<section class="intro">
+  <p>J'ai dirigé la communication digitale d'une enseigne nationale avec une équipe et un budget, puis créé mon activité de conseil en 2019. Depuis, j'accompagne des entreprises de toutes tailles sur leur marque, leurs contenus et leur expérience client. J'ai aussi cofondé un salon B to C à Paris, lancé mon propre produit numérique et enseigné le marketing digital pendant 4&nbsp;ans dans l'enseignement supérieur.</p>
+</section>
+<section class="section" style="padding-top:12px">
+  <div class="section-head"><h2>Mes dernières réalisations</h2><a href="realisations.html">Toutes les réalisations →</a></div>
+  <div class="cards"><a class="card" href="cas/deploiement-solution-satisfaction.html">
+  <div class="visual"><img src="assets/img/vignette-satisfaction-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 45%"></div>
+  <div class="body"><span class="tag">Gestion de projet · SaaS B to B</span><h3>Déploiement d'un outil de satisfaction client, 91 magasins</h3><p>Gestion de projet&nbsp;: du set-up côté client à l'usage quotidien dans 91 magasins.</p><span class="result">82&nbsp;% de comptes activés et 60&nbsp;% d'utilisateurs actifs à trente jours</span></div>
+</a><a class="card" href="cas/reseaux-sociaux-hildgard-casaclean.html">
+  <div class="visual"><img src="assets/img/vignette-reseaux-sociaux.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 35%"></div>
+  <div class="body"><span class="tag">Social media · stratégie éditoriale</span><h3>Les réseaux sociaux pour atteindre des objectifs différents</h3><p>Citéliv, Enconteur, Hildgard, Casaclean et mon propre compte&nbsp;: la même méthode, des objectifs et des indicateurs différents.</p><span class="result">Visibilité multipliée par 5 en six mois pour Citéliv</span></div>
+</a><a class="card" href="cas/voix-du-client.html">
+  <div class="visual"><img src="assets/img/vignette-voix-du-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 45%"></div>
+  <div class="body"><span class="tag">Insights clients · études</span><h3>Faire remonter la voix du client dans les décisions d'une grande enseigne</h3><p>Une communauté d'insights clients pour obtenir des réponses en quelques jours plutôt qu'en plusieurs semaines.</p><span class="result">76 études menées en cinq ans</span></div>
+</a><a class="card" href="cas/campagne-sokarn.html">
+  <div class="visual"><img src="assets/img/vignette-sokarn.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 50%"></div>
+  <div class="body"><span class="tag">Sokarn · campagne Meta</span><h3>Faire vendre une petite marque avec un budget très réduit</h3><p>Une offre flash de 3 jours pour une jeune marque de snacks carnés, du visuel au bilan chiffré.</p><span class="result">+55&nbsp;% de ventes et +36&nbsp;% de commandes</span></div>
+</a><a class="card" href="cas/pilotage-relation-client.html">
+  <div class="visual"><img src="assets/img/vignette-relation-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 40%"></div>
+  <div class="body"><span class="tag">Pilotage · data · KPI · gouvernance</span><h3>Tableau de bord et comité de pilotage de la relation client</h3><p>Un tableau de bord partagé et un comité de pilotage pour transformer les indicateurs en décisions.</p><span class="result">5 chantiers, 20 initiatives, un COPIL mensuel et un dashboard utilisé toutes les semaines par le comité de direction</span></div>
+</a><a class="card" href="cas/marque-rse.html">
+  <div class="visual"><img src="assets/img/vignette-gamme-environnementale.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 38%"></div>
+  <div class="body"><span class="tag">Marketing RSE · conformité juridique et qualité</span><h3>Lancement d'une gamme de produits à impact environnemental réduit</h3><p>Décider quels produits intègrent la gamme, définir comment et où en parler et vérifier chaque allégation.</p><span class="result">Caractéristiques produits, guidelines de marque et plan 360</span></div>
+</a></div>
+<p style="margin:26px 0 0;text-align:center"><a class="more" href="realisations.html">Charger plus</a></p>
+</section>
+<section class="section">
+  <div class="section-head"><h2>Mes clients et anciens collègues parlent de moi</h2></div>
+  <div class="quotes"><blockquote class="quote"><p>Excellente collaboration avec Manon, grâce à ses compétences en webmarketing, animation de communauté et insights clients. Manon est à la fois <strong class="hl">créative et rigoureuse</strong>, <strong class="hl">autonome et proactive</strong>, et les <strong class="hl">délais toujours respectés</strong>&nbsp;! Les échanges sont fluides et très agréables. Une <strong class="hl">vraie partenaire</strong> dans la réussite de notre projet&nbsp;!</p><footer>Responsable Expérience Client Omnicanal</footer></blockquote><blockquote class="quote"><p>J'ai eu la chance de travailler en binôme avec Manon sur l'organisation d'un événement associatif national réunissant <strong class="hl">plus de 700 participants</strong> à Paris.</p><p><strong class="hl">Rigoureuse, créative et pleinement engagée</strong>, Manon est une professionnelle d'une <strong class="hl">grande polyvalence</strong>. Elle sait travailler en <strong class="hl">toute autonomie</strong> tout en s'adaptant avec une remarquable efficacité aux imprévus et aux besoins du projet.</p><p>Avoir Manon dans son équipe, c'est s'assurer de bénéficier d'une collaboratrice <strong class="hl">fiable, force de proposition</strong> et capable de <strong class="hl">faire aboutir un projet</strong> avec excellence&nbsp;!</p><footer>Bano M. · responsable de centre en santé au travail et cofondatrice de Sugar Free le Festival</footer></blockquote><blockquote class="quote"><p>Très bonne collaboration avec Manon, que je recommande chaudement. Notre projet a été mené avec <strong class="hl">beaucoup de rigueur</strong>, une <strong class="hl">grande réactivité</strong> et des <strong class="hl">propositions très pertinentes</strong>.</p><footer>Responsable Relation Client, enseigne nationale de distribution</footer></blockquote><blockquote class="quote"><p>J'ai eu la chance de collaborer avec Manon pendant plus de 2 ans sur la <strong class="hl">transformation digitale</strong> de notre enseigne et elle a largement contribué à la réussite de cette étape importante pour l'entreprise. <strong class="hl">Investie, autonome, efficace</strong>, remplie d'idées et de bonne humeur, ce fut un véritable plaisir d'œuvrer avec elle au quotidien. <strong class="hl">Digne de confiance</strong> et sérieuse, vous pouvez lui confier avec la plus grande tranquillité vos travaux marketing et e-marketing. <strong class="hl">Force de proposition</strong>, elle saura répondre à vos besoins en s'adaptant aux contextes, vous conseillera et fournira un travail pertinent de très grande qualité.</p><footer>Ancien manager · flunch</footer></blockquote><blockquote class="quote"><p>J'ai eu l'occasion de travailler avec Manon dans le cadre de la communication de lancement de ma marque ainsi que l'enrichissement de la partie blog du site.</p><p>Je vous recommande chaudement son profil, tout s'est très bien passé avec beaucoup de bonne humeur et un <strong class="hl">grand professionnalisme</strong>.</p><p>Manon s'est très bien <strong class="hl">adaptée à notre petit budget</strong> et nous a proposé un <strong class="hl">travail de qualité</strong> qui a répondu à toutes nos attentes.</p><footer>Pauline H. · fondatrice de La Wilderie</footer></blockquote><blockquote class="quote"><p>Manon est une personne <strong class="hl">fiable, sociable et dynamique</strong>. Dans son travail, elle fait preuve de <strong class="hl">sérieux et de rigueur</strong>. C’est également une personne créative et <strong class="hl">force de proposition</strong> dans l'avancée des projets. Bref, une personne que l’on souhaite avoir dans son équipe&nbsp;!</p><footer>Anne-Sophie C. · responsable communication, Confédération Générale du Roquefort</footer></blockquote><blockquote class="quote"><p>Je recommande chaleureusement Manon, tant pour son <strong class="hl">expertise 360</strong> (digital, omnicanal, expérience client, marketing, etc.), que pour la robustesse de sa <strong class="hl">méthodologie projet</strong> et ses incroyables <strong class="hl">soft skills</strong>.</p><footer>Omnichannel Customer Experience Director</footer></blockquote><blockquote class="quote"><p>J'ai fait appel à Manon pour la refonte complète de mon site internet [...].</p><p>Je suis <strong class="hl">entièrement satisfait</strong> du résultat, elle a su créer un site qui me ressemble à 100&nbsp;%, facile d'accès, fluide et complet.</p><p>J'ai par la suite fait appel à elle pour un dossier de com/<strong class="hl">stratégie de vente</strong> concernant la sortie de mon livre. Le dossier m'a beaucoup aidé pour appréhender la sortie du livre et <strong class="hl">rester dans mes objectifs</strong> sans m'éparpiller pour booster la communication.</p><footer>Créateur de contenu et auteur</footer></blockquote><blockquote class="quote"><p>J'ai eu le plaisir de travailler avec Manon sur plusieurs sujets, et je ne peux que la recommander&nbsp;!</p><p>Elle se distingue par sa <strong class="hl">compréhension fine des besoins</strong>, sa capacité à en mesurer rapidement les impacts et surtout à <strong class="hl">embarquer et coordonner les équipes</strong> en 360° pour faire avancer les projets efficacement.</p><p>Une professionnelle rapide, efficace, structurée et toujours <strong class="hl">orientée résultats</strong>.</p><p>Bref, une freelance avec qui c’est un vrai plaisir de collaborer. Je recommande vivement&nbsp;!</p><footer>Manager Marketing RSE</footer></blockquote><blockquote class="quote"><p>J’ai eu le plaisir de manager Manon, puis de collaborer avec elle en tant que freelance. Elle dispose d’une <strong class="hl">solide expertise</strong> en marketing, communication et expérience client, avec une forte orientation digitale. Elle sait <strong class="hl">piloter des projets de bout en bout</strong>, du cadrage à la mise en œuvre opérationnelle, avec efficacité&nbsp;! Elle fait preuve d’une <strong class="hl">vision transverse</strong> et s’adapte avec aisance à des contextes et interlocuteurs variés. Orientée résultats, fiable et impliquée&nbsp;: je recommande Manon <strong class="hl">sans réserve</strong>&nbsp;!</p><footer>Responsable Expérience Client</footer></blockquote><blockquote class="quote"><p>J'ai eu l'occasion de travailler avec Manon sur des études clients. Son <strong class="hl">professionnalisme</strong>, son <strong class="hl">agilité</strong> et son sens du service clients ont été de véritables atouts. Flexible, à l'écoute et toujours dans une <strong class="hl">logique de solutions</strong>, elle fait avancer les projets avec fluidité et efficacité. Son état d'esprit positif et sa <strong class="hl">culture du possible</strong> en font une collaboratrice particulièrement appréciée.</p><footer>Chargée d&#x27;études marketing, enseigne nationale de distribution</footer></blockquote><blockquote class="quote"><p>J’ai eu beaucoup de plaisir à travailler avec Manon&nbsp;! Une personne <strong class="hl">dynamique, organisée, réactive</strong> et toujours à l’écoute. Elle sait <strong class="hl">gérer plusieurs sujets en parallèle</strong> avec efficacité, s’adapter rapidement et maîtriser des problématiques variées. Sa bonne humeur, son sourire et son <strong class="hl">sens du collectif</strong> en font une collègue particulièrement agréable et fiable. Je la recommande <strong class="hl">sans hésitation</strong>&nbsp;!</p><footer>Chargée d&#x27;études marketing, enseigne nationale de distribution</footer></blockquote><blockquote class="quote"><p>Ce fut un réel plaisir de travailler avec Manon, qui, non contente d'être une collègue <strong class="hl">fiable, rapide, efficace et proactive</strong>, est aussi extrêmement agréable, <strong class="hl">bienveillante et attentive aux autres</strong>. J'espère sincèrement que nos chemins se recroisent un jour pour collaborer encore sur des <strong class="hl">projets challengeants et porteurs de sens</strong>. Merci encore Manon pour tout ton travail et ton <strong class="hl">implication sans faille</strong>&nbsp;!</p><footer>Chef de projet UGC, enseigne nationale de distribution</footer></blockquote></div>
+</section>
+</div>
+</main>
+<footer class="site-foot" id="contact"><div class="wrap">
+  <div>
+    <h2>Travaillons ensemble</h2>
+    <ul class="zones">
+      <li><b>En présentiel</b> Vierzon, Bourges et Châteauroux</li>
+      <li><b>En hybride</b> Orléans, Tours et Paris</li>
+      <li><b>Partout ailleurs</b> en télétravail complet</li>
+    </ul>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:manon.czermak@gmail.com">manon.czermak@gmail.com</a>
+    <a href="tel:+33604520916">06 04 52 09 16</a>
+    <a href="https://www.linkedin.com/in/manonczermakhus" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+<div class="wrap legal-links">
+  <span>© 2026 Manon Czermak Hus</span>
+  <a href="mentions-legales.html">Mentions légales</a>
+  <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+</div></footer>
+</body>
+</html>

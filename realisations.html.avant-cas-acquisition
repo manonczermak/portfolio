@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réalisations · Manon Czermak Hus</title>
+<meta name="description" content="Portfolio de Manon Czermak Hus : marketing, communication, expérience client et gestion de projet.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Réalisations · Manon Czermak Hus">
+<meta property="og:description" content="Portfolio de Manon Czermak Hus : marketing, communication, expérience client et gestion de projet.">
+<link rel="icon" type="image/png" href="assets/img/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">Manon Czermak Hus<span>.</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="realisations.html" aria-current="page">Réalisations</a><a href="approche-ia.html">Approche de l'IA</a><a href="parcours.html">Parcours</a><a href="index.html#contact">Travaillons ensemble</a></nav>
+</div></header>
+<main>
+<div class="wrap">
+<section class="hero" style="padding-bottom:20px">
+  <p class="eyebrow">Réalisations</p>
+  <h1>Sept études de cas</h1>
+  <p class="lead">Chaque cas suit la même structure&nbsp;: le contexte, mon rôle, ce que j'ai fait, les résultats et ce que j'en retiens. Les missions menées pour mon client principal sont anonymisées&nbsp;; les données présentées sur ses projets sont fictives.</p>
+</section>
+<section class="section" style="padding-top:8px"><div class="cards"><a class="card" href="cas/campagne-sokarn.html">
+  <div class="visual"><img src="assets/img/vignette-sokarn.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 50%"></div>
+  <div class="body"><span class="tag">Sokarn · campagne Meta</span><h3>Faire vendre une petite marque avec un budget très réduit</h3><p>Une offre flash de 3 jours pour une jeune marque de snacks carnés, du visuel au bilan chiffré.</p><span class="result">+55&nbsp;% de ventes et +36&nbsp;% de commandes</span></div>
+</a><a class="card" href="cas/deploiement-solution-satisfaction.html">
+  <div class="visual"><img src="assets/img/vignette-satisfaction-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 45%"></div>
+  <div class="body"><span class="tag">Gestion de projet · SaaS B to B</span><h3>Déploiement d'un outil de satisfaction client, 91 magasins</h3><p>Gestion de projet&nbsp;: du set-up côté client à l'usage quotidien dans 91 magasins.</p><span class="result">Test en région pilote puis déploiement sur tout le réseau</span></div>
+</a><a class="card" href="cas/pilotage-relation-client.html">
+  <div class="visual"><img src="assets/img/vignette-relation-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 40%"></div>
+  <div class="body"><span class="tag">Pilotage · data · KPI · gouvernance</span><h3>Tableau de bord et comité de pilotage de la relation client</h3><p>Un tableau de bord partagé et un comité de pilotage pour transformer les indicateurs en décisions.</p><span class="result">5 chantiers, 20 initiatives, un COPIL mensuel et un dashboard utilisé toutes les semaines par le comité de direction</span></div>
+</a><a class="card" href="cas/marque-rse.html">
+  <div class="visual"><img src="assets/img/vignette-gamme-environnementale.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 38%"></div>
+  <div class="body"><span class="tag">Marketing RSE · conformité juridique et qualité</span><h3>Lancement d'une gamme de produits à impact environnemental réduit</h3><p>Décider quels produits intègrent la gamme, définir comment et où en parler et vérifier chaque allégation.</p><span class="result">Caractéristiques produits, guidelines de marque et plan 360</span></div>
+</a><a class="card" href="cas/voix-du-client.html">
+  <div class="visual"><img src="assets/img/vignette-voix-du-client.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 45%"></div>
+  <div class="body"><span class="tag">Insights clients · études</span><h3>Faire remonter la voix du client dans les décisions d'une grande enseigne</h3><p>Une communauté d'insights clients pour obtenir des réponses en quelques jours plutôt qu'en plusieurs semaines.</p><span class="result">76 études menées en cinq ans</span></div>
+</a><a class="card" href="cas/reseaux-sociaux-hildgard-casaclean.html">
+  <div class="visual"><img src="assets/img/vignette-reseaux-sociaux.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 35%"></div>
+  <div class="body"><span class="tag">Social media · stratégie éditoriale</span><h3>Les réseaux sociaux pour atteindre des objectifs différents</h3><p>Citéliv, Enconteur, Hildgard, Casaclean et mon propre compte&nbsp;: la même méthode, des objectifs et des indicateurs différents.</p><span class="result">Visibilité multipliée par 5 en six mois pour Citéliv</span></div>
+</a><a class="card" href="cas/jamais-trop-tot.html">
+  <div class="visual"><img src="assets/img/vignette-jamais-trop-tot.jpg" alt="" width="1280" height="800" loading="lazy" style="object-position:50% 28%"></div>
+  <div class="body"><span class="tag">Produit · acquisition · tunnel de vente</span><h3>Concevoir, lancer et vendre un produit seule</h3><p>Un guide de préparation de sa succession, de l'écriture à la vente, avec un tunnel corrigé en cours de route.</p><span class="result">46&nbsp;% de conversion sur la page de capture</span></div>
+</a></div></section>
+<section class="section">
+  <div class="section-head"><h2>Autres réalisations</h2></div>
+  <div class="short-list"><div class="short"><b>Sugar Free le Festival · 2023-2025</b><p>Cofondatrice, en charge de la communication et de la trésorerie du premier salon français dédié aux alimentations réduites en sucre, créé de A à Z avec cinq cofondateurs. 600 visiteurs en 2024, 739 en 2025 (+23&nbsp;%). Recettes propres en hausse de 22&nbsp;%, sponsoring passé de 1&#8239;000&nbsp;€ à 5&#8239;750&nbsp;€, bénéfice dès la première édition. 875&nbsp;€ de publicité en 2025, avec un taux de clic Meta de 5,1&nbsp;%.</p></div><div class="short"><b>flunch · flunch Truck</b><p>La création de zéro d'une marque pensée pour les jeunes actifs sur leur lieu de travail. J'ai porté le projet avec deux collègues, avec un rôle majoritaire sur l'identité visuelle, le design et la communication 360. Le concept a été exploité pendant cinq ans.</p></div><div class="short"><b>flunch · vote en ligne</b><p>Le déploiement digital d'une campagne parodique imaginée avec l'agence Les Gros Mots autour de l'élection présidentielle de 2017&nbsp;: six plats candidats, et un dispositif de vote en ligne en deux tours que j'ai conçu et piloté.</p></div><div class="short"><b>flunch · application click &amp; collect</b><p>La gestion de projet de la mise en place de l'application mobile click &amp; collect, dont le travail sur l'UX avec l'agence web.</p></div><div class="short"><b>La Recyclerie Sportive</b><p>Le site web, le plan de lancement 360 pour l'ouverture d'un nouveau point de vente et les réseaux sociaux.</p></div><div class="short"><b>Groupe IRCEM</b><p>Des tableaux de garanties et de remboursements de mutuelle rendus lisibles, des flyers commerciaux pour une offre mobile destinée aux seniors, et trois calendriers annuels offerts aux adhérents, graphisme et rédaction autour du bien-être.</p></div><div class="short"><b>Yoga des 3 Chênes</b><p>La refonte complète de l'identité visuelle et du site.</p></div><div class="short"><b>Mindfeed</b><p>Une étude du marché français et une recommandation de plan de communication digitale pour une société australienne souhaitant s'implanter en France.</p></div><div class="short"><b>Oxwork</b><p>Des bannières promotionnelles et des visuels publicitaires Meta.</p></div></div>
+</section>
+</div>
+</main>
+<footer class="site-foot" id="contact"><div class="wrap">
+  <div>
+    <h2>Travaillons ensemble</h2>
+    <ul class="zones">
+      <li><b>En présentiel</b> Vierzon, Bourges et Châteauroux</li>
+      <li><b>En hybride</b> Orléans, Tours et Paris</li>
+      <li><b>Partout ailleurs</b> en télétravail complet</li>
+    </ul>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:manon.czermak@gmail.com">manon.czermak@gmail.com</a>
+    <a href="tel:+33604520916">06 04 52 09 16</a>
+    <a href="https://www.linkedin.com/in/manonczermakhus" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+<div class="wrap legal-links">
+  <span>© 2026 Manon Czermak Hus</span>
+  <a href="mentions-legales.html">Mentions légales</a>
+  <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+</div></footer>
+</body>
+</html>
