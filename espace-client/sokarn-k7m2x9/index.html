@@ -269,7 +269,7 @@ Donc on sépare les deux vagues et on les fait travailler l’une pour l’autre
 <b>Objectif :</b> ventes.
 <b>Cible :</b> uniquement du retargeting, pas une seule audience froide. Les personnes ayant vu au moins 50 % d’une vidéo sur 30 jours, c’est-à-dire ce que la vague 1 vient de construire. Les visiteurs du site sur 30 jours. Les interactions avec le compte Instagram sur 30 jours. Les paniers abandonnés non convertis. Exclusion des personnes ayant commandé depuis le 26, pour ne pas payer pour parler à des clientes qui ont déjà acheté.
 <b>Produits mis en avant :</b> les quatre cadeaux, parce que ce sont eux l’argument. Le Sable Noir à 40 €, la livraison à 50 €, la Couenne de porc soufflée à 70 €, les Py’Rillettes à 110 €.
-<b>Créations :</b> le reel « Le colis qui se remplit » en principal, décliné en 9:16 pour les reels et les stories, 4:5 pour les fils d’actualité et 1:1 pour le reste. Le carrousel d’annonce du 24 en secondaire.
+<b>Créations :</b> le reel « Le colis qui se remplit » en principal, décliné en 9:16 pour les reels et les stories et en 4:5 pour les fils d’actualité. Le 1:1 est abandonné : Meta ne le recommande plus sur aucun emplacement de fil. Le carrousel d’annonce du 24 en secondaire.
 <b>Appel à l’action :</b> Acheter.
 <b>Page d’atterrissage :</b> la page Karni’Days, surtout pas la boutique. C’est elle qui explique la mécanique juste avant le panier.</div></div>
 
@@ -305,8 +305,8 @@ Budget géré au niveau de la campagne, en répartition automatique : Meta place
 Centres d'intérêt : musculation, CrossFit, course à pied, nutrition sportive, alimentation riche en protéines, compléments protéinés.</div></div>
 
       <div class="block"><div class="lab">Formats</div><div class="val">9:16 plein écran pour les Reels et les stories.
-4:5 pour les fils d'actualité.
-1:1 pour les emplacements restants.
+4:5 pour les fils d'actualité, y compris les aperçus Instagram, qui sont passés à ce format.
+Pas de 1:1 : il n'est plus recommandé et il rogne l'image sur les emplacements modernes.
 Point de contrôle le 22 octobre, pour réajuster si besoin.</div></div>
 
       <div class="block"><div class="lab">Vidéo</div><div class="media-video"><video controls preload="metadata" src="medias/s5-encas-post-seance.mp4"></video></div></div>
@@ -480,7 +480,7 @@ const MEDIAS = {
   n9: [],
   n10: ["nov-21-avis.jpg"],
   n11: ["nov-22-e1.jpg", "nov-22-e2.jpg", "nov-22-e3.jpg"],
-  n12: ["nov-24-s1.jpg", "nov-24-s2.jpg", "nov-24-s3.jpg", "nov-24-s4.jpg"],
+  n12: ["nov-24-s1.jpg", "nov-24-s2.jpg"],
   n13: ["nov-25-e1.jpg", "nov-25-e2.jpg", "nov-25-e3.jpg"],
   n14: [],
   n15: ["nov-26-e1.jpg", "nov-26-e2.jpg", "nov-26-e3.jpg"],
@@ -694,11 +694,10 @@ const POSTS_NOV = [
   "id": "n12",
   "date": "Mardi 24 novembre, 18h30",
   "resa": "Instagram, Facebook",
-  "format": "Carrousel de 4 images",
+  "format": "Carrousel de 2 images",
   "pilier": "Le produit et la conversion",
   "titre": "Les Karni'Days, annonce",
-  "demande": "Les quatre pastilles de la jauge sont des photos produit détourées que je fais moi-même : Sable Noir et Couenne soufflée, que j'aurai, plus le cadeau du palier à 110 €, qu'il faut donc trancher et m'envoyer avant le 20 novembre.",
-  "visuel": "Fond nuit sur les 4 slides, on change volontairement de fond par rapport au reste du mois. La slide 3 est la jauge des paliers : quatre pastilles rondes, le Sable Noir à 40 €, une icône de livraison à 50 €, la Couenne soufflée à 70 € et le cadeau du palier à 110 €. Je détoure les trois photos produit moi-même.",
+  "visuel": "Carrousel ramené à 2 slides. La slide 1 est le visuel maître des Karni'Days, qui dit à lui seul le titre, les dates, la jauge des quatre paliers avec ses pictos et le total de 28,70 €. La slide 2 explique pourquoi ces produits-là. Les anciennes slides 3 et 4 se répétaient avec la slide 1, elles sont supprimées.",
   "texte": "On s'est posé la question de ce qu'on faisait pour le black friday, la black week, le cyber monday… Et voici les Karni'Days !\n\nOn est une petite maison qui travaille avec des éleveuses et des éleveurs d'à côté, et nos prix sont déjà calés au plus juste pour que tout le monde s'y retrouve, eux comme nous.\n\nPlutôt que d'enlever quelques euros sur ce que vous aviez déjà prévu de commander, on préfère ajouter dans votre colis des produits à (re)découvrir.\n\nDès 40 €, le Sable Noir. Dès 50 €, la livraison. Dès 70 €, la Couenne soufflée en plus. Dès 110 €, les Py’Rillettes en plus. Tout se cumule !\n\nDu jeudi 26 au lundi 30 novembre, sur sokarn.com. Produits offerts dans la limite des stocks disponibles.",
   "tags": "#viandesechee #hautespyrenees #porcnoirdebigorre #sansadditifs #blackfriday"
  },
@@ -719,7 +718,7 @@ const POSTS_NOV = [
   "pilier": "Le produit et la conversion",
   "titre": "Le colis qui se remplit",
   "audio": "Pas de voix off. Bruit de machine à sous à chaque cadeau ajouté, puis audio tendance Instagram par-dessus. L'ordre compte : monter d'abord les bruitages sur le fichier vidéo, exporter, puis ajouter l'audio tendance dans Instagram avec le curseur musique autour de 40 % et l'audio d'origine à 100 %. Si l'audio tendance est ajouté en premier, les bruitages ne peuvent plus remonter.",
-  "demande": "L'un des deux seuls tournages qui restent chez Sokarn, parce qu'il faut l'atelier et le carton d'expédition. Carton ouvert, mains qui posent, caméra fixe au-dessus, une seule prise continue si possible. Pour le lundi 23 novembre. C'est aussi la création principale de la campagne Meta, à décliner en 4:5 et 1:1.",
+  "demande": "L'un des deux seuls tournages qui restent chez Sokarn, parce qu'il faut l'atelier et le carton d'expédition. Carton ouvert, mains qui posent, caméra fixe au-dessus, une seule prise continue si possible. Pour le lundi 23 novembre. C'est aussi la création principale de la campagne Meta, à décliner en 9:16 et en 4:5.",
   "visuel": "Un compteur d'euros tourne en haut de l'écran comme un rouleau de machine à sous. Il s'arrête net sur un chiffre rond et c'est à cet arrêt que le cadeau tombe. 40 € le Sable Noir, 50 € une main qui pose le couvercle ou scotche, 70 € la Couenne soufflée, 110 € les Py’Rillettes. Le palier à 50 € est le seul sans objet à faire tomber, il lui faut ce geste sinon le film s'affaisse au deuxième temps.",
   "texte": "C'est parti pour les Karni'Days !\n\nPendant 5 jours, votre colis se remplit (presque) tout seul. Dès 40 €, le Sable Noir est offert. Dès 50 €, la livraison. Dès 70 €, la Couenne soufflée. Dès 110 €, les Py’Rillettes. Les cadeaux s'ajoutent les uns aux autres.\n\nJusqu'au lundi 30 novembre inclus, sur sokarn.com\nProduits offerts dans la limite des stocks disponibles.",
   "tags": "#karnidays #blackfriday #viandesechee #hautespyrenees #porcnoirdebigorre"
