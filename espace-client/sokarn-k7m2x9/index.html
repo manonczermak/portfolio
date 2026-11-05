@@ -601,10 +601,11 @@ const POSTS_NOV = [
   "id": "n4",
   "date": "Mardi 10 novembre, 18h30",
   "resa": "Instagram, TikTok, Facebook",
-  "format": "Reel, 32 à 35 secondes",
+  "format": "Reel, 40 secondes",
   "pilier": "Le savoir-faire",
   "titre": "De la tête à la queue",
-  "audio": "Voix off enregistrée par Salomé, 78 mots. Fond musical discret, volume bas.",
+  "voix": "Quand on reçoit une bête, on ne garde pas que les beaux morceaux.\n\nLa tête, on en fait des chips. Les oreilles aussi.\n\nLe cœur, le foie, la panse : les abats, ceux qu'on ne trouve presque plus sur les étals.\n\nPuis la couenne. Soufflée, en sable, en écorce. Trois produits, un seul morceau.\n\nParce que notre responsabilité avec un produit issu du vivant, c'est de le respecter en faisant le moins de gaspillage possible.\n\nC'est ça, travailler de la tête à la queue.\n\nTout est sur sokarn.com.",
+  "audio": "Voix off enregistrée par Salomé, 88 mots, environ 40 secondes. Calage : 0:00 planche vide, 0:05 la tête et les oreilles, 0:11 les abats, 0:20 la couenne, 0:28 plan large sur la planche pleine, 0:36 la signature, 0:39 le site. Fond musical discret, volume bas.",
   "demande": "Je tourne la planche moi-même. De Sokarn il me faut seulement les produits que je n'ai pas : Bigorr'eilles, Panse bête, jerky de cœur, jerky de foie, Couenne soufflée, à recevoir avant le 6 novembre, et la voix off de Salomé avant le 7.",
   "visuel": "Ordre de pose, de la tête vers la couenne : Tête en chips, Bigorr'eilles, jerky de cœur, jerky de foie, Panse bête, Couenne soufflée, Sable Noir, Écorce. Huit produits et non neuf : les Pieds Noirs sortent du plan de pose, ils sont en rupture et ne reviennent pas avant la campagne. Incrustation commune « les abats » sur les trois du milieu, incrustation commune « la couenne » sur les trois suivants avec la mention « Trois produits. Le même morceau. » Le Crêp'Karn est écarté, c'est une farine, elle casse la lecture anatomique.",
   "texte": "« De la tête à la queue », c'est la phrase qu'on répète le plus souvent quand on nous demande comment on travaille.\n\nCe n'est pas un slogan, c'est notre cœur de métier. Nous estimons que lorsqu'on produit des produits carnés, on ne peut pas juste garder les « beaux morceaux » et laisser le reste.\n\nAlors chaque partie a trouvé son produit. La tête, les oreilles, les abats, les pieds, la couenne…\n\nCe sont souvent des morceaux qui surprennent par leur goût ou par leur texture, et que nos clients commandent de nouveau après les avoir goûtés !\n\nToute la gamme est sur sokarn.com",
@@ -880,7 +881,7 @@ const ELEMENTS = [
     {id:"pr6", t:"\u00c0 recevoir avant le 20 novembre. Un exemplaire du cadeau retenu pour le palier \u00e0 110 €, d\u00e8s qu\u2019il est tranch\u00e9. Il me faut sa photo d\u00e9tour\u00e9e pour la jauge des paliers du 24 et pour le reel du colis du 26."},
   ]},
   {g:"Les trois choses que je ne peux pas faire chez moi", note:"Tout le reste est de mon c\u00f4t\u00e9. Il ne reste que ce qui demande votre voix ou votre atelier, et Salom\u00e9 a d\u00e9j\u00e0 donn\u00e9 son accord sur les trois.", items:[
-    {id:"v8", t:"Pour le vendredi 7 novembre. La voix off du reel du 10, enregistr\u00e9e par Salom\u00e9. Le texte fait 78 mots et il est dans la fiche du contenu. Un vocal WhatsApp suffit, la qualit\u00e9 du micro importe peu."},
+    {id:"v8", t:"Pour le vendredi 7 novembre. La voix off du reel du 10, enregistr\u00e9e par Salom\u00e9. Le texte fait 88 mots, environ 40 secondes, et il est dans la fiche du contenu du 10 novembre. Un vocal WhatsApp suffit, la qualit\u00e9 du micro importe peu."},
     {id:"v10", t:"Pour le lundi 23 novembre. Le tournage du colis qui se remplit, pour le reel d\u2019ouverture des Karni\u2019Days. Carton d\u2019exp\u00e9dition ouvert, cam\u00e9ra fixe au-dessus, des mains qui posent, une seule prise continue si possible. C\u2019est aussi la cr\u00e9ation principale de la campagne publicitaire, donc c\u2019est le tournage le plus important du mois."},
     {id:"p6", t:"Pour le dimanche 29 novembre. Une photo de l\u2019atelier en pr\u00e9paration de commandes, prise sur le vif, qualit\u00e9 t\u00e9l\u00e9phone, rien \u00e0 soigner."}
   ]},
@@ -980,6 +981,7 @@ function rendu(LISTE, cid, periode, progressId, label){
   <div class="corps">
   ${p.attente ? `<div class="soon">En attente de votre décision sur l'option retenue.</div>` : ``}
   ${p.visuel ? `<div class="block"><div class="lab">Visuel attendu</div><div class="val">${esc(p.visuel)}</div></div>` : ``}
+  ${p.voix ? `<div class="block"><div class="lab">Voix off à enregistrer</div><div class="val">${esc(p.voix)}</div></div>` : ``}
   ${p.audio ? `<div class="block"><div class="lab">Son à appliquer sur Instagram</div><div class="val">${esc(p.audio)}</div></div>` : ``}
   <div class="block"><div class="lab">Visuels</div>${blocMedias(p.id)}</div>
   <div class="block"><div class="lab">Texte de publication</div><div class="caption">${esc(p.texte)}</div></div>
