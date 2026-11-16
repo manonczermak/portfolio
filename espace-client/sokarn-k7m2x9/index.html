@@ -36,6 +36,8 @@
   .post{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin-bottom:18px}
   .post.done{border-color:var(--sage);background:var(--sage-bg)}
   .post.todo{border-color:var(--accent);background:var(--accent-bg)}
+  .post.done.aplanifier{border-color:#e08a1e;background:#fde9c9}
+  .post.done.aplanifier .pub{border-color:#e08a1e;background:#fff6e6;color:#7a4a08}
   .post-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
   .post-head h3{font-size:21px}
   .date{font-family:Manrope;font-weight:800;font-size:15px;color:var(--accent)}
@@ -950,11 +952,12 @@ function rendu(LISTE, cid, periode, progressId, label){
     const st = r.statut || "";
     const cls = st === "valide" ? " done" : (st === "revoir" ? " todo" : "");
     const pub = r.publication || "";
-    const pubTxt = pub === "publie" ? "Publié" : (pub === "planifie" ? "Planifié" : "À planifier");
+    const aPlanifier = st === "valide" && pub === "";
+    const pubTxt = pub === "publie" ? "Publié" : (pub === "planifie" ? "Planifié" : (aPlanifier ? "Validé, à planifier" : "À planifier"));
     const replie = (pub === "planifie" || pub === "publie") ? (deplies.has(p.id) ? " replie ouvert" : " replie") : "";
     const sign = (st || r.commentaire) && r.auteur ? `<div class="signature">${esc(r.auteur)}, le ${esc(dateFr(r.maj))}</div>` : "";
     return `
-<article class="post${cls}${replie}" id="bloc-${p.id}">
+<article class="post${cls}${aPlanifier ? " aplanifier" : ""}${replie}" id="bloc-${p.id}">
   <div class="post-head">
     <div><div class="date">${esc(p.date)}</div><h3>${esc(p.titre)}</h3></div>
     <div class="meta">
